@@ -1,0 +1,276 @@
+[
+	{
+		"type": "effect_type",
+		"id": "lust",
+		"name" : ["性的衝動"],
+		"desc": ["生物としての根元を成す激しい官能的欲望を感じています。つまり、イきそうです。"],
+		"rating": "neutral",
+		"show_in_info": false,
+		"//" : "intensityが100に達した時点で達する、という仕様にしよう",
+		"max_intensity" : 100,
+		"int_dur_factor": 1,
+		"max_duration": 100,
+		"miss_message": [
+			["あなたはイきそうだ...", 5],
+			["あなたは必死にイくのを耐えている...", 5]
+		],
+		"base_mods": {
+			"stamina_min": [-0.1]
+		},
+		"scaling_mods": {
+			"stamina_min": [-0.1]
+		}
+	},
+	{
+		"type": "effect_type",
+		"id": "corrupt",
+		"name" : [
+			"赤面",
+			"恍惚",
+			"欲情",
+			"陶酔",
+			"陶酔",
+			"堕落"
+		],
+		"desc": [
+			"あなたは性的な感情に苛まれています。興奮状態のため筋力と感覚に若干のボーナスを得ますが、知力に若干のペナルティを受けます。",
+			"あなたは性的な感情を抱いています。感覚以外のステータスにペナルティを受けます。",
+			"あなたの思考は性的欲求に満たされています。感覚以外のステータスにペナルティを受けます。",
+			"あなたの思考は性欲に支配されています。感覚以外のステータスに大きくペナルティを受けます。",
+			"あなたの思考は性欲に支配されています。...それはいけない事でしょうか？",
+			"あなたはの心は完全に堕ちきってしまいました。でも、別に悪い事じゃありませんよね？"
+		],
+		"show_in_info": false,
+		"max_intensity" : 6,
+		"apply_message": "あなたは興奮し始めました。",
+		"remove_message": "あなたの欲望は消えうせました。",
+		"miss_message": [["あなたは欲望に駆られています...", 10]],
+		"rating": "bad",
+		"int_dur_factor": 600,
+		"max_duration": 7200,
+		"base_mods": {
+			"str_mod": [1],
+			"per_mod": [1],
+			"int_mod": [-1],
+			"speed_mod": [5],
+			"stamina_min": [2]
+		},
+		"scaling_mods": {
+			"str_mod": [-1.67],
+			"dex_mod": [-0.84],
+			"per_mod": [0.84],
+			"int_mod": [-2],
+			"speed_mod": [-0.4],
+			"stamina_min": [-3]
+		}
+	},
+	{
+		"type": "effect_type",
+		"id": "magic_sleepy",
+		"name" : [
+			"耐えがたき眠気",
+			"尋常ならざる眠気",
+			"寝落ち寸前"
+		],
+		"desc": ["不思議な眠気に襲われています。いつ意識を手放してもおかしくありません。"],
+		"show_in_info": false,
+		"max_intensity" : 3,
+		"apply_message": "ふいに眠気が襲ってきました...",
+		"remove_message": "不思議な眠気は消えうせました。",
+		"rating": "bad",
+		"int_dur_factor": 300,
+		"max_duration": 900,
+		"base_mods": {
+			"speed_mod": [-5],
+			"str_mod": [-1],
+			"dex_mod": [-1],
+			"int_mod": [-2],
+			"per_mod": [-2],
+			"sleep_min": [10],
+			"sleep_max": [20],
+			"sleep_chance": [75],
+			"sleep_chance_bot": [100]
+		},
+		"scaling_mods": {
+			"sleep_min": [10],
+			"sleep_max": [20],
+			"sleep_chance": [-36]
+		}
+	},
+	{
+		"type": "effect_type",
+		"id": "estrus",
+		"name": ["発情"],
+		"desc": ["発情しています。妊娠確率が500%上昇します。"],
+		"show_in_info": false,
+		"max_intensity" : 1,
+		"rating": "neutral",
+		"int_dur_factor": 14400
+	},
+	{
+		"type": "effect_type",
+		"id": "contraception",
+		"name": ["避妊"],
+		"desc": ["避妊薬が効果を発揮しています。今ならどれだけ楽しんでも平気です。たぶん。"],
+		"show_in_info": false,
+		"max_intensity" : 1,
+		"rating": "good",
+		"int_dur_factor": 14400
+	},
+	{
+		"type": "effect_type",
+		"id": "anthcream",
+		"show_in_info": false,
+		"removes_effects": ["creampie"]
+	},
+	{
+		"type": "effect_type",
+		"id": "creampie",
+		"show_in_info": false,
+		"//": "最大効果は現実時間でだいたい5日。意味は各自でググってください。人目の無い所で。",
+		"max_intensity" : 5,
+		"int_dur_factor": 14400
+	},
+	{
+		"type": "effect_type",
+		"id": "impregnated",
+		"show_in_info": false,
+		"//": "現実時間でだいたい10週=70日。1ヶ月=だいたい30日ごとでintensityを分ける。",
+		"max_intensity" : 3,
+		"rating": "neutral",
+		"max_duration": 70,
+		"int_dur_factor": 30,
+		"int_decay_step": 0,
+		"base_mods": {
+			"hunger_chance": [1440],
+			"hunger_min": [1],
+			"thirst_chance": [1440],
+			"thirst_min": [1],
+			"vomit_chance": [-1030]
+		},
+		"scaling_mods": {
+			"hunger_chance": [-360],
+			"thirst_chance": [-360],
+			"vomit_chance": [510]
+		},
+		"removes_effects": ["creampie"]
+	},
+	{
+		"type": "effect_type",
+		"id": "pregnantcy",
+		"name": [
+			"妊娠(3か月)",
+			"妊娠(4か月)",
+			"妊娠(5か月)",
+			"妊娠(6か月)",
+			"妊娠(7か月)",
+			"妊娠(8か月)",
+			"妊娠(9か月)"
+		],
+		"desc": ["妊娠しています。"],
+		"show_in_info": true,
+		"max_intensity" : 7,
+		"apply_message": "あなたは妊娠しました。",
+		"rating": "mixed",
+		"//": "現実時間でだいたい30週=210日。1ヶ月=だいたい30日ごとでintensityを分ける。",
+		"max_duration": 210,
+		"int_dur_factor": 30,
+		"int_decay_step": 0,
+		"base_mods": {
+			"hunger_chance": [720],
+			"hunger_min": [1],
+			"thirst_chance": [720],
+			"thirst_min": [1],
+			"vomit_chance": [740]
+		},
+		"scaling_mods": {
+			"speed_mod": [-5],
+			"vomit_chance": [-250]
+		},
+		"removes_effects": ["estrus", "creampie", "impregnated", "incubation"]
+	},
+	{
+		"type": "effect_type",
+		"id": "incubation",
+		"name": ["抱卵"],
+		"desc": ["お腹の中は卵でいっぱいです。"],
+		"show_in_info": true,
+		"max_intensity" : 7,
+		"apply_message": "あなたは妊娠しました。",
+		"rating": "mixed",
+		"//": "現実時間でだいたい30週=210日。1ヶ月=だいたい30日ごとでintensityを分ける。",
+		"max_duration": 210,
+		"int_dur_factor": 30,
+		"int_decay_step": 0,
+		"base_mods": {
+			"fatigue_min": [1],
+			"fatigue_max": [2],
+			"fatigue_chance": [1],
+			"fatigue_chance_bot": [100]
+		},
+		"removes_effects": ["creampie", "impregnated", "pregnantcy"]
+	},
+
+	{
+		"//": "↓*気持ちいいこと*中のエフェクトタイル用のためだけのeffect。↓",
+		"type": "effect_type",
+		"id": "movingdoing",
+		"name" : ["*気持ちいいこと*"],
+		"desc": ["*気持ちいいこと*中です。"],
+		"show_in_info": true,
+		"max_intensity" : 1,
+		"rating": "good"
+	},
+
+	{
+		"//": "↓何人相手にしてるかカウント。",
+		"type": "effect_type",
+		"id": "gotwifed",
+		"show_in_info": false,
+		"rating": "bad",
+		"max_intensity" : 3,
+		"int_dur_factor": 1,
+		"max_duration": 3
+	},
+
+	{
+		"//": "↓ここから下はモンスター専用effect。もし見えたら、それはきっとバグ。↓",
+		"type": "effect_type",
+		"id": "dominate",
+		"name" : ["主導権"],
+		"desc": ["行為の主導権を握っています。"],
+		"show_in_info": true,
+		"max_intensity" : 1,
+		"rating": "neutral",
+		"max_duration": 1,
+		"base_mods": {
+			"speed_mod": [-50],
+			"dex_mod": [-100]
+		}
+	},
+	{
+		"type": "effect_type",
+		"id": "spell_charge",
+		"name" : ["詠唱"],
+		"desc": ["詠唱中です。"],
+		"show_in_info": true,
+		"max_intensity" : 10,	"//" : "*溜め*は最大で10段階。",
+		"int_dur_factor": 30,	"//" : "3分(30ターン)経過するごとに溜めの段階は下がっていく。魔法の詠唱は勢いが大事だと思うんです",
+		"rating": "neutral",
+		"max_duration": 300,
+		"base_mods": {
+			"int_mod": [1],
+			"speed_mod": [-10]
+		}
+	},
+	{
+		"type": "effect_type",
+		"id": "target_acquired",
+		"name" : ["捕捉"],
+		"desc": ["ターゲットを捕捉しています。"],
+		"show_in_info": false,
+		"max_intensity" : 1,
+		"rating": "neutral",
+		"max_duration": 1
+	}
+]

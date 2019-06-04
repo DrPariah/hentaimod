@@ -1,0 +1,70 @@
+[
+	{
+		"id": "TALK_ANTHRO_CUBI",
+		"type": "talk_topic",
+		"dynamic_line": "なっ、何なのこれ！？いったい何をしたのさ！",
+		"responses": [
+			{
+				"text": "血清(人間)を使ったんだ。",
+				"topic": "TALK_ANTHRO_CUBI_ITS_MY_TREAT"
+			},
+			{
+				"text": "待った、考える時間をくれ...",
+				"topic": "TALK_DONE"
+			}
+		]
+	},
+	{
+		"id": "TALK_ANTHRO_CUBI_ITS_MY_TREAT",
+		"type": "talk_topic",
+		"dynamic_line": "理屈は知らないけど、とにかく人間になっちゃったってワケね。以前のように力が振るえないのはツラいけど...他の兄妹みたいに数少ない獲物を求めて悶え狂うのとどっちがマシかな。",
+		"responses": [
+			{
+				"text": "こうして話ができるようになって嬉しいよ。おいで。一緒に行こう。",
+				"success": {
+					"effect": "follow",
+					"opinion": {
+						"trust": 5,
+						"value": 5
+					},
+					"topic": "TALK_ANTHRO_CUBI_BE_FELLOW"
+				}
+			},
+			{
+				"text": "お前の立場はペットのままだ。さっさと来い、ペット。",
+				"success": {
+					"effect": "follow",
+					"opinion": {
+						"anger": 5,
+						"fear": 5,
+						"trust": -5,
+						"value": 5
+					},
+					"topic": "TALK_ANTHRO_CUBI_BADBOY"
+				}
+			}
+		]
+	},
+	{
+		"id": "TALK_ANTHRO_CUBI_BE_FELLOW",
+		"type": "talk_topic",
+		"dynamic_line": "はいは～い。この姿にしたのはアナタなんだから、ちゃんと責任取ってよね、マ・ス・ター♪",
+		"responses": [
+			{
+				"text": "(会話終了)",
+				"topic": "TALK_DONE"
+			}
+		]
+	},
+	{
+		"id": "TALK_ANTHRO_CUBI_BADBOY",
+		"type": "talk_topic",
+		"dynamic_line": "はいはい。そういう態度取ってて、いつか背中からブッスリ刺されても知らないからね。",
+		"responses": [
+			{
+				"text": "(会話終了)",
+				"topic": "TALK_DONE"
+			}
+		]
+	}
+]

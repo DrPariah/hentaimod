@@ -1,0 +1,32 @@
+[
+	{
+		"type": "item_action",
+		"id": "IUSE_YIFF",
+		"name": "*使う*"
+	},
+	{
+		"type": "item_action",
+		"id": "IUSE_PET_CUBI",
+		"name": "着用させる"
+	},
+	{
+		"type": "item_action",
+		"id": "IUSE_TS_ELIXIR",
+		"name": "飲む"
+	},
+	{
+		"type": "item_action",
+		"id": "IUSE_NAMING_NPC",
+		"name": "使う"
+	},
+	{
+		"type": "item_action",
+		"id": "IUSE_ANTHROPOMORPH",
+		"name": "ペットを人間にする"
+	},
+	{
+		"type": "item_action",
+		"id": "IUSE_SPAWN_ARTIFACT",
+		"name": "使う"
+	}
+]

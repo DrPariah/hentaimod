@@ -1,0 +1,7 @@
+*.ba[ck]
+*.orig
+/.vscode
+*.lnk
+[Tt]humbs.db
+*.bat
+*.db

@@ -1,0 +1,160 @@
+[
+	{
+		"id": "h_semen",
+		"type": "COMESTIBLE",
+		"name": "人間の体液",
+		"name_plural": "人間の体液",
+		"weight": 28,
+		"color": "white",
+		"spoils_in": 8,
+		"container": "used_condom",
+		"comestible_type": "DRINK",
+		"symbol": "~",
+		"quench": -5,
+		"healthy": 0,
+		"nutrition": 1,
+		"description": "粘性の体液、まず間違いなく人間のものです。気持ち悪いなぁ！",
+		"price": 0,
+		"material": [ "flesh", "water" ],
+		"volume": 1,
+		"phase": "liquid",
+		"fun": -50
+	},
+	{
+		"id": "d_cum",
+		"type": "COMESTIBLE",
+		"name": "魔性の体液",
+		"name_plural": "魔性の体液",
+		"weight": 28,
+		"color": "pink",
+		"spoils_in": 8,
+		"container": "used_condom",
+		"comestible_type": "DRINK",
+		"symbol": "~",
+		"quench": -5,
+		"healthy": -1,
+		"nutrition": 1,
+		"description": "この粘性の体液は、明らかに人ならざる者のそれです。飲むと変異を引き起こす可能性があります。",
+		"price": 0,
+		"material": [ "flesh", "water" ],
+		"volume": 1,
+		"phase": "liquid",
+		"fun": -50,
+		"use_action" : {
+			"type" : "mutagen",
+			"is_weak" : true
+		}
+	},
+	{
+		"id" : "oc_pill",
+		"type" : "COMESTIBLE",
+		"comestible_type" : "MED",
+		"name" : "経口避妊薬",
+		"//" : "説明文はほぼWikipedia丸写し。医学的なことはよくわかんないっす",
+		"description" : "エストロゲンとプロゲステロンが配合された避妊薬です。毎日計画的に服用することで排卵を抑制でき、意図せぬ妊娠を防ぎます。行為の*前に*服用しましょう。",
+		"weight" : 1,
+		"volume" : 1,
+		"price" : 500,
+		"charges" : 21,
+		"stack_size" : 200,
+		"symbol" : "!",
+		"color" : "blue",
+		"healthy" : -1,
+		"use_action" : {
+			"type" : "consume_drug",
+			"activation_message" : "経口避妊薬を摂取しました。",
+			"effects" : [ { "id" : "contraception", "duration" : 14400 } ]
+		},
+		"flags" : "NPC_SAFE"
+	},
+	{
+		"id" : "after_pill",
+		"type" : "COMESTIBLE",
+		"comestible_type" : "MED",
+		"name" : "アフターピル",
+		"description" : "レボノルゲストレルが配合された緊急避妊薬です。行為の後であっても妊娠を抑制することができます。ただし有効なのは行為後およそ120時間以内であり、また時間が経つにつれて効果は薄れてしまいます。",
+		"weight" : 1,
+		"volume" : 1,
+		"price" : 500,
+		"charges" : 4,
+		"stack_size" : 200,
+		"symbol" : "!",
+		"color" : "yellow",
+		"healthy" : -3,
+		"//" : "現実では精子の侵入を阻害するのであって殺精子剤の効果は無いってわかってますが、そこまでゲームシステムに組み込むのはさすがに無理っす",
+		"use_action" : {
+			"type" : "consume_drug",
+			"activation_message" : "アフターピルを摂取しました。",
+			"effects" : [ { "id" : "anthcream", "duration" : 1 } ]
+		},
+		"flags" : "NPC_SAFE"
+	},
+	{
+		"id" : "ts_elixir",
+		"type" : "COMESTIBLE",
+		"comestible_type" : "MED",
+		"name" : "性転換の霊薬",
+		"name_plural": "性転換の霊薬",
+		"description" : "飲んだ者の性別を転換させる薬です。",
+		"weight" : 240,
+		"volume" : 1,
+		"container": "medieval_bottle",
+		"price" : 10000,
+		"charges" : 1,
+		"symbol" : "~",
+		"color" : "pink",
+		"use_action" : "IUSE_TS_ELIXIR",
+		"phase": "liquid",
+		"flags" : "TRADER_AVOID"
+	},
+	{
+		"id" : "mutagen_human",
+		"copy-from" : "mutagen_flavor",
+		"type" : "COMESTIBLE",
+		"name" : "変異原(人間)",
+		"name_plural": "変異原(人間)",
+		"description" : "希少価値の高い正体不明の物質です。これは人間的な突然変異を引き起こすでしょう。...つまり人外の突然変異や他の遺伝子異常を取り除きます。",
+		"price" : 600000,
+		"healthy" : 5,
+		"addiction_potential" : 8,
+		"use_action" : "PURIFIER"
+	},
+	{
+		"id" : "iv_mutagen_human",
+		"copy-from" : "iv_mutagen_flavor",
+		"type" : "COMESTIBLE",
+		"name" : "血清(人間)",
+		"name_plural" : "血清(人間)",
+		"description" : "濃縮された変異原物質です。使用するつもりなら注射器が必要ですが...。使い方次第では人間以外の生物を人間に*変異*させる事ができるかもしれません。",
+		"price" : 900000,
+		"color" : "magenta",
+		"addiction_potential" : 8,
+		"use_action" : ["PURIFY_IV", "IUSE_ANTHROPOMORPH"]
+	},
+	{
+		"id" : "mutagen_fiend",
+		"copy-from" : "mutagen_flavor",
+		"type" : "COMESTIBLE",
+		"name" : "変異原(悪魔)",
+		"name_plural" : "変異原(悪魔)",
+		"description" : "希少価値の高い正体不明の物質です。これは突然変異を引き起こすでしょう。",
+		"use_action" : {
+			"type" : "mutagen",
+			"mutation_category" : "FIEND"
+		}
+	},
+	{
+		"id" : "iv_mutagen_fiend",
+		"copy-from" : "iv_mutagen_flavor",
+		"type" : "COMESTIBLE",
+		"name" : "血清(悪魔)",
+		"name_plural" : "血清(悪魔)",
+		"description" : "濃縮された変異原物質です。血のように赤い液体です。使用するつもりなら注射器が必要ですが...。",
+		"color" : "red",
+		"use_action" : {
+			"type" : "mutagen_iv",
+			"mutation_category" : "FIEND"
+		}
+	}
+
+]

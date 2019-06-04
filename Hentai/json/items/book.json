@@ -1,0 +1,38 @@
+[
+	{
+		"id": "recipe_hentai",
+		"type": "BOOK",
+		"name": "本(学習/研究日誌(デザイア))",
+		"name_plural": "本(学習/研究日誌(デザイア))",
+		"description": "日本語と英語が入り混じった奇妙な文体で書かれた研究日誌です。XE037の研究成果とその有益な活用方法の記述から始まり、アメリカ国内の出生率グラフで締められています。\"否認\"のスタンプが3重に押されています。",
+		"weight": 50,
+		"volume": 2,
+		"price": 125000,
+		"material": [ "paper" ],
+		"symbol": "?",
+		"color": "light_green",
+		"skill": "cooking",
+		"required_level": 8,
+		"max_level": 9,
+		"intelligence": 12,
+		"time": 45,
+		"fun": -2
+	},
+	{
+		"id": "dictionnaire_finfernal",
+		"type": "BOOK",
+		"name": "本(一般/地獄の辞典)",
+		"name_plural": "本(一般/地獄の辞典)",
+		"description": "文筆家コラン・ド・プランシーによって書かれた書籍です。悪魔学・迷信・占い・人物など、世に伝わる俗信や伝承が幅広く纏められています。",
+		"weight": 368,
+		"volume": 3,
+		"price": 550,
+		"material": [ "paper" ],
+		"symbol": "?",
+		"color": "light_gray",
+		"intelligence": 8,
+		"time": 15,
+		"fun": 1,
+		"flags": [ "INSPIRATIONAL" ]
+	}
+]

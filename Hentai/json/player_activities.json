@@ -1,0 +1,9 @@
+[
+	{
+		"id": "ACT_SEX",
+		"type": "activity_type",
+		"stop_phrase": "*気持ちいいこと*を中止しますか？",
+		"suspendable": false,
+		"based_on": "speed"
+	}
+]

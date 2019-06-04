@@ -1,0 +1,136 @@
+[
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「クソだ、本当にクソだ、くだらねぇ・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "(唾を吐く音)",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「酒だ、酒が足りねぇ・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「おい、誰かタバコ持ってねえか？」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「この1杯だけが、今日という1日を繋いでくれる・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「この1本だけが、今日という1日を繋いでくれる・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「どっかに人間はいないのか？ゾンビ共を撃ち殺したって何も面白くねぇ。」",
+		"volume" : 20
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「この前のヤマは大当たりだったぜ。」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「この前のヤマはマジでヤバかったぜ。」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "「ああぁ、最ッ高にキクぜえぇぇ・・・」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "(狂気に満ちた笑い声)",
+		"volume" : 30
+	},
+
+
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「クソだ、本当にクソだ、くだらねぇ・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "(唾を吐く音)",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「酒だ、酒が足りねぇ・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「おい、誰かタバコ持ってねえか？」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「この1杯だけが、今日という1日を繋いでくれる・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「この1本だけが、今日という1日を繋いでくれる・・・」",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「どっかに人間はいないのか？ゾンビ共を撃ち殺したって何も面白くねぇ。」",
+		"volume" : 20
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「この前のヤマは大当たりだったぜ。」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「この前のヤマはマジでヤバかったぜ。」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "「ああぁ、最ッ高にキクぜえぇぇ・・・」",
+		"volume" : 10
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "(狂気に満ちた笑い声)",
+		"volume" : 30
+	}
+]

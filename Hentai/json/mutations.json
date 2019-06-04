@@ -1,0 +1,139 @@
+[
+	{
+		"type" : "mutation",
+		"id" : "VIRGIN",
+		"name" : "貞操",
+		"points" : 0,
+		"description" : "今まで機会があったかどうかはともかく、あなたは他者との性的な交流に対して貞操を守ってきました。しかし世界がこうなった今では何の役にも立たないでしょう。",
+		"starting_trait" : true,
+		"valid" : false,
+		"purifiable" : false
+	},
+	{
+		"type" : "mutation",
+		"id" : "SMALL_BREAST",
+		"//" : "男でも特質が取れる？気にするな！",
+		"name" : "貧乳",
+		"points" : 0,
+		"visibility" : 0,
+		"description" : "貧乳はステータスだ！希少価値だ！...人の好みはそれぞれですが、少なくともデメリットにはなりません。メリットにもならないでしょうが。",
+		"starting_trait" : true,
+		"cancels" : ["BIG_BREAST"],
+		"category" : ["FISH", "LIZARD", "MEDICAL", "ELFA", "RAPTOR", "FIEND"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "BIG_BREAST",
+		"//" : "男でも特質が取れる？気にするな！",
+		"name" : "巨乳",
+		"points" : 1,
+		"visibility" : -2,
+		"description" : "大きいことはいいことだ！...人の好みはそれぞれですが、たいていの男性は巨乳の女性を好む傾向にあります。NPCの反応がほんの少しだけ良くなります。",
+		"starting_trait" : true,
+		"cancels" : ["SMALL_BREAST"],
+		"category" : ["CATTLE", "MEDICAL", "ELFA", "FIEND"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "MULTI_BREAST",
+		"name" : "複乳",
+		"points" : -1,
+		"visibility" : 1,
+		"ugliness" : 2,
+		"description" : "本来の胸とは別に...胸があります。見た目は少々悪いですが、動作に問題はありません。",
+		"category" : ["RAT", "BEAST", "URSINE", "FELINE", "LUPINE", "CATTLE", "CHIMERA"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "ESTRUS_LUPINE",
+		"name" : "発情期 (狼)",
+		"points" : -2,
+		"description" : "春先になると発情期がやってきます。",
+		"mixed_effect" : true,
+		"category" : ["LUPINE"],
+		"cancels" : ["ESTRUS_FELINE"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "ESTRUS_FELINE",
+		"name" : "発情期 (猫)",
+		"points" : -2,
+		"description" : "年に数度、発情期がやってきます。",
+		"mixed_effect" : true,
+		"category" : ["FELINE"],
+		"cancels" : ["ESTRUS_LUPINE"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "OVIPARITY_BIRD",
+		"name" : "卵生 (鳥)",
+		"points" : -3,
+		"description" : "体の中で卵が作られるようになりました。自然な妊娠であっても卵として孕むようになり、妊娠していなくても定期的に卵を産み落とすようになります。(※未実装)",
+		"category" : ["BIRD"],
+		"threshreq" : ["THRESH_BIRD"],
+		"cancels" : ["OVIPARITY_LIZARD", "OVIPARITY_INSECT"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "OVIPARITY_LIZARD",
+		"name" : "卵生 (爬虫類)",
+		"points" : -2,
+		"description" : "体の中で卵が作られるようになりました。自然な妊娠であっても卵として孕むようになります。(※未実装)",
+		"category" : ["LIZARD", "RAPTOR"],
+		"threshreq" : ["THRESH_LIZARD", "THRESH_RAPTOR"],
+		"cancels" : ["OVIPARITY_BIRD", "OVIPARITY_INSECT"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "OVIPARITY_INSECT",
+		"name" : "卵生 (昆虫)",
+		"points" : -2,
+		"description" : "体の中で卵が作られるようになりました。自然な妊娠であっても卵として孕むようになります。(※未実装)",
+		"category" : ["INSECT", "SPIDER"],
+		"threshreq" : ["THRESH_INSECT", "THRESH_SPIDER"],
+		"cancels" : ["OVIPARITY_BIRD", "OVIPARITY_LIZARD"]
+	},
+	{
+		"type" : "mutation",
+		"id" : "OVIPOSITOR",
+		"name" : "産卵管 (昆虫)",
+		"points" : 2,
+		"visibility" : 6,
+		"ugliness" : 3,
+		"description" : "剣のように鋭い産卵管が体から突き出ています。何か（あるいは誰か）へ突き刺すのにもってこいです。",
+		"prereqs" : ["OVIPARITY_INSECT"],
+		"category" : ["INSECT", "SPIDER"],
+		"cancels" : ["TAIL_STING"],
+		"restricts_gear" : ["LEG_L", "LEG_R"],
+		"attacks" : {
+			"attack_text_u" : "あなたは%sを産卵管で突き刺した！",
+			"attack_text_npc" : "%1$は%2$sを産卵管で突き刺した！",
+			"chance" : 20,
+			"base_damage" : { "damage_type" : "stab", "amount" : 20 }
+		}
+	},
+	{
+		"type" : "mutation",
+		"id" : "TAIL_FIEND",
+		"name" : "悪魔の尾",
+		"points" : 1,
+		"visibility" : 4,
+		"ugliness" : 4,
+		"description" : "先端がスペード型の、まるで悪魔のようなレザー質の尻尾が生えています。身体のバランスを向上させる効果はほとんどありません。また通常の脚用防具は着用できません。",
+		"prereqs" : ["TAIL_LONG"],
+		"cancels" : ["TAIL_FIN", "TAIL_RAPTOR", "TAIL_FLUFFY", "TAIL_STING", "TAIL_CLUB", "TAIL_RAT", "TAIL_CATTLE", "TAIL_LONG"],
+		"category" : ["FIEND"],
+		"restricts_gear" : [ "LEG_L", "LEG_R" ],
+		"allow_soft_gear" : true
+	},
+	{
+		"type" : "mutation",
+		"id" : "THRESH_FIEND",
+		"name" : "堕落",
+		"points" : 1,
+		"description" : "世界は地獄に変わった。ならば、自分が悪魔に変わらない理由がどこにある？",
+		"valid": false,
+		"purifiable": false,
+		"threshold": true
+	}
+]

@@ -1,0 +1,23 @@
+[
+	{
+		"id": "flintlock_ammo_magic",
+		"type": "AMMO",
+		"name": "紙製薬莢(魔弾)",
+		"description": "黒色火薬と金属製の発射体を内包した紙製薬莢です。発射体には魔術的な紋様が刻まれています。6発は望む場所へ必ず当たり、1発は望まぬ場所へ必ず当たる、という魔弾の伝説がありますが、この弾は撃った後に他の相手へ飛び移ります。",
+		"weight": 40,
+		"volume": 1,
+		"price": 1100,
+		"material": [ "lead", "powder" ],
+		"symbol": "=",
+		"color": "white",
+		"count": 7,
+		"stack_size": 7,
+		"ammo_type": "flintlock",
+		"range": 6,
+		"damage": 50,
+		"dispersion": 90,
+		"recoil": 1500,
+		"loudness": 70,
+		"effects": [ "COOKOFF", "MUZZLE_SMOKE", "SHOT", "BOUNCE", "NEVER_MISFIRES" ]
+	}
+]

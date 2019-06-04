@@ -1,0 +1,14 @@
+[
+	{
+		"type": "profession",
+		"ident": "man_with_a_pet",
+		"name": "一人と一匹",
+		"description": "大災厄の日、あなたはペットと共に命からがら逃げ延びました。今あなたの傍にあるのは愛しきペット一匹と、道中にて見知らぬ科学者から手渡された奇妙な薬一瓶だけです。",
+		"points": 1,
+		"items": {
+			"both": [ "jeans", "longshirt", "socks", "sneakers", "purse", "fake_prof_pet", "iv_mutagen_human", "syringe", "rope_6" ],
+			"male": [ "boxer_shorts" ],
+			"female": [ "bra", "panties" ]
+		}
+	}
+]

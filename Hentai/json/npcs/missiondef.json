@@ -1,0 +1,110 @@
+[
+	{
+		"id": "MISSION_ANTHRO_CANINE_1",
+		"type": "mission_definition",
+		"name": "ドッグフードを見つける",
+		"goal": "MGOAL_FIND_ITEM",
+		"difficulty": 1,
+		"value": 10000,
+		"item": "dogfood",
+		"origins": [ "ORIGIN_OPENER_NPC" ],
+		"followup": "MISSION_ANTHRO_SHELTER",
+		"dialogue": {
+			"describe": "1つ頼みたいことがあるんだ。聞いてくれるかい？",
+			"offer": "ドッグフード持ってない？この姿になってから人間の食べ物も食べられるようになったけど、あの味が懐かしくなったんだ。",
+			"accepted": "ありがとう、ご主人さま！",
+			"rejected": "おあずけ？そう...",
+			"advice": "手作りするのが一番手っ取り早いんじゃないかな。このさい材料は何でもいいから。",
+			"inquire": "ドッグフードは見つかった？まあ、いつでもいいよ。",
+			"success": "やったー！そうそう、この味、この香...う゛っ！  ...この姿でわざわざ食べるものじゃあないね...それはさておき、どうもありがとう、ご主人さま！",
+			"success_lie": "...ご主人さま、その嘘はさすがに無理があるでしょ...",
+			"failure": "駄目だった？そう..."
+		}
+	},
+	{
+		"id": "MISSION_ANTHRO_FELINE_1",
+		"type": "mission_definition",
+		"name": "キャットフードを見つける",
+		"goal": "MGOAL_FIND_ITEM",
+		"difficulty": 1,
+		"value": 10000,
+		"item": "catfood",
+		"origins": [ "ORIGIN_OPENER_NPC" ],
+		"followup": "MISSION_ANTHRO_SHELTER",
+		"dialogue": {
+			"describe": "1つ頼みたいことがあるんだ。聞いてくれるかい？",
+			"offer": "キャットフード持ってない？この姿になってから人間の食べ物も食べられるようになったけど、あの味が懐かしくなったんだ。",
+			"accepted": "ありがとう、ご主人さま！",
+			"rejected": "おあずけ？そう...",
+			"advice": "手作りするのが一番手っ取り早いんじゃないかな。このさい材料は何でもいいから。",
+			"inquire": "キャットフードは見つかった？まあ、いつでもいいよ。",
+			"success": "やったー！そうそう、この味、この香...う゛っ！  ...この姿でわざわざ食べるものじゃあないね...それはさておき、どうもありがとう、ご主人さま！",
+			"success_lie": "...ご主人さま、その嘘はさすがに無理があるでしょ...",
+			"failure": "駄目だった？そう..."
+		}
+	},
+	{
+		"id": "MISSION_ANTHRO_SHELTER",
+		"type": "mission_definition",
+		"name": "動物保護施設へ向かう",
+		"goal": "MGOAL_GO_TO_TYPE",
+		"difficulty": 2,
+		"value": 150000,
+		"origins": [ "ORIGIN_SECONDARY" ],
+		"destination": "animalshelter",
+		"dialogue": {
+			"describe": "1つ頼みたいことがあるんだ。聞いてくれるかい？",
+			"offer": "ねえ、動物保護施設へ寄ってもいい？昔の...この姿になる前の友達が居たりしないかなって思って。",
+			"accepted": "ありがとう、ご主人さま！",
+			"rejected": "おあずけ？そう...",
+			"advice": "建物は町中にあるから、それなりの準備はしておいた方がいいかもね。",
+			"inquire": "まだ着かないかな？",
+			"success": "連れてきてくれてありがとう。期待通りにはいかなかったけど、おかげで気が晴れたよ。",
+			"success_lie": "...まあ、ご主人さまも努力してくれたんだよね？ねっ？",
+			"failure": "駄目だった？そう..."
+		}
+	},
+	{
+		"id": "MISSION_ANTHRO_URSINE_1",
+		"type": "mission_definition",
+		"name": "ハチの巣へ向かう",
+		"goal": "MGOAL_GO_TO_TYPE",
+		"difficulty": 2,
+		"value": 80000,
+		"origins": [ "ORIGIN_OPENER_NPC" ],
+		"followup": "MISSION_ANTHRO_URSINE_2",
+		"destination": "hive",
+		"dialogue": {
+			"describe": "1つ頼みたいことがあるんだ。聞いてくれるかい？",
+			"offer": "いろんな昆虫が巨大化してるって事は、つまりその巣も巨大化してるって事...よしご主人さま、ハチの巣へ行こう！",
+			"accepted": "ありがとう、ご主人さま！",
+			"rejected": "駄目？そう...",
+			"advice": "巨大蜂の群れに襲われてもいいように、それなりの準備はしておいた方がいいかもね。",
+			"inquire": "まだ着かないかな？",
+			"success": "連れてきてくれてありがとう、ご主人さま！これだけハチミツがあったら何が食べられるかな...うへへ。",
+			"success_lie": "...まあ、ご主人さまも努力してくれたんだよね？",
+			"failure": "駄目だった？そう..."
+		}
+	},
+	{
+		"id": "MISSION_ANTHRO_URSINE_2",
+		"type": "mission_definition",
+		"name": "ローヤルビーフを手に入れる",
+		"goal": "MGOAL_FIND_ITEM",
+		"difficulty": 3,
+		"value": 80000,
+		"item": "royal_beef",
+		"origins": [ "ORIGIN_SECONDARY" ],
+		"dialogue": {
+			"describe": "1つ頼みたいことがあるんだ。聞いてくれるかい？",
+			"offer": "ローヤルビーフって知ってるかい？肉にローヤルゼリーをかけた料理さ。貴重なものだってことは知ってるけど、一度だけでいいからどうしても味わってみたいんだ。",
+			"accepted": "ありがとう、ご主人さま！",
+			"rejected": "駄目？まあ、貴重なものだからな...",
+			"advice": "ローヤルゼリーを探すなら、まあ当然ハチの巣だろうね。",
+			"inquire": "ローヤルビーフ...",
+			"success": "おお、これがローヤルビーフ！  ...うん、まあ、確かに美味しいけど...ローヤルゼリーだけそのまま食べてもそう変わらないような...それはさておき、どうもありがとう、ご主人さま！",
+			"success_lie": "...ご主人さま、その嘘はさすがに無理があるでしょ...",
+			"failure": "駄目だった？そう..."
+		}
+	}
+]

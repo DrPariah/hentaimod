@@ -1,0 +1,159 @@
+[
+	{
+		"id": "TALK_DEMONBEING_SCHOOLGIRL",
+		"type": "talk_topic",
+		"dynamic_line": [
+			"イヤァァッ！...あっ！ご、ごめんなさい。てっきりあの悪魔達かと...",
+			"あ...貴方はまだ悪魔になってないわよね？そうでしょ！？"
+		],
+		"responses": [
+			{
+				"text": "落ち着け、自分は人間だ！",
+				"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET"
+			},
+			{
+				"text": "[閾変異] 落ち着け、自分は人間だ！...まあ、少なくとも以前は。",
+				"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET",
+				"condition": {
+					"u_has_any_trait": [
+						"THRESH_LIZARD", "THRESH_BIRD", "THRESH_FISH", "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_CATTLE", "THRESH_INSECT", "THRESH_PLANT", "THRESH_SLIME", "THRESH_TROGLOBITE", "THRESH_CEPHALOPOD", "THRESH_SPIDER", "THRESH_RAT", "THRESH_ELFA", "THRESH_CHIMERA", "THRESH_RAPTOR", "THRESH_MOUSE", "THRESH_MARLOSS", "THRESH_MYCUS", "THRESH_FIEND"
+					]
+				}
+			},
+			{
+				"text": "[閾変異 堕落] 悪いな。自分はもう人間じゃない。",
+				"trial": {
+					"type": "INTIMIDATE",
+					"difficulty": 100
+				},
+				"success": { "topic": "TALK_DONE", "effect": "flee", "opinion": { "trust": -20, "fear": 20 } },
+				"failure": { "topic": "TALK_DONE", "effect": "hostile" },
+				"condition": { "u_has_trait": "THRESH_FIEND" }
+			}
+		]
+	},
+	{
+		"id": "TALK_DEMONBEING_SCHOOLGIRL_GREET",
+		"type": "talk_topic",
+		"dynamic_line": "よかった、まだまともな人間がいて...",
+		"responses": [
+			{
+				"text": "ここで何があったんだ？",
+				"topic": "TALK_DB_SCHOOLGIRL_WHATSHAPPEN_1"
+			},
+			{
+				"text": "[感覚 7] 失礼、でも君の方こそ本当に人間なのか？その尻尾は...",
+				"topic": "TALK_DB_SCHOOLGIRL_YOURTAIL",
+				"condition": { "u_has_perception": 7 }
+			},
+			{
+				"text": "こんな所にいるのは危険だ。一緒に行動しないか？",
+				"trial": {
+					"type": "PERSUADE",
+					"difficulty": 50
+				},
+				"success": {
+					"topic": "TALK_DEMONBEING_SCHOOLGIRL_JOINME"
+				},
+				"failure": {
+					"topic": "TALK_DEMONBEING_SCHOOLGIRL_WARY"
+				}
+			},
+			{
+				"text": "すまないが、長話をしている暇は無い。",
+				"topic": "TALK_DB_SCHOOLGIRL_STAYHERE"
+			}
+		]
+	},
+	{
+		"id": "TALK_DB_SCHOOLGIRL_WHATSHAPPEN_1",
+		"type": "talk_topic",
+		"dynamic_line": "わからない...でも突然悪魔達が現れたの。あの大騒動はあなたも知ってるわよね？近隣の生徒や先生達は避難するようにって言われて、ここへ集められたの。そしたら...",
+		"responses": [
+			{
+				"text": "そうだったのか...",
+				"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET"
+			},
+			{
+				"text": "[知性 9] 避難のために集まった？じゃあ、学校は最初から悪魔達に占拠されていたわけじゃないんだな？",
+				"topic": "TALK_DB_SCHOOLGIRL_WHATSHAPPEN_2",
+				"condition": { "u_has_intelligence": 9 }
+			}
+		]
+	},
+	{
+		"id": "TALK_DB_SCHOOLGIRL_WHATSHAPPEN_2",
+		"type": "talk_topic",
+		"dynamic_line": "そう...そうだわ。あの悪魔達は最初から居たわけじゃない。避難者の中に見知らぬ人達が混じってたのを覚えてる。校長と面識があるようだったから、関係者か何かだと思ってたんだけど...そう、そいつらが中庭で何か怪しげな事をやりはじめてからだわ！",
+		"responses": [
+			{
+				"text": "なるほど...",
+				"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET"
+			}
+		]
+	},
+	{
+		"id": "TALK_DB_SCHOOLGIRL_YOURTAIL",
+		"type": "talk_topic",
+		"dynamic_line": "私は人間よ！この尻尾は...ちょっと襲われちゃったけど...で、でも！他はなんともないし！...唇は守れなかったけど...その、あっちのほうは無事だし！処女だし！",
+		"responses": [
+			{
+				"text": "悪かったよ...",
+				"success": {
+					"effect": "follow",
+					"opinion": {
+						"anger": 1
+					},
+					"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET"
+				}
+			}
+		]
+	},
+	{
+		"id": "TALK_DEMONBEING_SCHOOLGIRL_JOINME",
+		"type": "talk_topic",
+		"dynamic_line": "ええ、もちろん！こんな所さっさと抜け出しましょう！",
+		"responses": [
+			{
+				"text": "さあ行こう！",
+				"effect": "follow",
+				"opinion": { "trust": 1, "value": 2 },
+				"topic": "TALK_DONE"
+			}
+		]
+	},
+	{
+		"id": "TALK_DEMONBEING_SCHOOLGIRL_WARY",
+		"type": "talk_topic",
+		"dynamic_line": "...ごめんなさい。あなたを信用してない訳じゃないんだけど...でも、まだ怖いの。",
+		"responses": [
+			{
+				"text": "そうか、なら仕方ない。",
+				"topic": "TALK_DONE"
+			}
+		]
+	},
+	{
+		"id": "TALK_DB_SCHOOLGIRL_STAYHERE",
+		"type": "talk_topic",
+		"dynamic_line": [
+			{
+				"u_male": [
+					"そう...でも気をつけてね。男の人達はみんなあのサキュバス達に捕まって、みんな悪魔に変えられてしまったから...",
+					"そう...でも気をつけてね。あのインキュバス達は男の人でも容赦しないみたいだから..."
+				],
+				"u_female": [
+					"そう...でも気をつけてね。女の人達はみんなあのインキュバス達に捕まって、みんな悪魔に変えられてしまったから...",
+					"そう...でも気をつけてね。女の人達はみんなあのインキュバス達に捕まって、犯されて、あんな...死ぬよりも酷い目に...",
+					"そう...でも気をつけてね。あのサキュバス達は女性相手でも容赦しないみたいだから..."
+				]
+			}
+		],
+		"responses": [
+			{
+				"text": "(立ち去る)",
+				"topic": "TALK_DONE"
+			}
+		]
+	}
+]

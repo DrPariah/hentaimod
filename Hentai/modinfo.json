@@ -1,0 +1,11 @@
+[
+	{
+		"type": "MOD_INFO",
+		"ident": "mod_hentai",
+		"name": "追加 - HENTAI",
+		"authors": [ "溜まり場の変態&有志の方々" ],
+		"description": "お気に入りのNPCともっと*親密*な関係になりたい?エロチックなモンスター達に(いろんな意味で)襲われたい?そんなHENTAI要素を追加します。",
+		"category": "magical",
+		"dependencies": [ "dda" ]
+	}
+]

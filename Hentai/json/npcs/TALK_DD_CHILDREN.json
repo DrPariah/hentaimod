@@ -1,0 +1,57 @@
+[
+	{
+		"id": "TALK_DD_CHILDREN",
+		"type": "talk_topic",
+		"dynamic_line": {
+			"u_male": "パパ？",
+			"u_female": "ママ？"
+		},
+		"responses": [
+			{
+				"text": "その通りだ、一緒に行こう！",
+				"success": {
+					"effect": "follow",
+					"opinion": {
+						"trust": 10,
+						"value": 10
+					},
+					"topic": "TALK_DONE"
+				}
+			},
+			{
+				"text": "いいや、君の親じゃない。",
+				"topic": "TALK_DD_CHILDREN_IAM_NOT_YOUR_FATHER"
+			},
+			{
+				"text": "いったい何が起こったんだ？",
+				"topic": "TALK_DD_CHILDREN_WHATSTHEHECK"
+			},
+			{
+				"text": "何でもない。",
+				"topic": "TALK_DONE"
+			}
+		]
+	},
+	{
+		"id": "TALK_DD_CHILDREN_IAM_NOT_YOUR_FATHER",
+		"type": "talk_topic",
+		"dynamic_line": "そんなー！",
+		"responses": [
+			{
+				"text": "（立ち去る）",
+				"topic": "TALK_DONE"
+			}
+		]
+	},
+	{
+		"id": "TALK_DD_CHILDREN_WHATSTHEHECK",
+		"type": "talk_topic",
+		"dynamic_line": "ごつごーしゅぎってやつだよ。ゲーム内で何年も手間の掛かる育児なんてやってられないでしょ？",
+		"responses": [
+			{
+				"text": "聞かなかった事にしよう...",
+				"topic": "TALK_DD_CHILDREN"
+			}
+		]
+	}
+]

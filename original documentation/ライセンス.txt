@@ -1,0 +1,24 @@
+====================
+要約
+====================
+・このMODの利用について：好きに使っていいよ！
+・複製・改変・再配布：好きにしていいよ！
+・ライセンス：このMOD自体はCC 0（パブリックドメイン）です。
+　でも本家に合わせる場合は同じライセンスのCC BY-SAに合わせなきゃいけないんですかね？俺もとりあえずそれっぽい事書いてるだけでよくわかってません。
+
+
+====================
+CC 0について
+====================
+下記を参考にして下さい。
+https://creativecommons.jp/sciencecommons/aboutcc0/
+
+
+====================
+このプログラムは下記Cataclysm: Dark Days AheadのMODです。
+https://cataclysmdda.org/
+
+また、一部機能は有志の方によるCDDA LUA拡張版exeに依存しています。
+https://lispcoc.github.io/cdda_junkbox/mods/mods.html
+
+

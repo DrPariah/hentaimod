@@ -5,10 +5,10 @@ ANTHRO = {
 
 	--[[ペットのNPC化時に表示する性別選択リスト]]--
 	ANTHRO_PET_SEX_SUFFIX_LIST = {
-		TITLE = "ところで、このペットの性別は？",
+		TITLE = "Speaking of which, is this Pet male or female?",
 		LIST_ITEM = {
-			{"オスです。", "_male"},
-			{"メスです。", "_female"}
+			{"Male", "_male"},
+			{"Female", "_female"}
 		}
 	},
 
@@ -19,50 +19,50 @@ ANTHRO = {
 			--[[オスメスの性別選択を行うかどうか]]--
 			HAS_SEX_SUFFIX = true,
 			--[[容姿の選択リストのタイトル]]--
-			TITLE = "外見の好みは？",
+			TITLE = "And how does it look like?",
 			--[[容姿の選択リスト]]--
 			PERSONAL_LIST = {
-				{"ほぼ人間", "anthro_canine_morehuman"},
-				{"半々程度", "anthro_canine_half"},
-				{"ほぼ動物", "anthro_canine_lesshuman"}
+				{"Nearly identical to a Human", "anthro_canine_morehuman"},
+				{"About Half-Half", "anthro_canine_half"},
+				{"Almost like an Animal", "anthro_canine_lesshuman"}
 			}
 		},
 		--[[猫系]]--
 		FELINE = {
 			HAS_SEX_SUFFIX = true,
-			TITLE = "外見の好みは？",
+			TITLE = "And how does it look like?",
 			PERSONAL_LIST = {
-				{"ほぼ人間", "anthro_feline_morehuman"},
-				{"半々程度", "anthro_feline_half"},
-				{"ほぼ動物", "anthro_feline_lesshuman"}
+				{"Nearly identical to a Human", "anthro_feline_morehuman"},
+				{"About Half-Half", "anthro_feline_half"},
+				{"Almost like an Animal", "anthro_feline_lesshuman"}
 			}
 		},
 		--[[熊系]]--
 		URSINE = {
 			HAS_SEX_SUFFIX = true,
-			TITLE = "外見の好みは？",
+			TITLE = "And how does it look like?",
 			PERSONAL_LIST = {
-				{"ほぼ人間", "anthro_ursine_morehuman"},
-				{"半々程度", "anthro_ursine_half"},
-				{"ほぼ動物", "anthro_ursine_lesshuman"}
+				{"Nearly identical to a Human", "anthro_ursine_morehuman"},
+				{"About Half-Half", "anthro_ursine_half"},
+				{"Almost like an Animal", "anthro_ursine_lesshuman"}
 			}
 		},
 		--[[サキュバス系]]--
 		SUCCUBI = {
 			HAS_SEX_SUFFIX = false,
-			TITLE = "外見の好みは？",
+			TITLE = "And how does it look like?",
 			PERSONAL_LIST = {
-				{"ほぼ人間", "anthro_succubi_morehuman"},
-				{"わりと悪魔", "anthro_succubi_lesshuman"}
+				{"Nearly identical to a Human", "anthro_succubi_morehuman"},
+				{"Mostly like a Demon", "anthro_succubi_lesshuman"}
 			}
 		},
 		--[[インキュバス系]]--
 		INCUBI = {
 			HAS_SEX_SUFFIX = false,
-			TITLE = "外見の好みは？",
+			TITLE = "And how does it look like?",
 			PERSONAL_LIST = {
-				{"ほぼ人間", "anthro_incubi_morehuman"},
-				{"わりと悪魔", "anthro_incubi_lesshuman"}
+				{"Nearly identical to a Human", "anthro_incubi_morehuman"},
+				{"Mostly like a Demon", "anthro_incubi_lesshuman"}
 			}
 		}
 	}
@@ -80,11 +80,11 @@ ANTHRO.main = function(monster, selected_point)
 
 	--リストが無ければ（変化先がなければ）キャンセル。
 	if (anthro_pet_pattern == nil) then
-		game.add_msg("この生物をNPC化する事はできません。")
+		game.add_msg("This creature cannot be transformed to an NPC.")
 		return
 	end
 
-	if not(game.query_yn("一度NPC化すると、二度と元の姿には戻せません。本当によろしいですか？")) then
+	if not(game.query_yn("Once this pet is transformed into an NPC, you won't be able to change them again.  Confirm?")) then
 		return
 	end
 
@@ -100,7 +100,7 @@ ANTHRO.main = function(monster, selected_point)
 	--TODO:本当はこの場でNPCの名前を変更したりしたいんだけど無理なので名前の巻物を与えてお茶をにごす
 	local scroll = item("scroll_of_naming", 1)
 	map:add_item(player:pos(), scroll)
-	add_msg("あなたの足元に何かが転がってきた。", H_COLOR.GREEN)
+	add_msg("Something has rolled at your feet.", H_COLOR.GREEN)
 
 	return
 

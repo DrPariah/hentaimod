@@ -17,17 +17,18 @@ function event_goathead_demon(monster)
 	--TALK
 	if (player:get_value(EVENT_GOATHEAD_DEMON)  == "met") then
 		--会ったフラグがある場合のセリフ。激おこ。
-		game.popup("「・・・貴様は！おのれ、一体どれだけ我等の邪魔をすれば気が済むのだ！\r\n貴様だけは絶対に許さん！ただ嬲り殺すだけでは飽き足らぬ、地獄の底で永遠の責め苦を与えてやる！」")
-
+		--the last part of the sentence would be something like: "your death alone will not satisfy me, I will have you burned/tortured in the deepest parts of hell forever!"
+		--but I used the more concise variant, which is also a reference
+		game.popup("\"...The despicable one! How long do you plan to stand in our way before you're satisfied?!\r\nMy patience with you is wearing thin... I will never forgive you!\r\nDeath will not be your end, your soul will burn in hell forever!\"")
 	else
 		--会ったフラグが無い場合のセリフ。
-		game.popup("「これはこれは・・・何やら騒々しいとは思ったが、無関係の人間が現れるとは。\r\n英雄気取りか、好奇心に誘われたか・・・どちらにせよ愚か者には変わりあるまい。」")
-		game.popup("「このサバトは我等悪魔が地上を手中に収めんが為の重要な儀。\r\n貴様が何者かは知らんが、邪魔されるわけにはいかぬ。\r\n貴様には此処で死んでもらう。」")
+		game.popup("\"Would you look at that... I knew there was something going on, but to think it's just some irrelevant human snooping around.\r\nA would-be hero or just someone led by the curiosity? In either case, it doesn't change the fact of your foolishness.\"")
+		game.popup("\"This Sabbath is an important event for us, Demons, as we take over the earth.\r\nI don't know who you are nor I care. But I can't have you disturb us.\r\nYou will meet your end here by my hand.\"")
 
 		if (player.male) then
-			game.popup("「案ずるな。貴様の魂を奪った後は、我が配下の悪魔として生まれ変わらせてやろう！\r\nハーッハッハッ！」")
+			game.popup("\"But don't worry. After I take your soul, I will reincarnate you as my Demon underling!\r\nHaaa-ha-ha-ha!\"")
 		else
-			game.popup("「よくよく見れば中々の上玉、活力に満ちた肉体の持主よ。\r\nよろしい、貴様の魂を奪った後は、我がサバトの贄として存分に利用してやろう！\r\nハーッハッハッ！」")
+			game.popup("\"But now that I take a closer look, you appear to be a fine woman.\r\nVery well, once I take your soul, I will offer you as a sacrifice for my Sabbath as much as I please!\r\nHaaa-ha-ha-ha!\"")
 		end
 
 		--会ったフラグを立てる。
@@ -51,7 +52,7 @@ end
 --[[NPC"demonbeing_schoolgirl"を呼び出すイベント]]--
 --[[
 	NOTE:NPCを配置する場合、そのNPCにユニーク名称を付けなければ性別を固定することができない。
-	しかしそうすると同一人物が複数存在する事になってしまう...そのため、「その人物に会った事があるかあるかどうか」をフラグとして管理し、
+	しかしそうすると同一人物が複数存在する事になってしまう...そのため、\"その人物に会った事があるかあるかどうか\"をフラグとして管理し、
 	会っていない場合はNPCを生成、既に会っている場合はモンスターを生成する仕様にする。
 ]]--
 function event_demonbeing_schoolgirl(monster)

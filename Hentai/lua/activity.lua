@@ -49,7 +49,7 @@ SEX.act_sex_finish = function(act, p)
 	--activityにして途中でキャンセルできるようになったのはいいが、そのせいで変数管理がちょー面倒だぜ！
 	--TODO:あまりにもスパゲティすぎて自分でも見返すと意味がわからない。整理する
 
-	game.add_msg("*気持ちいいこと*を終えました。")
+	game.add_msg("*Fun things* are now over.")
 	act:set_to_null()
 
 	player:remove_effect(efftype_id("lust"))
@@ -114,7 +114,7 @@ SEX.act_sex_finish = function(act, p)
 		if (device:typeId() == "condom_danger") then
 			DEBUG.add_msg("wooga booga, it's danger! break check!")
 			if(math.random(100) <= D_GOM_BREAK_CHANCE) then
-				add_msg("避妊具が破れてしまいました！", H_COLOR.RED)
+				add_msg("The condom has broke!", H_COLOR.RED)
 				player:i_rem(device)
 				device = nil
 			end

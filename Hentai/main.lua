@@ -154,8 +154,8 @@ function preg_process(mother)
 
 		else
 			--impregnated状態が最大値に届いているならpregnantcy状態に移行する
-			game.popup(mother:get_name().."の様子がおかしい...")
-			game.popup("どうやら"..mother:get_name().."は子供を身篭ったようだ。")
+			game.popup("Something feels different about "..mother:get_name().."...")
+			game.popup("Apparently "..mother:get_name().." got pregnant!")
 
 			mother:remove_effect(efftype_id("impregnated"))
 			mother:add_effect(efftype_id("pregnantcy"), game.get_time_duration(elapse_day), "num_bp", true)
@@ -187,7 +187,7 @@ function preg_process(mother)
 
 			--TODO:判定がガバい。ゲーム内日数で判断したい
 			if (day_by_default >= 0 and day_by_default <= 11) then
-				add_msg(mother:disp_name().."に発情期が訪れました。", H_COLOR.PINK)
+				add_msg(mother:disp_name().." is having a breeding period and is now In Heat!", H_COLOR.PINK)
 				mother:add_effect(efftype_id("estrus"), game.get_time_duration(14400))
 			end
 		end
@@ -198,7 +198,7 @@ function preg_process(mother)
 
 			--TODO:判定がガバい。ゲーム内日数で判断したい
 			if ((day_by_default >= 3 and day_by_default <= 7) or (day_by_default >= 17 and day_by_default <= 21) or (day_by_default >= 31 and day_by_default <= 35)) then
-				add_msg(mother:disp_name().."に発情期が訪れました。", H_COLOR.PINK)
+				add_msg(mother:disp_name().." is having a breeding period and is now In Heat!", H_COLOR.PINK)
 				mother:add_effect(efftype_id("estrus"), game.get_time_duration(14400))
 			end
 		end
@@ -226,7 +226,7 @@ function birth_process(mother)
 			--一日に3回程度、つまり3/24の確率で出産チェックを通過する。確率は適当。
 			if (math.random(100) > 12) then
 				mother:mod_pain(25)
-				add_msg(mother:disp_name().."は苦しんでいます！", H_COLOR.RED)
+				add_msg(mother:disp_name().." has went into labor!", H_COLOR.RED)
 				return
 			end
 
@@ -238,21 +238,21 @@ function birth_process(mother)
 
 			local locate = locate_list[math.random(#locate_list)]
 
-			game.popup(mother:get_name().."は子供を産み落としました！")
+			game.popup(mother:get_name().." has given birth to a baby!")
 			mother:remove_effect(efftype_id("pregnantcy"))
 
 			local child_id = map:place_npc(locate.x, locate.y, npc_template_id("darkdays_children"))
 			--game.create_monster(mtype_id("debug_mon"), locate_list[math.random(#locate_list)])
 			DEBUG.add_msg("child_id:"..child_id)
 
-			game.popup("そのとき不思議なことが起こり、子供は一瞬で成長しました。")
+			game.popup("Then something strange has occurred and the baby grew up in an instant!")
 			--どうすりゃいいのさ、その...ゲームシステムというか仕様を...
 			--リアルタイム換算で成長させようとすると数年単位かかって超めんどくさいし、monster化するとlua制御が無理だし、かといって時間経過で変化するアイテムで代用するのはちょっと...
 
 			--TODO:本当はこの場でNPCの名前を変更したりしたいんだけど無理なので名前の巻物を与えてお茶をにごす
 			local scroll = item("scroll_of_naming", 1)
 			map:add_item(player:pos(), scroll)
-			add_msg("あなたの足元に何かが転がってきた。", H_COLOR.GREEN)
+			add_msg("Something has rolled at your feet.", H_COLOR.GREEN)
 
 
 
@@ -296,3 +296,18 @@ function birth_process(mother)
 
 end
 
+-- pronoun system because english --
+function pro(obj, pronoun)
+    if (pronoun == "he") then
+      return (obj:male > 0 and pronoun or "she")
+    end
+	if (pronoun == "his") then
+      return (obj:male > 0 and pronoun or "her")
+    end
+	if (pronoun == "hers") then
+      return (obj:male > 0 and "his" or pronoun)
+    end
+	if (pronoun == "himself") then
+      return (obj:male > 0 and pronoun or "herself")
+    end
+end

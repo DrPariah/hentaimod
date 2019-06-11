@@ -1,19 +1,22 @@
 --[[主にモンスターの特殊攻撃関連の処理を記述する。]]--
 
 local body_part_texts = {
-	"頬", "唇", "耳", "指", "手", "腕", "胸", "下腹部", "股間", "尻", "内股", "脚"
+	"cheeks", "lips", "ears", "fingers", "hands", "arms", "chest", "belly", "crotch", "ass", "thighs", "legs"
 }
 
 local action_texts = {
-	"を撫でた。",
-	"を撫でまわした。",
-	"を軽くつまんだ。",
-	"を弄んだ。",
-	"にキスした。",
-	"に舌を這わせた。",
-	"を舐めまわした。",
-	"をしゃぶった。",
-	"に熱い吐息を吹きかけた。"
+	"brushes",
+	"touches",
+    "tickles",
+	"rubs",
+	"squeezes",
+	"gently pinches",
+	"plays with",
+	"kisses",
+	"licks",
+	"savors",
+	"sucks on",
+	"lets out a hot breath on"
 }
 
 --[[デバッグ用ファンクション]]--
@@ -187,7 +190,7 @@ function can_wife(monster, target)
 	--ターゲットがぱんつはいてないかチェック
 	if (target:wearing_something_on("bp_leg_l") and target:wearing_something_on("bp_leg_r")) then
 		if (math.random(10) <= 2) then
-			game.add_msg("<color_yellow>"..monster:disp_name().."はあなたの股間を狙っている...</color>")
+			game.add_msg("<color_yellow>"..monster:disp_name().." is aiming at your crotch...</color>")
 		end
 		return false
 	end
@@ -221,7 +224,7 @@ function has_cum(me)
 
 	if (intensity >= limit) then
 		--"lust"を取り除き、少しだけwaitを掛ける。
-		game.add_msg("<color_green>"..me:disp_name().."は達した！</color>")
+		game.add_msg("<color_green>"..me:disp_name().." has reached an orgasm!</color>")
 		me:remove_effect(efftype_id("lust"))
 		me:mod_moves(-50)
 
@@ -298,7 +301,7 @@ function gain_corrupt(target, dur)
 	if (math.random(20) > target.int_cur) then
 		target:add_effect(efftype_id("corrupt"), game.get_time_duration(dur))
 	else
-		game.add_msg("しかし欲望に抗いました。")
+		game.add_msg("However "..target:disp_name().." successfully resists the temptation!")
 	end
 
 end
@@ -325,13 +328,13 @@ function matk_seduce(monster)
 	--==ターゲットの回避ロール==--
 	--超回避システムが発動中なら必ず回避。
 	if (target:uncanny_dodge()) then
-		game.add_msg(monster:disp_name().."が手を伸ばしてきましたが、"..target:disp_name().."は物凄い勢いで回避しました！")
+		game.add_msg(monster:disp_name().." tries to reach our for "..target:disp_name()..", but "..pro(target, "he").." dodges it with a tremendous momentum!")
 		return
 	end
 
 	--物理的な行動による回避ロール。player.dodge_roll()についてはmelee.cppとかを参照。
 	if (math.random(100) <= target:dodge_roll()) then
-		game.add_msg(monster:disp_name().."が手を伸ばしてきましたが、"..target:disp_name().."は回避しました！")
+		game.add_msg(monster:disp_name().." tries to reach our for "..target:disp_name()..", but "..pro(target, "he").." manages to dodge it!")
 		return
 	end
 
@@ -339,12 +342,48 @@ function matk_seduce(monster)
 	local bp_names = {table.unpack(body_part_texts)}
 
 	--TODO:尾とか羽とか、特別な部位（特質）がある場合はここでbp_namesに追加しようと思ったけど力尽きた
+	--I gotchu homie
 
 	local bp_text = bp_names[math.random(#bp_names)]
 	local act_text = action_texts[math.random(#action_texts)]
 
 	--HENTAI的なテキストを表示。
-	game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."の"..bp_text..act_text.."</color>")
+	--modified to show variations better
+	local output_text
+	
+	if (bp_text == "chest" and math.random(10) <= 2) then
+		output_text = monster:disp_name().." fondles "..target:disp_name().."'s "..bp_text"."
+    elseif (bp_text == "ears" and math.random(10) <= 2) then
+		output_text = monster:disp_name().." bites "..target:disp_name().."'s "..bp_text" playfully."
+    elseif (bp_text == "hands" and math.random(10) <= 2) then
+		output_text = monster:disp_name().." holds "..target:disp_name().."'s "..bp_text" tightly."
+    elseif (act_text == "kisses") then
+		if (bp_text == "lips") then
+			output_text = monster:disp_name().." joins "..pro(monster, "his").." lips with "..target:disp_name().."'s, forcing "..pro(monster, "his").." tongue inside "..pro(target, "his").." mouth and enjoying "..((target:has_trait(trait_id("FORKED_TONGUE"))) > 0 and "the feel of "..target:disp_name().." unusually forked tongue" or "entangling their tongues together").." while tasting each other's saliva."
+		else
+			output_text = monster:disp_name().." "..act_text.." "..target:disp_name().." on "..pro(target, "his").." "..bp_text"</color>"
+		end
+    elseif (math.random(10) <= 2) then
+		if (target:has_trait(trait_id("TAIL_FLUFFY")) and math.random(10) <= 2) then
+			output_text = monster:disp_name().." touches "..target:disp_name().."'s fluffy tail."
+		elseif (target:has_trait(trait_id("TAIL_FIEND")) and math.random(10) <= 2) then
+			output_text = monster:disp_name().." plays with "..target:disp_name().."'s demonic tail."
+		elseif (target:has_trait(trait_id("TAIL")) and math.random(10) <= 2) then
+			output_text = monster:disp_name().." brushes "..target:disp_name().."'s tail."
+		elseif (target:has_trait(trait_id("WINGS")) and math.random(10) <= 2) then
+			output_text = monster:disp_name().." plays with "..target:disp_name().."'s wings."
+		else
+			output_text = monster:disp_name().." pats "..target:disp_name().."'s head."
+		end
+    elseif (math.random(10) <= 2) then
+		output_text = monster:disp_name().." brushes "..target:disp_name().."'s hair."
+    elseif (math.random(10) <= 2) then
+		output_text = monster:disp_name().." hugs "..target:disp_name().." close and breathes in "..pro(target, "his").." scent while licking "..pro(monster, "his").." lips seductively."
+    else
+       output_text = monster:disp_name().." "..act_text.." "..target:disp_name().."'s "..bp_text
+    end
+	--print
+	game.add_msg("<color_pink>"..output_text.."</color>")
 
 	--状態異常"lust"と"corrupt"をtargetに与える。
 	--target:add_effect(efftype_id("corrupt"), game.get_time_duration(100))
@@ -374,17 +413,17 @@ function matk_tkiss(monster)
 	--==ターゲットの回避ロール==--
 	--超回避システムが発動中なら必ず回避。
 	if (target:uncanny_dodge()) then
-		game.add_msg(monster:disp_name().."が投げキッスを放ちましたが、"..target:disp_name().."は物凄い勢いで回避しました！")
+		game.add_msg(monster:disp_name().." tries to blow a kiss at "..target:disp_name().., "but "..pro(target, "he").." dodges it with a tremendous momentum!"")
 		return
 	end
 
 	--物理的な行動による回避ロール。...投げキッスって回避するとかそういう物じゃない気もするが
 	if (math.random(100) <= target:dodge_roll()) then
-		game.add_msg(monster:disp_name().."が投げキッスを放ちましたが、"..target:disp_name().."は回避しました！")
+		game.add_msg(monster:disp_name().." tries to blow a kiss at "..target:disp_name()..", but "..pro(target, "he").." manages to dodge it!")
 		return
 	end
 
-	game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."に投げキッスした！</color>")
+	game.add_msg("<color_pink>"..monster:disp_name().." blows a kiss at "..target:disp_name().."!</color>")
 
 	--状態異常"lust"と"corrupt"をtargetに与える。
 	--target:add_effect(efftype_id("corrupt"), game.get_time_duration(50))
@@ -421,13 +460,13 @@ function matk_stripu(monster)
 	--==ターゲットの回避ロール==--
 	--超回避システムが発動中なら必ず回避。
 	if (target:uncanny_dodge()) then
-		game.add_msg(monster:disp_name().."は"..target:disp_name().."の衣服を脱がそうとしてきましたが、物凄い勢いで回避しました！")
+		game.add_msg(monster:disp_name().." tries to undress "..target:disp_name()..", but "..pro(target, "he").." dodges it with a tremendous momentum!")
 		return
 	end
 
 	--物理的な行動による回避ロール。
 	if (math.random(100) <= target:dodge_roll()) then
-		game.add_msg(monster:disp_name().."は"..target:disp_name().."の衣服を脱がそうとしてきましたが、回避しました！")
+		game.add_msg(monster:disp_name().." tries to undress "..target:disp_name()..", but "..pro(target, "he").." manages to dodge it!")
 		return
 	end
 
@@ -451,11 +490,11 @@ function matk_stripu(monster)
 
 	if (vol:value() > max_value) then
 		--itemの体積が大きい場合はmonsterの足元に落とす。
-		game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."の</color>"..item:display_name().."<color_pink>をさっと脱がせました！</color>")
+		game.add_msg("<color_pink>"..monster:disp_name().." quickly takes off "..target:disp_name().."'s </color>"..item:display_name().." <color_pink>and drops it on the ground!</color>")
 		map:add_item(monster:pos(), item)
 	else
 		--itemの体積が十分に小さい場合（たとえば下着）はmonsterの所持品に含める。
-		game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."の</color>"..item:display_name().."<color_pink>を脱がせると、そのまま奪い取りました！</color>")
+		game.add_msg("<color_pink>"..monster:disp_name().." takes off "..target:disp_name().."'s </color>"..item:display_name().." <color_pink>and proceeds stealing it!</color>")
 		monster:add_item(item)
 	end
 	target:i_rem(item)
@@ -486,10 +525,23 @@ function matk_wifeu(monster)
 
 		return
 	end
+	
+	--added bunch of synonyms to keep it interesting
+	local hip_action_texts = {
+		"grinding",
+		"pumping",
+		"gyrating",
+		"banging",
+		"moving",
+		"shaking",
+		"swinging",
+		"swaying"
+	}
+	local hip_act_text = hip_action_texts[math.random(#hip_action_texts)]
 
 	--ヤる！
 	if (monster:has_effect(efftype_id("dominate"))) then
-		game.add_msg("<color_pink>"..monster:disp_name().."は腰を振り続けている...</color>")
+		game.add_msg("<color_pink>"..monster:disp_name().." keeps "..hip_act_text.." "..pro(monster, "his").." hips...</color>")
 
 	else
 		local intensity = target:get_effect_int(efftype_id("gotwifed"))
@@ -497,7 +549,7 @@ function matk_wifeu(monster)
 
 		if (intensity >= 3) then
 			--ターゲットが既にお取り込み中の場合は...自主トレを行う。
-			game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."を見つめながら自分の体をまさぐっている...</color>")
+			game.add_msg("<color_pink>"..monster:disp_name().." enjoys "..target:disp_name().."'s show as "..pro(monster, "he").." plays with "..pro(monster, "himself").."...</color>")
 
 			monster:add_effect(efftype_id("lust"), game.get_time_duration(6))
 			monster:mod_moves(-100)
@@ -506,7 +558,7 @@ function matk_wifeu(monster)
 
 		else
 			--スペースがあれば突っ込む。何をとは言わんが。
-			game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."を押さえつけると、ゆっくりと体を沈めていきました...</color>")
+			game.add_msg("<color_pink>"..monster:disp_name().." pins "..target:disp_name().." down and slowly eases into "..pro(target, "him").." before joining their bodies together...</color>")
 
 			--モンスターに"dominate"を、対象に"gotwifed"を与える。
 			monster:add_effect(efftype_id("dominate"), game.get_time_duration(1), "num_bp", true)
@@ -542,7 +594,7 @@ function matk_wifeu(monster)
 			--if (1 >= math.random(5)) then
 			if (game.one_in(5)) then
 				DEBUG.add_msg("mutate!")
-				add_msg("魔性の体液が"..target:disp_name().."の体を変異させる...", H_COLOR.YELLOW)
+				add_msg("Demonic bodily fluids cause "..target:disp_name().."'s body to mutate...", H_COLOR.YELLOW)
 				target:mutate_category("FIEND")
 			end
 		end
@@ -620,7 +672,7 @@ function matk_loveflame(monster)
 		--g:draw_ter(value)
 	end
 
-	game.add_msg(monster:disp_name().."が呪文を唱えると、"..target:disp_name().."の周りを炎が覆った！")
+	game.add_msg(monster:disp_name().." casts a spell, setting the area around "..target:disp_name().." in flames!")
 
 	DEBUG.add_msg("love flame!")
 end
@@ -659,11 +711,11 @@ function matk_expose(monster)
 			local rnd = math.random(3)
 
 			if (rnd == 1) then
-				add_msg(monster:disp_name().."は衣服を脱ぐと、艶やかな裸体を周囲に見せ付け始めた！", H_COLOR.PINK)
+				add_msg(monster:disp_name().." strips "..pro(monster, "himself").." naked and begins showing off with "..pro(monster, "his").." enticing bare body!", H_COLOR.PINK)
 			elseif (rnd == 2) then
-				add_msg(monster:disp_name().."は自らの全てを見せつけながら、甘い声で皆を誘った！", H_COLOR.PINK)
+				add_msg(monster:disp_name().." keeps showcasing "..pro(monster, "his").." goodies as "..pro(monster, "he").." tempts the bystanders with "..pro(monster, "his").." seductive voice!", H_COLOR.PINK)
 			else
-				add_msg(monster:disp_name().."は股間に手を当てると、切なげな声を上げ始めた！", H_COLOR.PINK)
+				add_msg(monster:disp_name().." reaches for "..pro(monster, "his").." groin and raises "..pro(monster, "his").." voice in a desperate moan!", H_COLOR.PINK)
 			end
 
 		end
@@ -693,7 +745,7 @@ function magic_fire_circle(monster, target)
 	end
 
 	if (player:sees(monster:pos())) then
-		game.add_msg(monster:disp_name().."が呪文を唱えると、甘いガスが"..target:disp_name().."の周りを覆った！")
+		game.add_msg(monster:disp_name().." casts a spell, covering "..target:disp_name().." with a sweet-smelling gas!")
 	end
 
 	DEBUG.add_msg("relax_circle!")
@@ -710,7 +762,7 @@ function magic_fire_circle(monster, target)
 	end
 
 	if (player:sees(monster:pos())) then
-		game.add_msg(monster:disp_name().."が呪文を唱えると、炎が"..target:disp_name().."の周りを覆った！")
+		game.add_msg(monster:disp_name().." casts a spell as flames begin swirling around "..target:disp_name().."!")
 	end
 
 	DEBUG.add_msg("fire_circle!")
@@ -722,7 +774,7 @@ function magic_sleep(monster, target)
 	DEBUG.add_msg("sleep you?")
 
 	if (player:sees(monster:pos())) then
-		game.add_msg(monster:disp_name().."は"..target:disp_name().."を指差して呪った！")
+		game.add_msg(monster:disp_name().." points at "..target:disp_name().." and curses "..pro(target, "him").."!")
 	end
 	target:add_effect(efftype_id("magic_sleepy"), game.get_time_duration(900))
 
@@ -744,7 +796,7 @@ function magic_pull_close(monster, target)
 	--場所の候補からランダムで1つ選択し、対象の位置を移動させる。
 	local locale = locate_list[math.random(#locate_list)]
 	target:setpos(locale)
-	game.add_msg(target:disp_name().."はテレポートした！")
+	game.add_msg(target:disp_name().." has teleported!")
 
 	DEBUG.add_msg("pull_close you!")
 
@@ -772,12 +824,12 @@ function magic_write_circle(monster, tripoint, str_id)
 	if (player:sees(monster:pos())) then
 
 		if (player:sees(tripoint)) then
-			game.add_msg(monster:disp_name().."は地面に魔法陣を描いた！")
+			game.add_msg(monster:disp_name().." draws a magic circle on the ground!")
 		end
 
 	else
 		if (player:sees(tripoint)) then
-			game.add_msg("突如として地面に魔法陣が現れた！")
+			game.add_msg("Suddenly a magic circle appears on the ground!")
 		end
 	end
 
@@ -793,13 +845,13 @@ function spell_charge(monster)
 
 	if (player:sees(monster:pos())) then
 		if (monster:has_effect(efftype_id("spell_charge"))) then
-			game.add_msg(monster:disp_name().."は呪文を唱えている...")
+			game.add_msg(monster:disp_name().." is chanting a spell...")
 		else
-			game.add_msg(monster:disp_name().."は呪文を唱え始めた。")
+			game.add_msg(monster:disp_name().." begins chanting a spell.")
 		end
 
 	else
-		game.add_msg("誰かのささやき声が聞こえる...")
+		game.add_msg("You hear someone whispering...")
 	end
 
 	--monster:add_effect(efftype_id("spell_charge"), game.get_time_duration(1), "num_bp", true)
@@ -827,7 +879,7 @@ function magic_circle_summon(tripoint, monster_id_list)
 		--...魔法陣の上に何かが乗っている場合は出てこれない。
 		if not(g:is_empty(tripoint)) then
 			if (player:sees(tripoint)) then
-				game.add_msg("魔法陣の中から何者かが現れようとしましたが、障害物に阻まれました。")
+				game.add_msg("The magic circle was about to summon someone, but was blocked by the obstacle.")
 			end
 			return
 		end
@@ -839,7 +891,7 @@ function magic_circle_summon(tripoint, monster_id_list)
 		local mon = game.create_monster(mtype_id(monster_id_list[math.random(#monster_id_list)]), tripoint)
 
 		if (player:sees(tripoint)) then
-			game.add_msg("魔法陣の中から何者かが現れた！")
+			game.add_msg("The magic circle has summoned someone!")
 		end
 
 		--召喚して即動かれるとゲームバランス的にあれなので、ここで召喚したモンスターに行動コストを追加。
@@ -875,7 +927,7 @@ function magic_circle_fire(tripoint, density, age)
 		map:add_field(tripoint, "fd_fire", density, game.get_time_duration(age))
 
 		if (player:sees(tripoint)) then
-			game.add_msg("魔法陣から炎が噴出した！")
+			game.add_msg("The magic circle erupts with flames!")
 		end
 	end
 

@@ -27,11 +27,11 @@ function lost_virgin(me, is_good)
 	if not(me:has_trait(trait_id("VIRGIN"))) then
 		return
 	end
-
+	
 	if (is_good) then
-		add_msg(me:disp_name().."は貞操を失いました！", H_COLOR.LIGHT_GREEN)
+		add_msg(me:disp_name().." has lost "..pro(me, "his").." Chastity!", H_COLOR.LIGHT_GREEN)
 	else
-		add_msg(me:disp_name().."は貞操を奪われました！", H_COLOR.RED)
+		add_msg(me:disp_name().." has been robbed of "..pro(me, "his").." Chastity!", H_COLOR.RED)
 	end
 
 	me:unset_mutation(trait_id("VIRGIN"))
@@ -67,13 +67,13 @@ function iuse_yiff(item, active)
 
 	--隣接するキャラクタを選択、取得する。
 	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
+	local selected_x, selected_y = game.choose_adjacent("Choose the target direction.", center.x, center.y)
 	local selected_point = tripoint(selected_x, selected_y, center.z)
 
 	local someone = g:critter_at(selected_point)
 
 	if (someone == nil) then
-		game.add_msg("その方向には誰もいない。")
+		game.add_msg("There is no one in that direction.")
 		return
 	end
 
@@ -81,19 +81,19 @@ function iuse_yiff(item, active)
 
 	if (someone:is_monster()) then
 		if (someone:has_effect(efftype_id("pet"))) then
-			if (game.query_yn(someone:disp_name().."と楽しみますか？")) then
+			if (game.query_yn("Do you want to enjoy yourself with "..someone:disp_name().."?")) then
 				--TODO:monsterが相手の場合の処理を考えてない
 				do_sex(nil, item)
 			else
 				return
 			end
 		else
-			game.add_msg("やめてください。")
+			game.add_msg("Stop that.")
 			return
 		end
 
 	elseif (someone:is_player()) then
-		if (game.query_yn("自分に対して使いますか？")) then
+		if (game.query_yn("Use it on yourself?")) then
 			do_sex(nil, item)
 		else
 			return
@@ -109,10 +109,10 @@ function iuse_yiff(item, active)
 		local choice = -1
 
 		--パートナーに対して*交渉*を行う。
-		menu.title = "行動を選択"
+		menu.title = "Choose Action"
 
-		menu:addentry("何でもない。")									--choice 0
-		menu:addentry("気持ちいいことしない？")							--choice 1
+		menu:addentry("Never mind.")									--choice 0
+		menu:addentry("How about we have fun together?")							--choice 1
 
 		menu:query(true)
 		choice = menu.selected
@@ -152,33 +152,33 @@ function is_accept_u(partner, device)
 
 	if (willing > 50) then
 		if (is_love_sex) then
-			game.popup("大喜びで応じてくれました。")
+			game.popup("Your partner has responded with a great joy.")
 
 			--愛がある場合のみ[積極性]％の確立でゴムなしの行為を提案してくる。
 			if (math.random(100) <= willing) then
 				--TODO:仮にも万人の目に留まる可能性のあるゲームなのだから、本番行為を匂わすメッセージを軽々しく出すのは慎むべき。少なくともオプションで選択できるようにすべき。　と俺の理性が言ってる
-				if (game.query_yn(partner:get_name().."は避妊具を使わずに楽しみたいようです。受け入れますか？")) then
+				if (game.query_yn("Seems like "..partner:get_name().." wants to enjoy it raw without the contraception.  Accept?")) then
 					device = nil
 				end
 			end
 
 		else
-			game.popup(partner:get_name().."はあなたへの強い恐怖心により完全に服従しています...")
+			game.popup(partner:get_name().." is so terrified of you that "..pro(partner, "he").." will follow your word without a question...")
 		end
 		is_accept = true
 
 	elseif (willing > 25) then
 		if (is_love_sex) then
-			game.popup("少し恥ずかしがりながらも応じてくれました。")
+			game.popup("Your partner has agreed, albeit looking somewhat embarrassed.")
 		else
-			game.popup(partner:get_name().."はあなたへ抱く恐怖心のせいで拒否することができませんでした...")
+			game.popup(partner:get_name().." is too afraid to refuse you...")
 		end
 
 		is_accept = true
 	elseif (willing > 0) then
-		game.popup("やんわりと断られました。")
+		game.popup("You got turned down politely.")
 	else
-		game.popup("激しく拒否されました。")
+		game.popup("You were met with a rough refusal.")
 	end
 
 	return is_accept, device
@@ -301,7 +301,7 @@ function do_sex(partner, device)
 	SEX.init(sex_fun_bonus, partner, pseudo_device, is_love_sex)
 	player:assign_activity(activity_id("ACT_SEX"), turn_cost * player:get_speed() + 1000, 0, 0, "")	--ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
 
-	game.add_msg("<color_pink>*しばらくおまちください*</color>")
+	game.add_msg("<color_pink>*Wait a moment please...*</color>")
 
 	--パートナーがいる場合のみ貞操を失う。
 	if not(partner == nil) then
@@ -314,34 +314,34 @@ end
 function iuse_pet_cubi(item, active)
 	--隣接するキャラクタを選択、取得する。
 	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
+	local selected_x, selected_y = game.choose_adjacent("Choose the target direction.", center.x, center.y)
 	local selected_point = tripoint(selected_x, selected_y, center.z)
 
 	local monster = game.get_monster_at(selected_point)
 
 	if (monster == nil) then
-		game.add_msg("それは無理だ。")
+		game.add_msg("That's impossible.")
 		return
 	end
 
 	if not(is_cubi(monster)) then
-		game.add_msg("使える対象は夢魔だけです。")
+		game.add_msg("You can only use this on a Demon.")
 		return
 	end
 
 	if (monster.friendly == -1) then
-		game.add_msg("既にあなたの仲間です。")
+		game.add_msg("Target is already your Pet.")
 		return
 	end
 
 	if (monster.friendly > 0) then
-		game.add_msg(monster:disp_name().."の気が緩んだ一瞬の隙をついて、チョーカーを身につけさせました！")
+		game.add_msg("You manage to take "..monster:disp_name().." by surprise and put on a choker on "..pro(monster, "him").."!")
 
 		monster.friendly = -1
 		monster:add_effect(efftype_id("pet"), game.get_time_duration(1), "num_bp", true)
 		monster:disable_special("WIFE_U")
 
-		game.add_msg(monster:disp_name().."はあなたの仲間になった！")
+		game.add_msg(monster:disp_name().." has become your Pet!")
 
 		--プレイヤーの所持品からアイテムを取り除き、モンスターに渡す。
 		if (player:has_item(item)) then
@@ -349,7 +349,7 @@ function iuse_pet_cubi(item, active)
 			player:i_rem(item)
 		end
 	else
-		game.add_msg("チョーカーを"..monster:disp_name().."の首につけようとしましたが、抵抗されました。気の緩んだ隙ならばあるいは...")
+		game.add_msg("You try to put a choker on "..monster:disp_name()..", however "..pro(monster, "he").." resisted the attempt.  Perhaps if "..pro(monster, "he").." wasn't so alert you could've caught "..pro(monster, "him").." off guard...")
 	end
 
 end
@@ -366,7 +366,7 @@ function iuse_ts_elixir(item, active)
 
 	--使用者が妊娠中なら効果は無い。行き場所が無くなっちゃうので
 	if (target:has_effect(efftype_id("fertilize")) or target:has_effect(efftype_id("pregnantcy"))) then
-		game.add_msg("薬を飲み干しましたが、何も効果はありませんでした。")
+		game.add_msg(target:disp_name().." drank the medicine but it had no effect.")
 
 		if (player:has_item(item)) then
 			player:i_rem(item)
@@ -376,15 +376,15 @@ function iuse_ts_elixir(item, active)
 	end
 
 	target:mod_pain(math.random(200))
-
+	--do we assume (((target))) is (you) for now?
 	if (target.male) then
 		target.male = false
-		add_msg("下半身を襲った激痛に思わず手をやると、そこにあるはずのものがありませんでした！", H_COLOR.YELLOW)
-		add_msg(target:disp_name().."は今や女性です！", H_COLOR.GREEN)
+		add_msg("A sharp pain assails your groin!  You quickly reach down for it without thinking, only to find out that something important that once belonged to you is no longer there!", H_COLOR.YELLOW)
+		add_msg(target:disp_name().." is now a woman!", H_COLOR.GREEN)
 	else
 		target.male = true
-		add_msg("下半身を襲った激痛に思わず手をやると、そこには無いはずのものがありました！", H_COLOR.YELLOW)
-		add_msg(target:disp_name().."は今や男性です！", H_COLOR.GREEN)
+		add_msg("A sharp pain assails your groin!  You quickly reach down for it without thinking, only to find out that something that doesn't belong to you is growing there!", H_COLOR.YELLOW)
+		add_msg(target:disp_name().." is now a man!", H_COLOR.GREEN)
 	end
 
 	if (player:has_item(item)) then
@@ -401,33 +401,35 @@ function iuse_naming_npc(item, active)
 
 	--隣接するキャラクタを選択、取得する。
 	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
+	local selected_x, selected_y = game.choose_adjacent("Choose the target direction.", center.x, center.y)
 	local selected_point = tripoint(selected_x, selected_y, center.z)
 
 	--local someone = g:npc_at(selected_point)
 	local someone = game.get_npc_at(selected_point)
 
 	if (someone == nil) then
-		game.add_msg("その方向には誰もいない。")
+		game.add_msg("There is no one in that direction.")
 		return
 	end
 	if not(someone:is_npc()) then
-		game.add_msg("使える対象はNPCのみです。")
+		game.add_msg("You can only use this on NPC.")
 		return
 	end
 
 	DEBUG.add_msg("someone:"..someone:disp_name())
 
 	--入力ウィンドウを表示し、入力された内容を取得する。
-	local newname = game.string_input_popup("新しい名前を入力してください。", 0, "")
+	local newname = game.string_input_popup("Input a new name.", 0, "")
 	if (newname == "") then
-		game.add_msg("キャンセルしました。")
+		game.add_msg("Name input canceled.")
 		return
 	end
 	DEBUG.add_msg("newname:"..newname)
 
+	--show old name -> new name type of thing
+	local oldname = someone.name
 	someone.name = newname
-	game.add_msg("『"..newname.."』と命名しました。")
+	game.add_msg(oldname.." has been given a new name: "..newname..".")
 
 	if (player:has_item(item)) then
 		player:i_rem(item)
@@ -443,21 +445,21 @@ function iuse_anthromorph(item, active)
 
 	--隣接するキャラクタを選択、取得する。
 	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
+	local selected_x, selected_y = game.choose_adjacent("Choose the target direction.", center.x, center.y)
 	local selected_point = tripoint(selected_x, selected_y, center.z)
 
 	local monster = game.get_monster_at(selected_point)
 
 	if (monster == nil) then
-		game.add_msg("その方向には誰もいない。")
+		game.add_msg("There is no one in that direction.")
 		return
 	end
 	if not(monster:is_monster()) then
-		game.add_msg("それは無理だ。")
+		game.add_msg("That's impossible.")
 		return
 	end
 	if (monster.friendly > -1) then
-		game.add_msg("ペット以外に使う事はできません。")
+		game.add_msg("You can only use this on a Pet.")
 		return
 	end
 
@@ -479,7 +481,7 @@ function iuse_spawn_artifact(item, active)
 
 	map:spawn_artifact(player:pos())
 
-	game.add_msg("一瞬、世界が歪んだような奇妙な感覚がしました。")
+	game.add_msg("For a moment you were seized with a strange feeling as if the world just got distorted.")
 
 	if (player:has_item(item)) then
 		player:i_rem(item)
@@ -491,7 +493,6 @@ function iuse_spawn_artifact(item, active)
 
 	return
 end
-
 
 function on_preload()
 	-- 乱数の初期化
@@ -525,7 +526,5 @@ function on_preload()
 	game.register_monattack("EVENT_GOATHEAD_DEMON", event_goathead_demon)
 	game.register_monattack("EVENT_DEMONBEING_SCHOOLGIRL", event_demonbeing_schoolgirl)
 end
-
-
 
 on_preload()

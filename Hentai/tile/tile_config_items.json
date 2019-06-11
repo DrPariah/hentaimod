@@ -40,6 +40,11 @@
 					"id": "medieval_bottle",
 					"fg": 5,
 					"rotates": false
+				},
+				{
+					"id": "bio_onahole",
+					"fg": 6,
+					"rotates": false
 				}
 			]
 		}

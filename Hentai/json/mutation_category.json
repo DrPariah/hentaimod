@@ -2,10 +2,10 @@
 	{
 		"type" : "mutation_category",
 		"id" : "FIEND",
-		"name" : "悪魔",
+		"name" : "Demon",
 		"threshold_mut" : "THRESH_FIEND",
-		"mutagen_message" : "一瞬、地獄の奥底を垣間見た気がしました。",
-		"iv_message" : "彷徨い歩く亡者ども。餓えた獣の群れ。天変地異。大地に蠢く異形の姿。この世はまるで...地獄、そう、地獄だ！なんて素晴らしい響きなんだ！",
-		"memorial_message" : "地獄の一員に仲間入りした。"
+		"mutagen_message" : "You felt like you had a glimpse of the depths of hell for a moment.",
+		"iv_message" : "Walking dead. Hungry pack of beasts. Cataclysm. Grotesque creatures crawling on this earth. It's like this world has turned into... hell, that's right, hell!  Well if it doesn't just sound wonderful!",
+		"memorial_message" : "Joined hell."
 	}
 ]

@@ -2,9 +2,9 @@
 	{
 		"type" : "mutation",
 		"id" : "VIRGIN",
-		"name" : "貞操",
+		"name" : "Chaste",
 		"points" : 0,
-		"description" : "今まで機会があったかどうかはともかく、あなたは他者との性的な交流に対して貞操を守ってきました。しかし世界がこうなった今では何の役にも立たないでしょう。",
+		"description" : "Whether you had a chance or not, you've never engaged in sexual intercourse with another person before, and as a result kept yourself chaste.  But now that the world has become like this, it sure matters very little.",
 		"starting_trait" : true,
 		"valid" : false,
 		"purifiable" : false
@@ -13,10 +13,10 @@
 		"type" : "mutation",
 		"id" : "SMALL_BREAST",
 		"//" : "男でも特質が取れる？気にするな！",
-		"name" : "貧乳",
+		"name" : "Small Breasts",
 		"points" : 0,
 		"visibility" : 0,
-		"description" : "貧乳はステータスだ！希少価値だ！...人の好みはそれぞれですが、少なくともデメリットにはなりません。メリットにもならないでしょうが。",
+		"description" : "Yup, you've got a small chest!  Very scarce and precious!  ...Each person has their own preference, but at least the smaller size doesn't have disadvantages.  Not like it has any advantages, either.",
 		"starting_trait" : true,
 		"cancels" : ["BIG_BREAST"],
 		"category" : ["FISH", "LIZARD", "MEDICAL", "ELFA", "RAPTOR", "FIEND"]
@@ -25,10 +25,10 @@
 		"type" : "mutation",
 		"id" : "BIG_BREAST",
 		"//" : "男でも特質が取れる？気にするな！",
-		"name" : "巨乳",
+		"name" : "Big Breasts",
 		"points" : 1,
 		"visibility" : -2,
-		"description" : "大きいことはいいことだ！...人の好みはそれぞれですが、たいていの男性は巨乳の女性を好む傾向にあります。NPCの反応がほんの少しだけ良くなります。",
+		"description" : "Big means good!  ...Each person has their own preference, but majority of men prefer women with a sizable rack.  As a result, it improves the reaction from others, even if just a little.",
 		"starting_trait" : true,
 		"cancels" : ["SMALL_BREAST"],
 		"category" : ["CATTLE", "MEDICAL", "ELFA", "FIEND"]
@@ -36,19 +36,19 @@
 	{
 		"type" : "mutation",
 		"id" : "MULTI_BREAST",
-		"name" : "複乳",
+		"name" : "Extra Breasts",
 		"points" : -1,
 		"visibility" : 1,
 		"ugliness" : 2,
-		"description" : "本来の胸とは別に...胸があります。見た目は少々悪いですが、動作に問題はありません。",
+		"description" : "Another pair of breasts that are... separate from the original.  It looks pretty gross, but doesn't impede your actions.",
 		"category" : ["RAT", "BEAST", "URSINE", "FELINE", "LUPINE", "CATTLE", "CHIMERA"]
 	},
 	{
 		"type" : "mutation",
 		"id" : "ESTRUS_LUPINE",
-		"name" : "発情期 (狼)",
+		"name" : "In Heat (Lupine)",
 		"points" : -2,
-		"description" : "春先になると発情期がやってきます。",
+		"description" : "You will enter a breeding period at the start of the Spring.",
 		"mixed_effect" : true,
 		"category" : ["LUPINE"],
 		"cancels" : ["ESTRUS_FELINE"]
@@ -56,9 +56,9 @@
 	{
 		"type" : "mutation",
 		"id" : "ESTRUS_FELINE",
-		"name" : "発情期 (猫)",
+		"name" : "In Heat (Feline)",
 		"points" : -2,
-		"description" : "年に数度、発情期がやってきます。",
+		"description" : "You will enter a breeding period multiple times per year.",
 		"mixed_effect" : true,
 		"category" : ["FELINE"],
 		"cancels" : ["ESTRUS_LUPINE"]
@@ -66,9 +66,9 @@
 	{
 		"type" : "mutation",
 		"id" : "OVIPARITY_BIRD",
-		"name" : "卵生 (鳥)",
+		"name" : "Oviparous (Avian)",
 		"points" : -3,
-		"description" : "体の中で卵が作られるようになりました。自然な妊娠であっても卵として孕むようになり、妊娠していなくても定期的に卵を産み落とすようになります。(※未実装)",
+		"description" : "You are producing eggs inside your body.  Naturally every pregnancy will result in an egg, and you will also lay eggs periodically. (Unimplemented)",
 		"category" : ["BIRD"],
 		"threshreq" : ["THRESH_BIRD"],
 		"cancels" : ["OVIPARITY_LIZARD", "OVIPARITY_INSECT"]
@@ -76,9 +76,9 @@
 	{
 		"type" : "mutation",
 		"id" : "OVIPARITY_LIZARD",
-		"name" : "卵生 (爬虫類)",
+		"name" : "Oviparous (Reptile)",
 		"points" : -2,
-		"description" : "体の中で卵が作られるようになりました。自然な妊娠であっても卵として孕むようになります。(※未実装)",
+		"description" : "You are producing eggs inside your body.  Naturally every pregnancy will result in an egg. (Unimplemented)",
 		"category" : ["LIZARD", "RAPTOR"],
 		"threshreq" : ["THRESH_LIZARD", "THRESH_RAPTOR"],
 		"cancels" : ["OVIPARITY_BIRD", "OVIPARITY_INSECT"]
@@ -86,9 +86,9 @@
 	{
 		"type" : "mutation",
 		"id" : "OVIPARITY_INSECT",
-		"name" : "卵生 (昆虫)",
+		"name" : "Oviparous (Insect)",
 		"points" : -2,
-		"description" : "体の中で卵が作られるようになりました。自然な妊娠であっても卵として孕むようになります。(※未実装)",
+		"description" : "You are producing eggs inside your body.  Naturally every pregnancy will result in an egg. (Unimplemented)",
 		"category" : ["INSECT", "SPIDER"],
 		"threshreq" : ["THRESH_INSECT", "THRESH_SPIDER"],
 		"cancels" : ["OVIPARITY_BIRD", "OVIPARITY_LIZARD"]
@@ -96,18 +96,18 @@
 	{
 		"type" : "mutation",
 		"id" : "OVIPOSITOR",
-		"name" : "産卵管 (昆虫)",
+		"name" : "Ovipositor (Insect)",
 		"points" : 2,
 		"visibility" : 6,
 		"ugliness" : 3,
-		"description" : "剣のように鋭い産卵管が体から突き出ています。何か（あるいは誰か）へ突き刺すのにもってこいです。",
+		"description" : "You have a sharp tubular organ growing from your body.  It would be a shame if something (or someone) gets stabbed by this thing.  Prevents you from wearing regular leg armor.",
 		"prereqs" : ["OVIPARITY_INSECT"],
 		"category" : ["INSECT", "SPIDER"],
 		"cancels" : ["TAIL_STING"],
 		"restricts_gear" : ["LEG_L", "LEG_R"],
 		"attacks" : {
-			"attack_text_u" : "あなたは%sを産卵管で突き刺した！",
-			"attack_text_npc" : "%1$は%2$sを産卵管で突き刺した！",
+			"attack_text_u" : "You stab %s with an ovipositor!",
+			"attack_text_npc" : "%1$ stabs %2$s with an ovipositor!",
 			"chance" : 20,
 			"base_damage" : { "damage_type" : "stab", "amount" : 20 }
 		}
@@ -115,11 +115,11 @@
 	{
 		"type" : "mutation",
 		"id" : "TAIL_FIEND",
-		"name" : "悪魔の尾",
+		"name" : "Demon Tail",
 		"points" : 1,
 		"visibility" : 4,
 		"ugliness" : 4,
-		"description" : "先端がスペード型の、まるで悪魔のようなレザー質の尻尾が生えています。身体のバランスを向上させる効果はほとんどありません。また通常の脚用防具は着用できません。",
+		"description" : "You have a spaded, leather tail, like that of a Demon.  It doesn't seem to improve your balance nearly at all.  It also prevents you from wearing regular leg armor.",
 		"prereqs" : ["TAIL_LONG"],
 		"cancels" : ["TAIL_FIN", "TAIL_RAPTOR", "TAIL_FLUFFY", "TAIL_STING", "TAIL_CLUB", "TAIL_RAT", "TAIL_CATTLE", "TAIL_LONG"],
 		"category" : ["FIEND"],
@@ -129,9 +129,9 @@
 	{
 		"type" : "mutation",
 		"id" : "THRESH_FIEND",
-		"name" : "堕落",
+		"name" : "Corrupted",
 		"points" : 1,
-		"description" : "世界は地獄に変わった。ならば、自分が悪魔に変わらない理由がどこにある？",
+		"description" : "The world has turned into hell.  Then what makes you think you wouldn't turn into a Demon too?",
 		"valid": false,
 		"purifiable": false,
 		"threshold": true

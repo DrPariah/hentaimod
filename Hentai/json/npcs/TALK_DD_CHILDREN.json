@@ -3,12 +3,12 @@
 		"id": "TALK_DD_CHILDREN",
 		"type": "talk_topic",
 		"dynamic_line": {
-			"u_male": "パパ？",
-			"u_female": "ママ？"
+			"u_male": "Daddy?",
+			"u_female": "Mommy?"
 		},
 		"responses": [
 			{
-				"text": "その通りだ、一緒に行こう！",
+				"text": "That's right, let's travel together!",
 				"success": {
 					"effect": "follow",
 					"opinion": {
@@ -19,15 +19,15 @@
 				}
 			},
 			{
-				"text": "いいや、君の親じゃない。",
+				"text": "I'm sorry, but I'm not your parent.",
 				"topic": "TALK_DD_CHILDREN_IAM_NOT_YOUR_FATHER"
 			},
 			{
-				"text": "いったい何が起こったんだ？",
+				"text": "What on earth happened?",
 				"topic": "TALK_DD_CHILDREN_WHATSTHEHECK"
 			},
 			{
-				"text": "何でもない。",
+				"text": "Never mind.",
 				"topic": "TALK_DONE"
 			}
 		]
@@ -35,10 +35,10 @@
 	{
 		"id": "TALK_DD_CHILDREN_IAM_NOT_YOUR_FATHER",
 		"type": "talk_topic",
-		"dynamic_line": "そんなー！",
+		"dynamic_line": "No way!",
 		"responses": [
 			{
-				"text": "（立ち去る）",
+				"text": "(Walk Away)",
 				"topic": "TALK_DONE"
 			}
 		]
@@ -46,10 +46,10 @@
 	{
 		"id": "TALK_DD_CHILDREN_WHATSTHEHECK",
 		"type": "talk_topic",
-		"dynamic_line": "ごつごーしゅぎってやつだよ。ゲーム内で何年も手間の掛かる育児なんてやってられないでしょ？",
+		"dynamic_line": "We're saving you time and effort.  You wouldn't want to go through all of this child-rearing for god knows how many in-game years, right?",
 		"responses": [
 			{
-				"text": "聞かなかった事にしよう...",
+				"text": "I'll just pretend I didn't hear that...",
 				"topic": "TALK_DD_CHILDREN"
 			}
 		]

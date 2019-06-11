@@ -4,7 +4,7 @@
 		"type": "GUN",
 		"copy-from": "fake_item",
 		"name": "succubi_whip",
-		"description": "monster特殊攻撃用のフェイクアイテムです。",
+		"description": "Dummy item used for monster attack.  If you see this, then something went wrong.",
 		"flags": [ "NEVER_JAMS" ],
 		"ammo_effects": [ "BLINDS_EYES", "NEVER_MISFIRES", "WIDE", "BEANBAG" ],
 		"skill": "rifle",
@@ -20,7 +20,7 @@
 		"id": "d_cumshot",
 		"type": "AMMO",
 		"name": "D_CUMSHOT",
-		"description": "monster特殊攻撃用のフェイクアイテムです。これが見えているなら、それは明らかにバグです。",
+		"description": "Dummy item used for monster special attack.  If you see this, then something obviously went wrong.",
 		"weight": 40,
 		"volume": 1,
 		"price": 0,
@@ -53,7 +53,7 @@
 		"id": "fake_prof_pet",
 		"type": "GENERIC",
 		"copy-from": "fake_item",
-		"name": "(任意のペット)※ゲーム開始時に選択",
-		"description": "proffesion:man_with_a_petスタート時のフラグ管理用フェイクアイテムです。"
+		"name": "(Any pet)※Selected at the beginning of the game",
+		"description": "Fake item for managing the flag for profession:man_with_a_pet."
 	}
 ]

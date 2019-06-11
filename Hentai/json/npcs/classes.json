@@ -2,8 +2,8 @@
 	{
 		"type" : "npc_class",
 		"id" : "NC_DD_CHILDREN",
-		"name" : "暗き時代の子",
-		"job_description" : "それを僕に聞く？",
+		"name" : "Child of the Dark Days",
+		"job_description" : "You ask me that?",
 		"common" : false,
 		"bonus_str" : { "rng" : [ -2, 2 ] },
 		"bonus_dex" : { "rng" : [ -2, 2 ] },
@@ -21,8 +21,8 @@
 	{
 		"type" : "npc_class",
 		"id" : "NC_DEMONBEING_SCHOOLGIRL",
-		"name" : "女子生徒",
-		"job_description" : "そんなの決まってるでしょう、隠れてるのよ！",
+		"name" : "Schoolgirl",
+		"job_description" : "That much is obvious, I'm hiding!",
 		"common" : false,
 		"skills": [
 			{ "skill": "computer", "bonus": { "rng": [ 1, 2 ] } },
@@ -52,7 +52,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_CANINE",
 		"name" : "ペット(犬)_テンプレート",
-		"job_description" : "...だれのせいでこうなったと思う？",
+		"job_description" : "...Whose fault do you think it is?",
 		"common" : false,
 		"skills": [
 			{ "skill": "survival", "bonus": { "rng": [ 0, 3 ] } },
@@ -73,7 +73,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_FELINE",
 		"name" : "ペット(猫)_テンプレート",
-		"job_description" : "...だれのせいでこうなったと思う？",
+		"job_description" : "...Whose fault do you think it is?",
 		"common" : false,
 		"skills": [
 			{ "skill": "survival", "bonus": { "rng": [ 0, 3 ] } },
@@ -94,7 +94,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_URSINE",
 		"name" : "ペット(熊)_テンプレート",
-		"job_description" : "...だれのせいでこうなったと思う？",
+		"job_description" : "...Whose fault do you think it is?",
 		"common" : false,
 		"skills": [
 			{ "skill": "survival", "bonus": { "rng": [ 0, 3 ] } },
@@ -115,7 +115,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_CUBI",
 		"name" : "ペット(サキュ・インキュ)_テンプレート",
-		"job_description" : "あらあら、このメッセージは表示されないはずよ？どうやらバグってるみたいねぇ。",
+		"job_description" : "My my, this message shouldn't actually appear. Looks like we've found a bug, huh.",
 		"common" : false,
 		"skills": [
 			{
@@ -148,7 +148,7 @@
 		"//" : "ペット(サキュバス)。人間に近い。",
 		"id" : "NC_ANTHRO_SUCCUBI_MOREHUMAN",
 		"copy-from": "NC_ANTHRO_CUBI",
-		"name" : "ペット(サキュバス)",
+		"name" : "Pet (Succubus)",
 		"common" : false,
 		"worn_override": "default_succubi_clothes",
 		"traits": [
@@ -161,7 +161,7 @@
 		"//" : "ペット(サキュバス)。わりと悪魔的。",
 		"id" : "NC_ANTHRO_SUCCUBI_LESSHUMAN",
 		"copy-from": "NC_ANTHRO_CUBI",
-		"name" : "ペット(サキュバス)",
+		"name" : "Pet (Succubus)",
 		"common" : false,
 		"worn_override": "default_succubi_clothes",
 		"traits": [
@@ -174,7 +174,7 @@
 		"//" : "ペット(インキュバス)。人間に近い。",
 		"id" : "NC_ANTHRO_INCUBI_MOREHUMAN",
 		"copy-from": "NC_ANTHRO_CUBI",
-		"name" : "ペット(インキュバス)",
+		"name" : "Pet (Incubus)",
 		"common" : false,
 		"worn_override": "default_incubi_clothes",
 		"traits": [
@@ -187,7 +187,7 @@
 		"//" : "ペット(インキュバス)。わりと悪魔的。",
 		"id" : "NC_ANTHRO_INCUBI_LESSHUMAN",
 		"copy-from": "NC_ANTHRO_CUBI",
-		"name" : "ペット(インキュバス)",
+		"name" : "Pet (Incubus)",
 		"common" : false,
 		"worn_override": "default_incubi_clothes",
 		"traits": [
@@ -202,7 +202,7 @@
 		"//" : "ペット(犬)。人間に近い。",
 		"id" : "NC_ANTHRO_CANINE_MOREHUMAN_MALE",
 		"copy-from": "NC_ANTHRO_CANINE",
-		"name" : "ペット(犬)",
+		"name" : "Pet (Dog)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -214,7 +214,7 @@
 		"//" : "ペット(犬)。半分半分。",
 		"id" : "NC_ANTHRO_CANINE_HALF_MALE",
 		"copy-from": "NC_ANTHRO_CANINE",
-		"name" : "ペット(犬)",
+		"name" : "Pet (Dog)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -226,7 +226,7 @@
 		"//" : "ペット(犬)。より動物に近い。",
 		"id" : "NC_ANTHRO_CANINE_LESSHUMAN_MALE",
 		"copy-from": "NC_ANTHRO_CANINE",
-		"name" : "ペット(犬)",
+		"name" : "Pet (Dog)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -239,7 +239,7 @@
 		"//" : "ペット(猫)。人間に近い。",
 		"id" : "NC_ANTHRO_FELINE_MOREHUMAN_MALE",
 		"copy-from": "NC_ANTHRO_FELINE",
-		"name" : "ペット(猫)",
+		"name" : "Pet (Cat)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -251,7 +251,7 @@
 		"//" : "ペット(猫)。半分半分。",
 		"id" : "NC_ANTHRO_FELINE_HALF_MALE",
 		"copy-from": "NC_ANTHRO_FELINE",
-		"name" : "ペット(猫)",
+		"name" : "Pet (Cat)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -263,7 +263,7 @@
 		"//" : "ペット(猫)。より動物に近い。",
 		"id" : "NC_ANTHRO_FELINE_LESSHUMAN_MALE",
 		"copy-from": "NC_ANTHRO_FELINE",
-		"name" : "ペット(猫)",
+		"name" : "Pet (Cat)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -276,7 +276,7 @@
 		"//" : "ペット(熊)。人間に近い。",
 		"id" : "NC_ANTHRO_URSINE_MOREHUMAN_MALE",
 		"copy-from": "NC_ANTHRO_URSINE",
-		"name" : "ペット(熊)",
+		"name" : "Pet (Bear)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -288,7 +288,7 @@
 		"//" : "ペット(熊)。半分半分。",
 		"id" : "NC_ANTHRO_URSINE_HALF_MALE",
 		"copy-from": "NC_ANTHRO_URSINE",
-		"name" : "ペット(熊)",
+		"name" : "Pet (Bear)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -300,7 +300,7 @@
 		"//" : "ペット(熊)。より動物に近い。",
 		"id" : "NC_ANTHRO_URSINE_LESSHUMAN_MALE",
 		"copy-from": "NC_ANTHRO_URSINE",
-		"name" : "ペット(熊)",
+		"name" : "Pet (Bear)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_male" },
@@ -314,7 +314,7 @@
 		"//" : "ペット(犬)。人間に近い。",
 		"id" : "NC_ANTHRO_CANINE_MOREHUMAN_FEMALE",
 		"copy-from": "NC_ANTHRO_CANINE",
-		"name" : "ペット(犬)",
+		"name" : "Pet (Dog)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -326,7 +326,7 @@
 		"//" : "ペット(犬)。半分半分。",
 		"id" : "NC_ANTHRO_CANINE_HALF_FEMALE",
 		"copy-from": "NC_ANTHRO_CANINE",
-		"name" : "ペット(犬)",
+		"name" : "Pet (Dog)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -338,7 +338,7 @@
 		"//" : "ペット(犬)。より動物に近い。",
 		"id" : "NC_ANTHRO_CANINE_LESSHUMAN_FEMALE",
 		"copy-from": "NC_ANTHRO_CANINE",
-		"name" : "ペット(犬)",
+		"name" : "Pet (Dog)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -351,7 +351,7 @@
 		"//" : "ペット(猫)。人間に近い。",
 		"id" : "NC_ANTHRO_FELINE_MOREHUMAN_FEMALE",
 		"copy-from": "NC_ANTHRO_FELINE",
-		"name" : "ペット(猫)",
+		"name" : "Pet (Cat)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -363,7 +363,7 @@
 		"//" : "ペット(猫)。半分半分。",
 		"id" : "NC_ANTHRO_FELINE_HALF_FEMALE",
 		"copy-from": "NC_ANTHRO_FELINE",
-		"name" : "ペット(猫)",
+		"name" : "Pet (Cat)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -375,7 +375,7 @@
 		"//" : "ペット(猫)。より動物に近い。",
 		"id" : "NC_ANTHRO_FELINE_LESSHUMAN_FEMALE",
 		"copy-from": "NC_ANTHRO_FELINE",
-		"name" : "ペット(猫)",
+		"name" : "Pet (Cat)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -388,7 +388,7 @@
 		"//" : "ペット(熊)。人間に近い。",
 		"id" : "NC_ANTHRO_URSINE_MOREHUMAN_FEMALE",
 		"copy-from": "NC_ANTHRO_URSINE",
-		"name" : "ペット(熊)",
+		"name" : "Pet (Bear)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -400,7 +400,7 @@
 		"//" : "ペット(熊)。半分半分。",
 		"id" : "NC_ANTHRO_URSINE_HALF_FEMALE",
 		"copy-from": "NC_ANTHRO_URSINE",
-		"name" : "ペット(熊)",
+		"name" : "Pet (Bear)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },
@@ -412,7 +412,7 @@
 		"//" : "ペット(熊)。より動物に近い。",
 		"id" : "NC_ANTHRO_URSINE_LESSHUMAN_FEMALE",
 		"copy-from": "NC_ANTHRO_URSINE",
-		"name" : "ペット(熊)",
+		"name" : "Pet (Bear)",
 		"common" : false,
 		"traits": [
 			{ "group": "trait_anthro_common_female" },

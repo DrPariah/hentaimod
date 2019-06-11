@@ -2,14 +2,14 @@
 	{
 		"id": "TALK_ANTHRO_CUBI",
 		"type": "talk_topic",
-		"dynamic_line": "なっ、何なのこれ！？いったい何をしたのさ！",
+		"dynamic_line": "Wha--  What just happened?!  What the hell did you do?!",
 		"responses": [
 			{
-				"text": "血清(人間)を使ったんだ。",
+				"text": "I used human serum.",
 				"topic": "TALK_ANTHRO_CUBI_ITS_MY_TREAT"
 			},
 			{
-				"text": "待った、考える時間をくれ...",
+				"text": "Hold on, I need to think...",
 				"topic": "TALK_DONE"
 			}
 		]
@@ -17,10 +17,10 @@
 	{
 		"id": "TALK_ANTHRO_CUBI_ITS_MY_TREAT",
 		"type": "talk_topic",
-		"dynamic_line": "理屈は知らないけど、とにかく人間になっちゃったってワケね。以前のように力が振るえないのはツラいけど...他の兄妹みたいに数少ない獲物を求めて悶え狂うのとどっちがマシかな。",
+		"dynamic_line": "I don't quite get it, but I guess that means I'm a human now, huh.  It kinda sucks that I can't use my old powers though...  But I wonder if that's better than going crazy worrying whether you can find increasingly rare prey just like my brethren.",
 		"responses": [
 			{
-				"text": "こうして話ができるようになって嬉しいよ。おいで。一緒に行こう。",
+				"text": "I'm glad we were able to talk like this.  Come.  Let's move on together.",
 				"success": {
 					"effect": "follow",
 					"opinion": {
@@ -31,7 +31,7 @@
 				}
 			},
 			{
-				"text": "お前の立場はペットのままだ。さっさと来い、ペット。",
+				"text": "You're still my pet, don't forget that.  Come now, don't keep me waiting... pet.",
 				"success": {
 					"effect": "follow",
 					"opinion": {
@@ -48,10 +48,10 @@
 	{
 		"id": "TALK_ANTHRO_CUBI_BE_FELLOW",
 		"type": "talk_topic",
-		"dynamic_line": "はいは～い。この姿にしたのはアナタなんだから、ちゃんと責任取ってよね、マ・ス・ター♪",
+		"dynamic_line": "Yup, suuure～  It's you who made me like this after all, so you better take the responsibility, my dear mas-ter♪",
 		"responses": [
 			{
-				"text": "(会話終了)",
+				"text": "(End Talking)",
 				"topic": "TALK_DONE"
 			}
 		]
@@ -59,10 +59,10 @@
 	{
 		"id": "TALK_ANTHRO_CUBI_BADBOY",
 		"type": "talk_topic",
-		"dynamic_line": "はいはい。そういう態度取ってて、いつか背中からブッスリ刺されても知らないからね。",
+		"dynamic_line": "Yeah, yeah.  Don't blame me if one day you get backstabbed with that attitude.",
 		"responses": [
 			{
-				"text": "(会話終了)",
+				"text": "(End Talking)",
 				"topic": "TALK_DONE"
 			}
 		]

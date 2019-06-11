@@ -2,7 +2,7 @@
 	{
 		"type": "material",
 		"ident": "magic",
-		"name": "魔法",
+		"name": "Magic",
 		"density": 0,
 		"bash_resist": 999,
 		"cut_resist": 999,
@@ -10,8 +10,8 @@
 		"fire_resist": 0,
 		"elec_resist": 0,
 		"chip_resist": 999,
-		"dmg_adj": [ "色あせた", "明滅する", "朧げな", "消えゆく" ],
-		"bash_dmg_verb": "色あせた",
-		"cut_dmg_verb": "色あせた"
+		"dmg_adj": [ "fading", "glittering", "dim", "dissipating" ],
+		"bash_dmg_verb": "fading",
+		"cut_dmg_verb": "fading"
 	}
 ]

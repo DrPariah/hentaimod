@@ -2,8 +2,8 @@
 	{
 		"type": "profession",
 		"ident": "man_with_a_pet",
-		"name": "一人と一匹",
-		"description": "大災厄の日、あなたはペットと共に命からがら逃げ延びました。今あなたの傍にあるのは愛しきペット一匹と、道中にて見知らぬ科学者から手渡された奇妙な薬一瓶だけです。",
+		"name": { "male": "Man and his pet", "female": "Woman and her pet" },
+		"description": "The day the Cataclysm hit, you managed to make it out alive and survive with your pet.  Now, the only thing you have besides your beloved pet is a strange medicine handed to you by an unfamiliar scientist during your journey.",
 		"points": 1,
 		"items": {
 			"both": [ "jeans", "longshirt", "socks", "sneakers", "purse", "fake_prof_pet", "iv_mutagen_human", "syringe", "rope_6" ],

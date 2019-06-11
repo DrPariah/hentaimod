@@ -2,9 +2,9 @@
 	{
 		"type" : "dream",
 		"messages" : [
-			"恐ろしい悪魔の夢を見た気がしました。",
-			"子供の頃に行った、ささやかなイタズラの夢を見た気がしました。",
-			"なぜでしょう、とても淫猥な夢を見ていた気がします。しかしどうしても内容が思い出せません。"
+			"You have a disturbing dream of terrifying Demons.",
+			"You have a dream about playing innocent pranks as a child.",
+			"You have an awfully lewd wet dream for some reason. But you just can't seem to remember what happened there."
 		],
 		"category" : "FIEND",
 		"strength" : 1
@@ -12,8 +12,8 @@
 	{
 		"type" : "dream",
 		"messages" : [
-			"夢の中、亡者であるあなたは永遠なる地獄の責め苦を受けていました。突然、恐ろしい悪魔があなたを鷲掴みにすると...そこで目が覚めました。",
-			"心地よいまどろみの中、誰かがあなたに口付けした気がしました。このまま愛を捧げ...ああ、ただの夢でした。"
+			"In a dream, you were already dead and you were tortured in hell for eternity.  Suddenly, a terrifying Demon tries to grab you... and then you wake up.",
+			"In your pleasant slumber, you feel like someone presses their soft lips against yours in a kiss.  You're eager to proceed having love with them...  But alas, it was just a dream."
 		],
 		"category" : "FIEND",
 		"strength" : 2
@@ -21,9 +21,9 @@
 	{
 		"type" : "dream",
 		"messages" : [
-			"夢の中、あなたは地獄の責め苦に苛まれる亡者達を笑い飛ばしていました。傍らに立つ悪魔達と一緒に。",
-			"瞑想を続ける聖アントニウス、どうやって彼を堕落させてやろうか...おっと、ただの夢か。",
-			"柔らかなベッドで眠りにつく、見目麗しき若者達。穢れを知らぬその体に、あなたはそっと近づき...いやいや、ただの夢です。"
+			"In a dream, you were gloating and laughing at the pains of the dead burning in hell.  With the Demons standing beside you.",
+			"You see Saint Anthony the Great, meditating.  You wonder how would you corrupt him...  Oh, it's just a dream, huh.",
+			"Lovely younglings, sleeping in their soft comfy beds.  You softly approach their alluring innocent bodies...  No, wait, this is just a dream."
 		],
 		"category" : "FIEND",
 		"strength" : 3
@@ -31,9 +31,9 @@
 	{
 		"type" : "dream",
 		"messages" : [
-			"緑の大地、カラフルな草花、跳ね回る動物達。ああ、夢の中で見た不毛の地獄が懐かしい。",
-			"この世はまだ刺激が少なすぎると思わないか？手始めに人間どもを手当たり次第に襲ってやろうか...",
-			"暴食。色欲。強欲。憤怒。怠惰。傲慢。嫉妬。今日も一日楽しみましょう。"
+			"Green scenery, colorful flowers, animals jumping about.  Aah, you already miss the barren lands of hell you saw in your dreams.",
+			"Don't you think that this world still lacks the excitement?  Let's attack those pesky humans at random for starters...",
+			"Gluttony. Lust. Greed. Wrath. Sloth. Pride. Envy.  Let's enjoy ourselves today as well."
 		],
 		"category" : "FIEND",
 		"strength" : 4

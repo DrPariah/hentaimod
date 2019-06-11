@@ -2,135 +2,159 @@
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「クソだ、本当にクソだ、くだらねぇ・・・」",
+		"sound" : "\"Damn it, this is really <shitty>.  What a piece of shit...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "(唾を吐く音)",
+		"sound" : "(Spits)",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「酒だ、酒が足りねぇ・・・」",
+		"sound" : "\"Alcohol, I'm outta alcohol...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「おい、誰かタバコ持ってねえか？」",
+		"sound" : "\"Hey, anyone got some cigs?\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「この1杯だけが、今日という1日を繋いでくれる・・・」",
+		"sound" : "\"Just one drink, it's all I need to get by through the day...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「この1本だけが、今日という1日を繋いでくれる・・・」",
+		"sound" : "\"Just one, it's all I need to get by through the day...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「どっかに人間はいないのか？ゾンビ共を撃ち殺したって何も面白くねぇ。」",
+		"sound" : "\"Where are all the humans anyway?  I'm sick and tired killing these <swear> zombies.\"",
 		"volume" : 20
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「この前のヤマは大当たりだったぜ。」",
+		"sound" : "\"That last raid was quite somethin'.\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「この前のヤマはマジでヤバかったぜ。」",
+		"sound" : "\"That last raid nearly got me, I tell ya.\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "「ああぁ、最ッ高にキクぜえぇぇ・・・」",
+		"sound" : "\"Aaaaahhh, now that's the stuff, oh yeaaaaahhh...\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "(狂気に満ちた笑い声)",
+		"sound" : "(Insane laughter)",
 		"volume" : 30
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "\"Shit, I got this rash all over my groin... Was that bitch diseased or something?\"",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_male",
+		"sound" : "\"I heard she got pregnant. Haha, shoulda used condoms.\"",
+		"volume" : 5
 	},
 
 
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「クソだ、本当にクソだ、くだらねぇ・・・」",
+		"sound" : "\"Damn it, this is really <shitty>.  What a piece of shit...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "(唾を吐く音)",
+		"sound" : "(Spits)",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「酒だ、酒が足りねぇ・・・」",
+		"sound" : "\"Alcohol, I'm outta alcohol...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「おい、誰かタバコ持ってねえか？」",
+		"sound" : "\"Hey, anyone got some cigs?\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「この1杯だけが、今日という1日を繋いでくれる・・・」",
+		"sound" : "\"Just one drink, it's all I need to get by through the day...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「この1本だけが、今日という1日を繋いでくれる・・・」",
+		"sound" : "\"Just one, it's all I need to get by through the day...\"",
 		"volume" : 5
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「どっかに人間はいないのか？ゾンビ共を撃ち殺したって何も面白くねぇ。」",
+		"sound" : "\"Where are all the humans anyway?  I'm sick and tired killing these <swear> zombies.\"",
 		"volume" : 20
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「この前のヤマは大当たりだったぜ。」",
+		"sound" : "\"That last raid was quite somethin'.\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「この前のヤマはマジでヤバかったぜ。」",
+		"sound" : "\"That last raid nearly got me, I tell ya.\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "「ああぁ、最ッ高にキクぜえぇぇ・・・」",
+		"sound" : "\"Aaaaahhh, now that's the stuff, oh yeaaaaahhh...\"",
 		"volume" : 10
 	},
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "(狂気に満ちた笑い声)",
+		"sound" : "(Insane laughter)",
 		"volume" : 30
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "\"Gah, it stings... Did I catch somethin'?\"",
+		"volume" : 5
+	},
+	{
+		"type" : "speech",
+		"speaker" : "mon_cambion_female",
+		"sound" : "\"Shit, I can't stop pukin'.  I hope I ain't pregnant...\"",
+		"volume" : 5
 	}
 ]

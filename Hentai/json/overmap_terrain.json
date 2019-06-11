@@ -2,7 +2,7 @@
 	  {
 		"type": "overmap_terrain",
 		"id": "corrupted_school_ne",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -12,7 +12,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_n",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 83,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -22,7 +22,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_nw",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -32,7 +32,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_e",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -42,7 +42,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_ce",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -52,7 +52,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_w",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -62,7 +62,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_se",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -72,7 +72,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_s",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,
@@ -82,7 +82,7 @@
 	{
 		"type": "overmap_terrain",
 		"id": "corrupted_school_sw",
-		"name": "堕ちた地域運営学校",
+		"name": "corrupted regional school",
 		"sym": 115,
 		"color": "light_blue",
 		"see_cost": 5,

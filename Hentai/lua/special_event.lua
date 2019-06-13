@@ -28,7 +28,7 @@ function event_goathead_demon(monster)
 		if (player.male) then
 			game.popup("\"But don't worry. After I take your soul, I will reincarnate you as my Demon underling!\r\nHaaa-ha-ha-ha!\"")
 		else
-			game.popup("\"But now that I take a closer look, you appear to be a fine woman.\r\nVery well, once I take your soul, I will offer you as a sacrifice for my Sabbath as much as I please!\r\nHaaa-ha-ha-ha!\"")
+			game.popup("\"But now that I take a closer look, you appear to be a fine, able-bodied woman.\r\nVery well, once I take your soul, I will offer you as a sacrifice for my Sabbath as much as I please!\r\nHaaa-ha-ha-ha!\"")
 		end
 
 		--会ったフラグを立てる。

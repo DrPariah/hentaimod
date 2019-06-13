@@ -112,7 +112,7 @@ function iuse_yiff(item, active)
 		menu.title = "Choose Action"
 
 		menu:addentry("Never mind.")									--choice 0
-		menu:addentry("How about we have fun together?")							--choice 1
+		menu:addentry("How about we *have fun* together?")							--choice 1
 
 		menu:query(true)
 		choice = menu.selected
@@ -152,7 +152,7 @@ function is_accept_u(partner, device)
 
 	if (willing > 50) then
 		if (is_love_sex) then
-			game.popup("Your partner has responded with a great joy.")
+			game.popup("Your partner responds with a great joy.")
 
 			--愛がある場合のみ[積極性]％の確立でゴムなしの行為を提案してくる。
 			if (math.random(100) <= willing) then
@@ -169,16 +169,16 @@ function is_accept_u(partner, device)
 
 	elseif (willing > 25) then
 		if (is_love_sex) then
-			game.popup("Your partner has agreed, albeit looking somewhat embarrassed.")
+			game.popup("Your partner agrees, albeit looking somewhat embarrassed.")
 		else
 			game.popup(partner:get_name().." is too afraid to refuse you...")
 		end
 
 		is_accept = true
 	elseif (willing > 0) then
-		game.popup("You got turned down politely.")
+		game.popup("Your partner turns you down politely.")
 	else
-		game.popup("You were met with a rough refusal.")
+		game.popup("Your partner refuses you roughly.")
 	end
 
 	return is_accept, device

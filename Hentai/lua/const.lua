@@ -23,7 +23,7 @@ H_COLOR = {
 
 --[[*気持ちいいこと*中に表示されるテキスト]]--
 MOVINGDOING_TEXTS = {
-	"*Sex Sounds*",
+	"*Lewd Sounds*",
 	"\"Haa, haa♥\"",
 	"*Snu-Snu in progress*",
 	"\"La di da♪\"",
@@ -39,6 +39,7 @@ VULGAR_SPEECH_TEXTS = {
 			"\"地獄だ、やあ！\"",
 		]]--
 		"\"Bah!\"",
+		"\"Aa-haaa!\"",
 		"\"What the--?!\"",
 		"\"Hey, it's the enemy!\"",
 		"\"We have contact!\"",
@@ -79,12 +80,14 @@ VULGAR_SPEECH_TEXTS = {
 		"(Growls)",
 		"\"Dieeeeeeeeeeeee!\"",
 		"\"Imma fuck you up!\"",
+		"\"I just want to play! You don't mind it, right?!\"",
 		"\"You little shit...\"",
 		"\"How are you still not dead?!\"",
 		"\"Why can't you just die?!\"",
 		"\"This ain't my first time killin', ya rookie!\"",
 		"\"If I can't live as a Human, then Demon life it is!\"",
-		"\"When you get to hell, tell 'em I send ya!\"",
+		"\"When you get to hell, tell 'em I sent ya!\"",
+		"\"When I kill you, I'll rape your corpse! Don't worry, I'll be gentle!\"",
 		"\"You're gonna be really fuckin' sorry!\""
 	},
 	--ターゲットを見失った時

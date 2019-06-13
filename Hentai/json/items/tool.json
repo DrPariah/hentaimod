@@ -37,7 +37,7 @@
 		"type": "TOOL",
 		"name": "condom",
 		"name_plural": "condoms",
-		"description": "A contraceptive device that fits all sizes.  If every person in the world would carry it around, its purpose would most likely become even more clear.",
+		"description": "A contraceptive device that fits all sizes.  If every person in the world carried it around, its purpose would've been clear by now.",
 		"weight": 1,
 		"volume": 0,
 		"bashing": 1,

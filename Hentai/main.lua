@@ -155,7 +155,7 @@ function preg_process(mother)
 		else
 			--impregnated状態が最大値に届いているならpregnantcy状態に移行する
 			game.popup("Something feels different about "..mother:get_name().."...")
-			game.popup("Apparently "..mother:get_name().." got pregnant!")
+			game.popup("It seems that "..mother:get_name().." got pregnant!")
 
 			mother:remove_effect(efftype_id("impregnated"))
 			mother:add_effect(efftype_id("pregnantcy"), game.get_time_duration(elapse_day), "num_bp", true)

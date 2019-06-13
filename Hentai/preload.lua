@@ -1,4 +1,5 @@
 require("./data/mods/Hentai/lua/util")
+require("./data/mods/Hentai/lua/translation")
 require("./data/mods/Hentai/lua/const")
 require("./data/mods/Hentai/lua/activity")
 require("./data/mods/Hentai/lua/monattack")
@@ -29,9 +30,9 @@ function lost_virgin(me, is_good)
 	end
 	
 	if (is_good) then
-		add_msg(me:disp_name().." has lost "..pro(me, "his").." Chastity!", H_COLOR.LIGHT_GREEN)
+		add_msg(ActorName(me, "have", "has").." lost "..pro(me, "his").." virginity!", H_COLOR.LIGHT_GREEN)
 	else
-		add_msg(me:disp_name().." has been robbed of "..pro(me, "his").." Chastity!", H_COLOR.RED)
+		add_msg(ActorName(me, "have", "has").." been robbed of "..pro(me, "his").." virginity!", H_COLOR.RED)
 	end
 
 	me:unset_mutation(trait_id("VIRGIN"))
@@ -380,11 +381,11 @@ function iuse_ts_elixir(item, active)
 	if (target.male) then
 		target.male = false
 		add_msg("A sharp pain assails your groin!  You quickly reach down for it without thinking, only to find out that something important that once belonged to you is no longer there!", H_COLOR.YELLOW)
-		add_msg(target:disp_name().." is now a woman!", H_COLOR.GREEN)
+		add_msg(ActorName(target, "are", "is").." now a woman!", H_COLOR.GREEN)
 	else
 		target.male = true
 		add_msg("A sharp pain assails your groin!  You quickly reach down for it without thinking, only to find out that something that doesn't belong to you is growing there!", H_COLOR.YELLOW)
-		add_msg(target:disp_name().." is now a man!", H_COLOR.GREEN)
+		add_msg(ActorName(target, "are", "is").." now a man!", H_COLOR.GREEN)
 	end
 
 	if (player:has_item(item)) then

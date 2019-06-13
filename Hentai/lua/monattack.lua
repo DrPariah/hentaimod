@@ -19,6 +19,17 @@ local action_texts = {
 	"lets out a hot breath on"
 }
 
+local hip_action_texts = {
+	"grinding",
+	"pumping",
+	"gyrating",
+	"banging",
+	"moving",
+	"shaking",
+	"swinging",
+	"swaying"
+}
+
 --[[デバッグ用ファンクション]]--
 function matk_hello(monster)
 --function matk_hello(monster, target)
@@ -190,7 +201,7 @@ function can_wife(monster, target)
 	--ターゲットがぱんつはいてないかチェック
 	if (target:wearing_something_on("bp_leg_l") and target:wearing_something_on("bp_leg_r")) then
 		if (math.random(10) <= 2) then
-			game.add_msg("<color_yellow>"..monster:disp_name().." is aiming at your crotch...</color>")
+			game.add_msg("<color_yellow>"..monster:disp_name().." is after "..ActorName(target, "'s").." crotch!</color>")
 		end
 		return false
 	end
@@ -224,7 +235,7 @@ function has_cum(me)
 
 	if (intensity >= limit) then
 		--"lust"を取り除き、少しだけwaitを掛ける。
-		game.add_msg("<color_green>"..me:disp_name().." has reached an orgasm!</color>")
+		game.add_msg("<color_green>"..ActorName(me, "reach", "reaches").." an orgasm!</color>")
 		me:remove_effect(efftype_id("lust"))
 		me:mod_moves(-50)
 
@@ -301,7 +312,7 @@ function gain_corrupt(target, dur)
 	if (math.random(20) > target.int_cur) then
 		target:add_effect(efftype_id("corrupt"), game.get_time_duration(dur))
 	else
-		game.add_msg("However "..target:disp_name().." successfully resists the temptation!")
+		game.add_msg("However "..target:disp_name().." successfully "..YouWord(target, "resist", "resists").." the temptation!")
 	end
 
 end
@@ -328,13 +339,13 @@ function matk_seduce(monster)
 	--==ターゲットの回避ロール==--
 	--超回避システムが発動中なら必ず回避。
 	if (target:uncanny_dodge()) then
-		game.add_msg(monster:disp_name().." tries to reach our for "..target:disp_name()..", but "..pro(target, "he").." dodges it with a tremendous momentum!")
+		game.add_msg(monster:disp_name().." tries to reach for "..target:disp_name()..", but "..pro(target, "he").." "..YouWord(target, "dodge", "dodges").." it with a tremendous momentum!")
 		return
 	end
 
 	--物理的な行動による回避ロール。player.dodge_roll()についてはmelee.cppとかを参照。
 	if (math.random(100) <= target:dodge_roll()) then
-		game.add_msg(monster:disp_name().." tries to reach our for "..target:disp_name()..", but "..pro(target, "he").." manages to dodge it!")
+		game.add_msg(monster:disp_name().." tries to reach for "..target:disp_name()..", but "..pro(target, "he").." "..YouWord(target, "manage", "manages").." to dodge it!")
 		return
 	end
 
@@ -352,38 +363,38 @@ function matk_seduce(monster)
 	local output_text
 	
 	if (bp_text == "chest" and math.random(10) <= 2) then
-		output_text = monster:disp_name().." fondles "..target:disp_name().."'s "..bp_text"."
+		output_text = monster:disp_name().." fondles "..ActorName(target, "'s").." "..bp_text
     elseif (bp_text == "ears" and math.random(10) <= 2) then
-		output_text = monster:disp_name().." bites "..target:disp_name().."'s "..bp_text" playfully."
+		output_text = monster:disp_name().." bites "..ActorName(target, "'s").." "..bp_text.." playfully"
     elseif (bp_text == "hands" and math.random(10) <= 2) then
-		output_text = monster:disp_name().." holds "..target:disp_name().."'s "..bp_text" tightly."
+		output_text = monster:disp_name().." holds "..ActorName(target, "'s").." "..bp_text.." tightly"
     elseif (act_text == "kisses") then
 		if (bp_text == "lips") then
-			output_text = monster:disp_name().." joins "..pro(monster, "his").." lips with "..target:disp_name().."'s, forcing "..pro(monster, "his").." tongue inside "..pro(target, "his").." mouth and enjoying "..((target:has_trait(trait_id("FORKED_TONGUE"))) > 0 and "the feel of "..target:disp_name().." unusually forked tongue" or "entangling their tongues together").." while tasting each other's saliva."
+			output_text = monster:disp_name().." joins "..pro(monster, "his").." lips with "..ActorName(target, "'s")..", forcing "..pro(monster, "his").." tongue inside "..pro(target, "his").." mouth and enjoying "..((target:has_trait(trait_id("FORKED_TONGUE"))) and "the feel of "..ActorName(target, "'s").." unusually forked tongue" or "entwining "..YouWord(target, "your", "their").." tongues together").." while tasting each other's saliva"
 		else
-			output_text = monster:disp_name().." "..act_text.." "..target:disp_name().." on "..pro(target, "his").." "..bp_text"</color>"
+			output_text = monster:disp_name().." "..act_text.." "..target:disp_name().." on "..pro(target, "his").." "..bp_text
 		end
     elseif (math.random(10) <= 2) then
 		if (target:has_trait(trait_id("TAIL_FLUFFY")) and math.random(10) <= 2) then
-			output_text = monster:disp_name().." touches "..target:disp_name().."'s fluffy tail."
+			output_text = monster:disp_name().." touches "..ActorName(target, "'s").." fluffy tail"
 		elseif (target:has_trait(trait_id("TAIL_FIEND")) and math.random(10) <= 2) then
-			output_text = monster:disp_name().." plays with "..target:disp_name().."'s demonic tail."
+			output_text = monster:disp_name().." plays with "..ActorName(target, "'s").." demonic tail"
 		elseif (target:has_trait(trait_id("TAIL")) and math.random(10) <= 2) then
-			output_text = monster:disp_name().." brushes "..target:disp_name().."'s tail."
+			output_text = monster:disp_name().." brushes "..ActorName(target, "'s").." tail"
 		elseif (target:has_trait(trait_id("WINGS")) and math.random(10) <= 2) then
-			output_text = monster:disp_name().." plays with "..target:disp_name().."'s wings."
+			output_text = monster:disp_name().." plays with "..ActorName(target, "'s").." wings"
 		else
-			output_text = monster:disp_name().." pats "..target:disp_name().."'s head."
+			output_text = monster:disp_name().." pats "..ActorName(target, "'s").." head"
 		end
     elseif (math.random(10) <= 2) then
-		output_text = monster:disp_name().." brushes "..target:disp_name().."'s hair."
+		output_text = monster:disp_name().." brushes "..ActorName(target, "'s").." hair"
     elseif (math.random(10) <= 2) then
-		output_text = monster:disp_name().." hugs "..target:disp_name().." close and breathes in "..pro(target, "his").." scent while licking "..pro(monster, "his").." lips seductively."
+		output_text = monster:disp_name().." hugs "..target:disp_name().." close and breathes in "..pro(target, "his").." scent while licking "..pro(monster, "his").." lips seductively"
     else
-       output_text = monster:disp_name().." "..act_text.." "..target:disp_name().."'s "..bp_text
+       output_text = monster:disp_name().." "..act_text.." "..ActorName(target, "'s").." "..bp_text
     end
 	--print
-	game.add_msg("<color_pink>"..output_text.."</color>")
+	game.add_msg("<color_pink>"..output_text..".</color>")
 
 	--状態異常"lust"と"corrupt"をtargetに与える。
 	--target:add_effect(efftype_id("corrupt"), game.get_time_duration(100))
@@ -413,13 +424,13 @@ function matk_tkiss(monster)
 	--==ターゲットの回避ロール==--
 	--超回避システムが発動中なら必ず回避。
 	if (target:uncanny_dodge()) then
-		game.add_msg(monster:disp_name().." tries to blow a kiss at "..target:disp_name().., "but "..pro(target, "he").." dodges it with a tremendous momentum!"")
+		game.add_msg(monster:disp_name().." tries to blow a kiss at "..target:disp_name()..", but "..pro(target, "he").." "..YouWord(target, "dodge", "dodges").." it with a tremendous momentum!")
 		return
 	end
 
 	--物理的な行動による回避ロール。...投げキッスって回避するとかそういう物じゃない気もするが
 	if (math.random(100) <= target:dodge_roll()) then
-		game.add_msg(monster:disp_name().." tries to blow a kiss at "..target:disp_name()..", but "..pro(target, "he").." manages to dodge it!")
+		game.add_msg(monster:disp_name().." tries to blow a kiss at "..target:disp_name()..", but "..pro(target, "he").." "..YouWord(target, "manage", "manages").." to dodge it!")
 		return
 	end
 
@@ -460,13 +471,13 @@ function matk_stripu(monster)
 	--==ターゲットの回避ロール==--
 	--超回避システムが発動中なら必ず回避。
 	if (target:uncanny_dodge()) then
-		game.add_msg(monster:disp_name().." tries to undress "..target:disp_name()..", but "..pro(target, "he").." dodges it with a tremendous momentum!")
+		game.add_msg(monster:disp_name().." tries to undress "..target:disp_name()..", but "..pro(target, "he").." "..YouWord(target, "dodge", "dodges").." it with a tremendous momentum!")
 		return
 	end
 
 	--物理的な行動による回避ロール。
 	if (math.random(100) <= target:dodge_roll()) then
-		game.add_msg(monster:disp_name().." tries to undress "..target:disp_name()..", but "..pro(target, "he").." manages to dodge it!")
+		game.add_msg(monster:disp_name().." tries to undress "..target:disp_name()..", but "..pro(target, "he").." "..YouWord(target, "manage", "manages").." to dodge it!")
 		return
 	end
 
@@ -490,11 +501,11 @@ function matk_stripu(monster)
 
 	if (vol:value() > max_value) then
 		--itemの体積が大きい場合はmonsterの足元に落とす。
-		game.add_msg("<color_pink>"..monster:disp_name().." quickly takes off "..target:disp_name().."'s </color>"..item:display_name().." <color_pink>and drops it on the ground!</color>")
+		game.add_msg("<color_pink>"..monster:disp_name().." quickly takes off "..ActorName(target, "'s").." </color>"..item:display_name().." <color_pink>and drops it on the ground!</color>")
 		map:add_item(monster:pos(), item)
 	else
 		--itemの体積が十分に小さい場合（たとえば下着）はmonsterの所持品に含める。
-		game.add_msg("<color_pink>"..monster:disp_name().." takes off "..target:disp_name().."'s </color>"..item:display_name().." <color_pink>and proceeds stealing it!</color>")
+		game.add_msg("<color_pink>"..monster:disp_name().." takes off "..ActorName(target, "'s").." </color>"..item:display_name().." <color_pink>and steals it!</color>")
 		monster:add_item(item)
 	end
 	target:i_rem(item)
@@ -527,16 +538,6 @@ function matk_wifeu(monster)
 	end
 	
 	--added bunch of synonyms to keep it interesting
-	local hip_action_texts = {
-		"grinding",
-		"pumping",
-		"gyrating",
-		"banging",
-		"moving",
-		"shaking",
-		"swinging",
-		"swaying"
-	}
 	local hip_act_text = hip_action_texts[math.random(#hip_action_texts)]
 
 	--ヤる！
@@ -549,7 +550,7 @@ function matk_wifeu(monster)
 
 		if (intensity >= 3) then
 			--ターゲットが既にお取り込み中の場合は...自主トレを行う。
-			game.add_msg("<color_pink>"..monster:disp_name().." enjoys "..target:disp_name().."'s show as "..pro(monster, "he").." plays with "..pro(monster, "himself").."...</color>")
+			game.add_msg("<color_pink>"..monster:disp_name().." enjoys the show while staring at "..target:disp_name().." as "..pro(monster, "he").." plays with "..pro(monster, "himself").."...</color>")
 
 			monster:add_effect(efftype_id("lust"), game.get_time_duration(6))
 			monster:mod_moves(-100)
@@ -558,7 +559,7 @@ function matk_wifeu(monster)
 
 		else
 			--スペースがあれば突っ込む。何をとは言わんが。
-			game.add_msg("<color_pink>"..monster:disp_name().." pins "..target:disp_name().." down and slowly eases into "..pro(target, "him").." before joining their bodies together...</color>")
+			game.add_msg("<color_pink>"..monster:disp_name().." pins "..target:disp_name().." down and slowly eases into "..pro(target, "him").." before joining "..YouWord(target, "your", "their").." bodies together...</color>")
 
 			--モンスターに"dominate"を、対象に"gotwifed"を与える。
 			monster:add_effect(efftype_id("dominate"), game.get_time_duration(1), "num_bp", true)
@@ -594,7 +595,7 @@ function matk_wifeu(monster)
 			--if (1 >= math.random(5)) then
 			if (game.one_in(5)) then
 				DEBUG.add_msg("mutate!")
-				add_msg("Demonic bodily fluids cause "..target:disp_name().."'s body to mutate...", H_COLOR.YELLOW)
+				add_msg("Demonic bodily fluids cause "..ActorName(target, "'s").." body to mutate...", H_COLOR.YELLOW)
 				target:mutate_category("FIEND")
 			end
 		end
@@ -774,7 +775,7 @@ function magic_sleep(monster, target)
 	DEBUG.add_msg("sleep you?")
 
 	if (player:sees(monster:pos())) then
-		game.add_msg(monster:disp_name().." points at "..target:disp_name().." and curses "..pro(target, "him").."!")
+		game.add_msg(monster:disp_name().." points at "..target:disp_name().." with a curse!")
 	end
 	target:add_effect(efftype_id("magic_sleepy"), game.get_time_duration(900))
 
@@ -796,7 +797,7 @@ function magic_pull_close(monster, target)
 	--場所の候補からランダムで1つ選択し、対象の位置を移動させる。
 	local locale = locate_list[math.random(#locate_list)]
 	target:setpos(locale)
-	game.add_msg(target:disp_name().." has teleported!")
+	game.add_msg(ActorName(target, "teleport", "teleports").."!")
 
 	DEBUG.add_msg("pull_close you!")
 

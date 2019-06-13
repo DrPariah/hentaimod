@@ -2,7 +2,7 @@
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "\"Damn it, this is really <shitty>.  What a piece of shit...\"",
+		"sound" : "\"Damn it, this is really fucked up.  What a piece of shit...\"",
 		"volume" : 5
 	},
 	{
@@ -38,7 +38,7 @@
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_male",
-		"sound" : "\"Where are all the humans anyway?  I'm sick and tired killing these <swear> zombies.\"",
+		"sound" : "\"Where are all the humans anyway?  I'm sick and tired killing these fuckin' zombies.\"",
 		"volume" : 20
 	},
 	{
@@ -82,7 +82,7 @@
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "\"Damn it, this is really <shitty>.  What a piece of shit...\"",
+		"sound" : "\"Damn it, this is really fucked up.  What a piece of shit...\"",
 		"volume" : 5
 	},
 	{
@@ -118,7 +118,7 @@
 	{
 		"type" : "speech",
 		"speaker" : "mon_cambion_female",
-		"sound" : "\"Where are all the humans anyway?  I'm sick and tired killing these <swear> zombies.\"",
+		"sound" : "\"Where are all the humans anyway?  I'm sick and tired killing these fuckin' zombies.\"",
 		"volume" : 20
 	},
 	{

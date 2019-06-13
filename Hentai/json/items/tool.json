@@ -22,9 +22,9 @@
 		"id": "wrapped_condom_danger",
 		"type": "TOOL",
 		"copy-from": "wrapped_condom",
-		"name": "condom (unopened)",
-		"name_plural": "condoms (unopened)",
-		"description": "A contraceptive device that fits all sizes.  Take it out of the wrapping first if you want to use it.\n* This one seems to be quite <color_yellow>old</color> however.  You should refrain from using to avoid unnecessary *problems*.",
+		"name": "shoddy condom (unopened)",
+		"name_plural": "shoddy condoms (unopened)",
+		"description": "A contraceptive device that fits all sizes.  Take it out of the wrapping first if you want to use it.\n* This one seems to be quite <color_yellow>old</color> however.  You should refrain from using it to avoid unnecessary *problems*.",
 		"use_action": {
 			"target": "condom_danger",
 			"msg": "You unwrap the condom.",
@@ -67,6 +67,7 @@
 		"copy-from": "condom",
 		"name": "shoddy condom",
 		"name_plural": "shoddy condoms"
+		"description": "A contraceptive device that fits all sizes.  This one practically lost its protective qualities and is likely to break.",
 	},
 	{
 		"id": "holy_choker",		"//" : "collarじゃないよ！ほんとだよ！ suuuuuuuuure",

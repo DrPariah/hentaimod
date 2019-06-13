@@ -30,7 +30,8 @@ MOVINGDOING_TEXTS = {
 	"\"Ufufu♪\"",
 	"\"WooHoo♪\""
 }
---todo: perhaps move these dialog lines out of const into json so we could randomize words and add gender-specific checks?
+--todo: perhaps move these dialog lines out of const into json so we could randomize words and add gender-specific and etc checks?
+--another problem is that you can still hear this even when deaf
 --[[レイダー的な敵キャラ会話のテキスト]]--
 VULGAR_SPEECH_TEXTS = {
 	--ターゲットを発見した時
@@ -40,6 +41,7 @@ VULGAR_SPEECH_TEXTS = {
 		]]--
 		"\"Bah!\"",
 		"\"Aa-haaa!\"",
+		"\"Gotcha loser!\"",
 		"\"What the--?!\"",
 		"\"Hey, it's the enemy!\"",
 		"\"We have contact!\"",
@@ -94,6 +96,7 @@ VULGAR_SPEECH_TEXTS = {
 	TARGET_LOST = {
 		"(Clicks tongue)",
 		"\"That fellow sure runs fast...\"",
+		"\"That moron is hella fast, damn!\"",
 		"\"Come out, come out, wherever you are! I'm gonna end ya quick!\"",
 		"\"Stop hidin' and come out already!\"",
 		"\"Careful, that fellow is still hidin' nearby...\"",

@@ -187,7 +187,7 @@ function preg_process(mother)
 
 			--TODO:判定がガバい。ゲーム内日数で判断したい
 			if (day_by_default >= 0 and day_by_default <= 11) then
-				add_msg(mother:disp_name().." is having a breeding period and is now In Heat!", H_COLOR.PINK)
+				add_msg(ActorName(mother, "are", "is").." having a breeding period and "..YouWord(mother, "are", "is").." now In Heat!", H_COLOR.PINK)
 				mother:add_effect(efftype_id("estrus"), game.get_time_duration(14400))
 			end
 		end
@@ -198,7 +198,7 @@ function preg_process(mother)
 
 			--TODO:判定がガバい。ゲーム内日数で判断したい
 			if ((day_by_default >= 3 and day_by_default <= 7) or (day_by_default >= 17 and day_by_default <= 21) or (day_by_default >= 31 and day_by_default <= 35)) then
-				add_msg(mother:disp_name().." is having a breeding period and is now In Heat!", H_COLOR.PINK)
+				add_msg(ActorName(mother, "are", "is").." having a breeding period and "..YouWord(mother, "are", "is").." now In Heat!", H_COLOR.PINK)
 				mother:add_effect(efftype_id("estrus"), game.get_time_duration(14400))
 			end
 		end
@@ -226,7 +226,7 @@ function birth_process(mother)
 			--一日に3回程度、つまり3/24の確率で出産チェックを通過する。確率は適当。
 			if (math.random(100) > 12) then
 				mother:mod_pain(25)
-				add_msg(mother:disp_name().." has went into labor!", H_COLOR.RED)
+				add_msg(ActorName(mother, "have", "has").." went into labor!", H_COLOR.RED)
 				return
 			end
 
@@ -294,20 +294,4 @@ function birth_process(mother)
 
 	end
 
-end
-
--- pronoun system because english --
-function pro(obj, pronoun)
-    if (pronoun == "he") then
-      return (obj:male > 0 and pronoun or "she")
-    end
-	if (pronoun == "his") then
-      return (obj:male > 0 and pronoun or "her")
-    end
-	if (pronoun == "hers") then
-      return (obj:male > 0 and "his" or pronoun)
-    end
-	if (pronoun == "himself") then
-      return (obj:male > 0 and pronoun or "herself")
-    end
 end

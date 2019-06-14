@@ -45,6 +45,11 @@
 					"id": "bio_onahole",
 					"fg": 6,
 					"rotates": false
+				},
+				{
+					"id": ["scroll_of_naming", "scroll_of_artifact"],
+					"fg": 7,
+					"rotates": false
 				}
 			]
 		}

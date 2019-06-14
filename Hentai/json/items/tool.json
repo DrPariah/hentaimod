@@ -66,8 +66,8 @@
 		"type": "TOOL",
 		"copy-from": "condom",
 		"name": "shoddy condom",
-		"name_plural": "shoddy condoms"
-		"description": "A contraceptive device that fits all sizes.  This one practically lost its protective qualities and is likely to break.",
+		"name_plural": "shoddy condoms",
+		"description": "A contraceptive device that fits all sizes.  This one practically lost its protective qualities and is likely to break."
 	},
 	{
 		"id": "holy_choker",		"//" : "collarじゃないよ！ほんとだよ！ suuuuuuuuure",

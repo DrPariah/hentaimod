@@ -270,6 +270,7 @@ end
 
 --[[レイダー的な会話テキスト表示]]--
 --TODO:メッセージ表示じゃなくて、"音"として会話させたい
+--todo: proper speech for monsters isn't supported unfortunately, but it can still be a bit more sophisticated than this
 function matk_vulgar_speech(monster)
 	local max_range = 30		--特殊攻撃の最大射程
 
@@ -311,6 +312,9 @@ function gain_corrupt(target, dur)
 	--対象のINT値の確率で抵抗判定。判定に失敗したら"corrupt"を与える。
 	if (math.random(20) > target.int_cur) then
 		target:add_effect(efftype_id("corrupt"), game.get_time_duration(dur))
+		if target:is_player() then
+			game.add_msg(ActorName(target, "feel", "feels").." strangely warm from the inside!")
+		end
 	else
 		game.add_msg("However "..target:disp_name().." successfully "..YouWord(target, "resist", "resists").." the temptation!")
 	end
@@ -517,6 +521,7 @@ end
 
 --[[Wife攻撃]]--
 --TODO:functionを分ける。神クラスになりかけてる
+--todo - perhaps add dialogue for monster attacks?
 function matk_wifeu(monster)
 	local max_range = 1		--特殊攻撃の最大射程
 

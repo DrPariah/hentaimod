@@ -240,6 +240,7 @@ function birth_process(mother)
 
 			game.popup(mother:get_name().." has given birth to a baby!")
 			mother:remove_effect(efftype_id("pregnantcy"))
+			--Todo - implement a childbirth count? For dialog lines
 
 			local child_id = map:place_npc(locate.x, locate.y, npc_template_id("darkdays_children"))
 			--game.create_monster(mtype_id("debug_mon"), locate_list[math.random(#locate_list)])

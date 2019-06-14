@@ -3,7 +3,7 @@
 -- pronoun system because english --
 function pro(obj, pronoun)
 	local objPlayer = obj:is_player()
-	local objMale = getGender(obj)
+	local objMale = getGender(obj) --custom function because monsters are also subjected to this
 	
     if (pronoun == "he") then
 		if (objPlayer) then
@@ -46,7 +46,7 @@ end
 
 --(you)
 function ActorName(obj, youWord, themWord)
-	if (themWord == nil) then
+	if (themWord == nil) then --in case second args is skipped to not cause an exception
 		themWord = youWord
 	end
 	local out = obj:disp_name() --set actor name
@@ -72,6 +72,30 @@ function YouWord(obj, youWord, themWord)
 	return (obj:is_player() and youWord or themWord)
 end
 
+--create speech lines during super fun time
+--DOESN'T WORK WITH MONSTERS REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+function ActorSay(topic, partner)
+	--with this function and say instruction we can use json snippets here, fuck yeah
+	if topic == "<fun_stuff_accept>" or topic == "<fun_stuff_shy>" then -- exceptions
+		if partner:has_trait(trait_id("VIRGIN")) then --special cases for chaste ones
+			if partner.male then
+				topic = "<fun_stuff_partner_mvirgin>"
+			else
+				topic = "<fun_stuff_partner_fvirgin>"
+			end
+		elseif player:has_trait(trait_id("VIRGIN")) then
+			if player.male then
+				topic = "<fun_stuff_player_mvirgin>"
+			else
+				topic = "<fun_stuff_player_fvirgin>"
+			end
+		end
+	end
+	
+	--return add_msg(partner:disp_name()..": "..speech_texts[math.random(#speech_texts)])
+	--woohoo I can make the character actually say things wowie!
+	return partner:say(topic)
+end
 
 function getGender(obj)
 	if (obj:is_monster()) then --special case for monsters because fuck you apparently, they don't have gender attributes

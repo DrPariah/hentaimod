@@ -135,6 +135,15 @@ SEX.act_sex_finish = function(act, p)
 			--使用した道具を取り除き、(使用済み)のアイテムをプレイヤーの所持品に追加する。
 			player:i_rem(device)
 			local container = item("used_condom", 1)
+			--modded finish message
+			local finisher
+			if (player.male) then
+				finisher = player
+			else
+				finisher = SEX.sex_partner
+			end
+			
+			game.popup(ActorName(finisher, "finish", "finishes").." inside the condom!")
 
 			--(使用済み)のアイテムに液体を追加する。
 			container:fill_with(liquid_of_u)
@@ -173,6 +182,9 @@ SEX.check_preg = function(mother, father)
 	if not(father.male) then
 		return
 	end
+	
+	--modded finish message
+	game.popup(ActorName(father, "finish", "finishes").." inside of "..mother:disp_name().."!")
 
 	mother:set_value(CREAMPIE_SEED_TYPE, "HUMAN")
 

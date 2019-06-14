@@ -28,11 +28,39 @@ function lost_virgin(me, is_good)
 	if not(me:has_trait(trait_id("VIRGIN"))) then
 		return
 	end
-	
+	--[[todo/ideas:
+	perhaps keep count of taken virginities just in case? maybe have a mutation that makes you stronger the more you consume
+	speaking of that mutation, demons should totally have it
+	perhaps remember first partner in some way
+	]]--
 	if (is_good) then
 		add_msg(ActorName(me, "have", "has").." lost "..pro(me, "his").." virginity!", H_COLOR.LIGHT_GREEN)
+		--modded
+		--todo: implement male on male pain for obvious reasons? (lennyface) but then who is the taker? questions, questions...
+		if not(me.male) then -- female deflowering specifics
+			if me:is_player() then
+				add_msg("It hurts just a bit.", H_COLOR.LIGHT_GREEN)
+			else
+				add_msg(me:disp_name().." writhes uncomfortably just a little.", H_COLOR.LIGHT_GREEN)
+			end
+			me:mod_pain(5) --apparently this can cause you to stop in the middle of it at will (with safe mode?)
+		end
+		--moodlet
+		-- 20 for one of a time event should be okay right?
+		-- at first I thought making this pc only, but apparently npc can feel happy too so I'll let it slide
+		me:add_morale(morale_type("morale_deflower_good"), 20, 0, DAYS(3), HOURS(4))
 	else
 		add_msg(ActorName(me, "have", "has").." been robbed of "..pro(me, "his").." virginity!", H_COLOR.RED)
+		-- modded
+		if not(me.male) then -- female deflowering specifics
+			if me:is_player() then
+				add_msg("It hurts!", H_COLOR.RED)
+			else
+				add_msg(me:disp_name().." whines and winces from sharp pain!", H_COLOR.RED)
+			end
+			me:mod_pain(15)
+		end
+		me:add_morale(morale_type("morale_deflower_bad"), -20, 0, DAYS(3), HOURS(4))
 	end
 
 	me:unset_mutation(trait_id("VIRGIN"))
@@ -42,6 +70,7 @@ end
 --[[妊娠判定]]--
 function preg_roll(mother)
 	--TODO:need more improve
+	--agree, it shouldn't be just a flat chance just once, ideally you should carry semen inside your body for a while and check the impregnation chance per hour or something like that
 
 	local preg_chance = PREG_CHANCE
 
@@ -150,36 +179,45 @@ function is_accept_u(partner, device)
 
 	--行為に対するパートナーの積極性・好感度・恐怖度をそれぞれ取得。
 	willing = get_willing(partner)
+	--Todo: consider implementing "prostitution" mechanic where npcs with non-zero willing who are non-followers and not-friends (is_following and is_friend) do it for money or barter
 
 	if (willing > 50) then
 		if (is_love_sex) then
 			game.popup("Your partner responds with a great joy.")
+			--modded, from here and out, add speech line
+			ActorSay("<fun_stuff_accept>", partner)
 
 			--愛がある場合のみ[積極性]％の確立でゴムなしの行為を提案してくる。
 			if (math.random(100) <= willing) then
 				--TODO:仮にも万人の目に留まる可能性のあるゲームなのだから、本番行為を匂わすメッセージを軽々しく出すのは慎むべき。少なくともオプションで選択できるようにすべき。　と俺の理性が言ってる
 				if (game.query_yn("Seems like "..partner:get_name().." wants to enjoy it raw without the contraception.  Accept?")) then
 					device = nil
+					ActorSay("<fun_stuff_raw>", partner)
 				end
 			end
 
 		else
 			game.popup(partner:get_name().." is so terrified of you that "..pro(partner, "he").." will follow your word without a question...")
+			ActorSay("<fun_stuff_fear>", partner)
 		end
 		is_accept = true
 
 	elseif (willing > 25) then
 		if (is_love_sex) then
 			game.popup("Your partner agrees, albeit looking somewhat embarrassed.")
+			ActorSay("<fun_stuff_shy>", partner)
 		else
 			game.popup(partner:get_name().." is too afraid to refuse you...")
+			ActorSay("<fun_stuff_fear>", partner)
 		end
 
 		is_accept = true
 	elseif (willing > 0) then
 		game.popup("Your partner turns you down politely.")
+		ActorSay("<fun_stuff_refuse>", partner)
 	else
 		game.popup("Your partner refuses you roughly.")
+		ActorSay("<fun_stuff_refuse_rough>", partner)
 	end
 
 	return is_accept, device
@@ -303,11 +341,15 @@ function do_sex(partner, device)
 	player:assign_activity(activity_id("ACT_SEX"), turn_cost * player:get_speed() + 1000, 0, 0, "")	--ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
 
 	game.add_msg("<color_pink>*Wait a moment please...*</color>")
+	
+	if is_love_sex then -- flavor
+		ActorSay("<fun_stuff_love>", partner)
+	end
 
 	--パートナーがいる場合のみ貞操を失う。
 	if not(partner == nil) then
 		lost_virgin(player, true)
-		lost_virgin(partner, true)
+		lost_virgin(partner, is_love_sex) --if done by fear, obviously that's not willing
 	end
 end
 

@@ -92,10 +92,12 @@ ANTHRO.main = function(monster, selected_point)
 
 	--monsterを削除し、NPCを追加する。
 	--NOTE:monsterの所持品にアイテムを追加することはできても取得することができないので、ペットに預けていたアイテムがすべて消えてしまう。
-	g:remove_zombie(monster)		--こんなFunction名だけどゾンビじゃなくても消せる。
 
 	local npc_id = map:place_npc(selected_point.x, selected_point.y, npc_template_id(npc_temp_id))
 	DEBUG.add_msg("npc_id:"..npc_id)
+	
+	--delete monster after creating an npc to fix an issue where they both disappear forever
+	g:remove_zombie(monster)		--こんなFunction名だけどゾンビじゃなくても消せる。
 
 	--TODO:本当はこの場でNPCの名前を変更したりしたいんだけど無理なので名前の巻物を与えてお茶をにごす
 	local scroll = item("scroll_of_naming", 1)

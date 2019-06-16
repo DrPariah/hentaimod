@@ -51,17 +51,6 @@ SEX.act_sex_finish = function(act, p)
 
 	game.add_msg("*Fun things* are now over.")
 	act:set_to_null()
-	
-	--after sex pillow talk
-	if SEX.is_love_sex then
-		if (SEX.sex_partner:is_following() or SEX.sex_partner:is_friend()) then -- flavor
-			ActorSay("<fun_stuff_love>", SEX.sex_partner)
-		else
-			ActorSay("<fun_stuff_bye>", SEX.sex_partner)
-		end
-	else
-		ActorSay("<fun_stuff_bye_fear>", SEX.sex_partner) --currently only case of non-love sex is fear
-	end
 
 	player:remove_effect(efftype_id("lust"))
 	player:remove_effect(efftype_id("movingdoing"))
@@ -116,6 +105,17 @@ SEX.act_sex_finish = function(act, p)
 			opinion.owed = opinion.owed - 1
 		end
 		SEX.sex_partner.op_of_u = opinion
+		
+		--after sex pillow talk
+		if SEX.is_love_sex then
+			if (SEX.sex_partner:is_following() or SEX.sex_partner:is_friend()) then -- flavor
+				ActorSay("<fun_stuff_love>", SEX.sex_partner)
+			else
+				ActorSay("<fun_stuff_bye>", SEX.sex_partner)
+			end
+		else
+			ActorSay("<fun_stuff_bye_fear>", SEX.sex_partner) --currently only case of non-love sex is fear
+		end
 	end
 
 	DEBUG.add_msg("device check ->")
@@ -146,15 +146,12 @@ SEX.act_sex_finish = function(act, p)
 			--使用した道具を取り除き、(使用済み)のアイテムをプレイヤーの所持品に追加する。
 			player:i_rem(device)
 			local container = item("used_condom", 1)
-			--modded finish message
-			local finisher
-			if (player.male) then
-				finisher = player
-			else
-				finisher = SEX.sex_partner
+			if not(SEX.sex_partner == nil) then
+				--modded finish message
+				local finisher = ((player.male) and player or SEX.sex_partner)
+				
+				game.popup(ActorName(finisher, "finish", "finishes").." inside the condom!")
 			end
-			
-			game.popup(ActorName(finisher, "finish", "finishes").." inside the condom!")
 
 			--(使用済み)のアイテムに液体を追加する。
 			container:fill_with(liquid_of_u)

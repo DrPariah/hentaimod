@@ -11,6 +11,19 @@
 			"I was just about to say it myself!"
         ]
     },{
+		"//" : "for non-follower non-friends",
+        "type" : "snippet",
+        "category" : "<fun_stuff_accept_wanderer>",
+        "text" : [
+            "Well, don't mind if I do.",
+			"Sure, if you're offering.",
+			"I guess I can spare an hour or so.",
+			"Never thought I'd ever find someone so eager like you. Let's do this.",
+			"Even Cataclysm can't change your ways, huh? Okay then.",
+			"No strings attached? Great.",
+			"This is really crazy, but aren't we all?"
+        ]
+    },{
         "type" : "snippet",
         "category" : "<fun_stuff_raw>",
         "text" : [
@@ -95,6 +108,7 @@
 			"This is ridiculous.",
 			"Not happening.",
 			"Sorry, I'm not in the mood right now.",
+			"Desperate, are we?",
 			"No, we can't."
         ]
     },{
@@ -124,6 +138,28 @@
 			"No one will stop us together...",
 			"I'm so <happy> it's with you...",
 			"I don't want to lose you..."
+        ]
+    },{
+		"//" : "for non-followers non-friend partners",
+        "type" : "snippet",
+        "category" : "<fun_stuff_bye>",
+        "text" : [
+            "Well, that was fun, but I gotta go.",
+			"Thanks, that was refreshing. See ya.",
+			"That was not bad at all. Bye.",
+			"I'll be on my way now.",
+			"Just what I needed. It's time for me to go though."
+        ]
+    },{
+		"//" : "for non-followers non-friend partners",
+        "type" : "snippet",
+        "category" : "<fun_stuff_bye_fear>",
+        "text" : [
+            "*Whimpers*",
+			"*Cries*",
+			"Why... Why...",
+			"I didn't want this...",
+			"Why me... Why me..."
         ]
     },
 	{

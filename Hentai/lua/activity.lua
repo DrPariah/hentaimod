@@ -51,6 +51,17 @@ SEX.act_sex_finish = function(act, p)
 
 	game.add_msg("*Fun things* are now over.")
 	act:set_to_null()
+	
+	--after sex pillow talk
+	if SEX.is_love_sex then
+		if (SEX.sex_partner:is_following() or SEX.sex_partner:is_friend()) then -- flavor
+			ActorSay("<fun_stuff_love>", SEX.sex_partner)
+		else
+			ActorSay("<fun_stuff_bye>", SEX.sex_partner)
+		end
+	else
+		ActorSay("<fun_stuff_bye_fear>", SEX.sex_partner) --currently only case of non-love sex is fear
+	end
 
 	player:remove_effect(efftype_id("lust"))
 	player:remove_effect(efftype_id("movingdoing"))

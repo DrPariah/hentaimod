@@ -185,7 +185,11 @@ function is_accept_u(partner, device)
 		if (is_love_sex) then
 			game.popup("Your partner responds with a great joy.")
 			--modded, from here and out, add speech line
-			ActorSay("<fun_stuff_accept>", partner)
+			if partner:is_following() or partner:is_friend() then
+				ActorSay("<fun_stuff_accept>", partner)
+			else
+				ActorSay("<fun_stuff_accept_wanderer>", partner) --wandering non-followers will sound a little different
+			end
 
 			--愛がある場合のみ[積極性]％の確立でゴムなしの行為を提案してくる。
 			if (math.random(100) <= willing) then
@@ -345,10 +349,6 @@ function do_sex(partner, device)
 	end
 
 	game.add_msg("<color_pink>*Wait a moment please...*</color>")
-	
-	if is_love_sex then -- flavor
-		ActorSay("<fun_stuff_love>", partner)
-	end
 
 	--パートナーがいる場合のみ貞操を失う。
 	if not(partner == nil) then

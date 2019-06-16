@@ -78,7 +78,7 @@ function ActorSay(topic, partner)
 	--with this function and say instruction we can use json snippets here, fuck yeah
 	if topic == "<fun_stuff_accept>" or topic == "<fun_stuff_shy>" then -- exceptions
 		if partner:has_trait(trait_id("VIRGIN")) then --special cases for chaste ones
-			if partner.male then
+			if getGender(partner) then --use function just in case if it's gonna be a monster at some point
 				topic = "<fun_stuff_partner_mvirgin>"
 			else
 				topic = "<fun_stuff_partner_fvirgin>"
@@ -97,7 +97,7 @@ function ActorSay(topic, partner)
 	return partner:say(topic)
 end
 
-function getGender(obj)
+function getGender(obj) -- return true if male, false if female
 	if (obj:is_monster()) then --special case for monsters because fuck you apparently, they don't have gender attributes
 		local mtype = obj.type
 		if (mtype:in_species(species_id("FEMALE"))) then

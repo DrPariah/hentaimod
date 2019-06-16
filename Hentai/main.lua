@@ -91,6 +91,7 @@ function MOD.on_hour_passed()
 end
 
 --[[ゲーム内で1ターン経過した際のコールバック]]--
+--TODO: if the activity is stopped by pressing 5, its finish is not processed properly
 function MOD.on_turn_passed()
 	if player:has_activity(activity_id("ACT_SEX")) then
 		if player.activity.moves_left < 1000 then

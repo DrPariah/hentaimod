@@ -74,7 +74,7 @@ VULGAR_SPEECH_TEXTS = {
 		"\"You got nothin' on me!\"",
 		"\"Rape and then kill? Or kill and then rape?  ...Both sound reaaaaaaaally nice!\"",
 		"\"I'll rape you, then kill you, and then rape you again!\"",
-		"\"Murder die kill!\"",
+		"\"Murder death kill!\"",
 		"\"I don't mind helpin' you out, you know?  ...After I'm done toyin' with ya, that is!\"",
 		"(Insane laughter)",
 		"(Roars)",

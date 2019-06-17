@@ -12,7 +12,7 @@
 				"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET"
 			},
 			{
-				"text": "[Mutation Threshold] Calm down, I'm a human! ...Well, at least I was before.",
+				"text": "[Mutation Threshold] Calm down, I'm a human! ...Well, at least I used to be.",
 				"topic": "TALK_DEMONBEING_SCHOOLGIRL_GREET",
 				"condition": {
 					"u_has_any_trait": [
@@ -84,7 +84,7 @@
 	{
 		"id": "TALK_DB_SCHOOLGIRL_WHATSHAPPEN_2",
 		"type": "talk_topic",
-		"dynamic_line": "Yes... That's right.  We didn't see any Demons until later.  I remember seeing some strangers among the refugees.  Our principal had some acquaintances so I thought they were related...  Oh, I'm pretty sure it was them who started doing something really shady in the courtyard!",
+		"dynamic_line": "Yes... That's right.  We didn't see any Demons until later.  I remember seeing some strangers among the refugees.  Our principal had some acquaintances so I thought they were related...  Oh, I'm pretty sure it was them who started doing something really fishy in the courtyard!",
 		"responses": [
 			{
 				"text": "I see...",

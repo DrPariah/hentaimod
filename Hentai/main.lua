@@ -91,7 +91,6 @@ function MOD.on_hour_passed()
 end
 
 --[[ゲーム内で1ターン経過した際のコールバック]]--
---TODO: if the activity is stopped by pressing 5, its finish is not processed properly
 function MOD.on_turn_passed()
 	if player:has_activity(activity_id("ACT_SEX")) then
 		if player.activity.moves_left < 1000 then
@@ -99,6 +98,15 @@ function MOD.on_turn_passed()
 			player.activity:set_to_null()
 		else
 			SEX.act_sex_do_turn(player.activity, player)
+		end
+	end
+	
+	--in case the activity was ended prematurely
+	--isn't it a bit heavy checking this every turn?
+	if player:has_effect(efftype_id("movingdoing")) then
+		if not(player:has_activity(activity_id("ACT_SEX"))) then
+			DEBUG.add_msg("Fun effect is found but no activity! Premature fun end!")
+			SEX.act_sex_finish_premature()
 		end
 	end
 end

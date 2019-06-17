@@ -164,6 +164,17 @@
 			"I didn't want this...",
 			"Why me... Why me..."
         ]
+    },{
+		"//" : "act was interrupted",
+        "type" : "snippet",
+        "category" : "<fun_stuff_interrupt>",
+        "text" : [
+            "Hey!",
+			"Done already?",
+			"I'm not finished yet!",
+			"What's wrong?",
+			"Why did you stop?"
+        ]
     },
 	{
 		"//": "keep these below until one day monsters can utilize snippets",

@@ -458,7 +458,9 @@ function matk_stripu(monster)
 		game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."の</color>"..item:display_name().."<color_pink>を脱がせると、そのまま奪い取りました！</color>")
 		monster:add_item(item)
 	end
-	target:i_rem(item)
+	if (target:has_item(item)) then
+		target:i_rem(item)
+	end
 
 	--DEBUG.add_msg("strip you!")
 
@@ -474,6 +476,10 @@ function matk_wifeu(monster)
 
 	--攻撃しようとしているターゲットを取得
 	local target = get_attackable_player(monster, max_range)
+
+	if (target == nil) then
+		return
+	end
 
 	--ターゲットがヤれる状態かどうかチェック
 	if (not can_wife(monster, target)) then
@@ -529,24 +535,31 @@ function matk_wifeu(monster)
 
 
 	--イく！
+	log.message("532")
 	if (has_cum(target)) then
 		local liquid = get_ejacuate_item(target)
 		map:add_item(target:pos(), liquid)
 	end
+	log.message("537")
 	if (has_cum(monster)) then
 		local liquid = get_ejacuate_item(monster)
 		map:add_item(monster:pos(), liquid)
 
+	log.message("542")
 		if (is_cubi(monster)) then
 			--1/5の確率で相手に"FIEND"タイプの変異を与える。どこに注がれたかはこの際考慮しない。血清注射でも変異するんだからどこの穴でも[自主規制]
 			--if (1 >= math.random(5)) then
+	log.message("546")
 			if (game.one_in(5)) then
 				DEBUG.add_msg("mutate!")
+	log.message("549")
 				add_msg("魔性の体液が"..target:disp_name().."の体を変異させる...", H_COLOR.YELLOW)
 				target:mutate_category("FIEND")
+	log.message("552")
 			end
 		end
 
+	log.message("553")
 		--妊娠チェック。やればできる。
 		DEBUG.add_msg("preg roll-->")
 		--TODO:共通化したい
@@ -575,17 +588,20 @@ function matk_wifeu(monster)
 			end
 		end
 
+	log.message("582")
 		--一時的に友好的に近づける。でないとrape loopに嵌ってしまう...
 		--TODO:それでも複数に囲まれると死ぬまで嬲られるのをどうにかしたい
 		monster.anger = monster.anger - 50
 		monster.friendly = monster.friendly + 50
 		monster.morale = monster.morale - 30
 
+	log.message("589")
 		--モンスターから"dominate"を外し、対象からも"gotwifed"のintensityを1つ下げる。
 		monster:remove_effect(efftype_id("dominate"))
 		target:add_effect(efftype_id("gotwifed"), game.get_time_duration(-1), "num_bp", true)
 	end
 
+	log.message("595")
 	--DEBUG.add_msg("wife you!")
 
 	target:mod_moves(-100)

@@ -11,13 +11,17 @@ local is_love_sex			--愛のある行為かどうか
 function is_cubi(monster)
 	DEBUG.add_msg("monster:"..monster:disp_name())
 
+	log.message("14")
 	local mtype = monster.type
 	DEBUG.add_msg("mtype:"..mtype:nname())
 
+	log.message("18")
 	if (mtype:in_species(species_id("CUBI"))) then
+	log.message("20")
 		return true
 	end
 
+	log.message("24")
 	return false
 end
 

@@ -125,8 +125,11 @@ end
 --[[Characterが着用しているアイテムの中からランダムに1つ取得する。body_partが指定されている場合はその部分を覆うもののみ対象。]]--
 function get_random_wear(chara, body_part)
 	local item_list = get_wears(chara, body_part)
-
-	return item_list[math.random(#item_list)]
+	if item_list then
+		return item_list[math.random(#item_list)]
+	else
+		return nil
+	end
 end
 
 --[[Characterが所持している(インベントリ内の)アイテムのリストを取得する。]]--

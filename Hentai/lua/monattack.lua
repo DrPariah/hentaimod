@@ -458,7 +458,9 @@ function matk_stripu(monster)
 		game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."の</color>"..item:display_name().."<color_pink>を脱がせると、そのまま奪い取りました！</color>")
 		monster:add_item(item)
 	end
+	if (target:has_item(item)) then
 	target:i_rem(item)
+	end
 
 	--DEBUG.add_msg("strip you!")
 
@@ -474,6 +476,10 @@ function matk_wifeu(monster)
 
 	--攻撃しようとしているターゲットを取得
 	local target = get_attackable_player(monster, max_range)
+
+	if (target == nil) then
+		return
+	end
 
 	--ターゲットがヤれる状態かどうかチェック
 	if (not can_wife(monster, target)) then

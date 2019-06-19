@@ -41,7 +41,8 @@
 			"I'm a virgin though, so... please be gentle with me.",
 			"I'm so nervous... Can you hold me?",
 			"Ah...! No, I'm fine, keep going...",
-			"It's my first time... I hope I'll do well."
+			"It's my first time... I hope I'll do well.",
+			"Umm... It's my first... Will that be okay...?"
         ]
     },{
         "type" : "snippet",
@@ -128,7 +129,8 @@
 			"I should probably off a <name_b> like you on the spot to make this world a better place.",
 			"Seek help you sad <name_b>.",
 			"Keep dreaming sweetie.",
-			"Sorry, not this lifetime."
+			"Sorry, not this lifetime.",
+			"What the fuck is wrong with you?"
         ]
     },{
         "type" : "snippet",

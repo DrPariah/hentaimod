@@ -185,7 +185,7 @@ function is_accept_u(partner, device)
 		if (is_love_sex) then
 			game.popup("Your partner responds with a great joy.")
 			--modded, from here and out, add speech line
-			if partner:is_following() or partner:is_friend() then
+			if partner:is_following() or partner:is_friendly() then
 				ActorSay("<fun_stuff_accept>", partner)
 			else
 				ActorSay("<fun_stuff_accept_wanderer>", partner) --wandering non-followers will sound a little different

@@ -108,7 +108,7 @@ SEX.act_sex_finish = function(act, p)
 		
 		--after sex pillow talk
 		if SEX.is_love_sex then
-			if (SEX.sex_partner:is_following() or SEX.sex_partner:is_friend()) then -- flavor
+			if (SEX.sex_partner:is_following() or SEX.sex_partner:is_friendly()) then -- flavor
 				ActorSay("<fun_stuff_love>", SEX.sex_partner)
 			else
 				ActorSay("<fun_stuff_bye>", SEX.sex_partner)

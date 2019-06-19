@@ -2,7 +2,8 @@
 	{
 		"id": "ACT_SEX",
 		"type": "activity_type",
-		"stop_phrase": "Stop *having fun*?",
+		"activity_level": "ACTIVE_EXERCISE",
+		"verb": "*having fun*",
 		"suspendable": false,
 		"based_on": "speed"
 	}

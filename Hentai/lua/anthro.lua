@@ -104,7 +104,7 @@ ANTHRO.main = function(monster, selected_point)
 	map:add_item(player:pos(), scroll)
 	add_msg("Something has rolled at your feet.", H_COLOR.GREEN)
 
-	return
+	return true
 
 end
 

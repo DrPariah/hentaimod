@@ -18,7 +18,9 @@
 		"material": [ "flesh", "water" ],
 		"volume": 1,
 		"phase": "liquid",
-		"fun": -50
+		"fun": -50,
+		"freezing_point": 23,
+		"vitamins": [ [ "calcium", 1, 3 ], [ "iron", 1, 3 ], [ "vitC", 3, 8 ], [ "vitB", 1, 3 ] ]
 	},
 	{
 		"id": "d_cum",
@@ -40,6 +42,8 @@
 		"volume": 1,
 		"phase": "liquid",
 		"fun": -50,
+		"freezing_point": -9999,
+		"vitamins": [ [ "calcium", 6 ], [ "iron", 6 ], [ "vitC", 6 ], [ "vitB", 6 ] ],
 		"use_action" : {
 			"type" : "mutagen",
 			"is_weak" : true

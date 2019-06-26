@@ -11,35 +11,71 @@ local is_love_sex			--愛のある行為かどうか
 function is_cubi(monster)
 	DEBUG.add_msg("monster:"..monster:disp_name())
 
-	log.message("14")
 	local mtype = monster.type
 	DEBUG.add_msg("mtype:"..mtype:nname())
 
-	log.message("18")
 	if (mtype:in_species(species_id("CUBI"))) then
-	log.message("20")
 		return true
 	end
 
-	log.message("24")
 	return false
 end
 
 --[[貞操を失う処理]]--
-function lost_virgin(me, is_good)
+function lost_virgin(me, is_good, p)
 
 	if not(me:has_trait(trait_id("VIRGIN"))) then
 		return
 	end
 
-	if (is_good) then
+	if (is_good) then 
+	--willing sex
 		add_msg(me:disp_name().."は貞操を失いました！", H_COLOR.LIGHT_GREEN)
-	else
+		--modded
+		
+		--moodlet
+		-- 20 for one of a time event should be okay right?
+		-- at first I thought making this pc only, but apparently npc can feel happy too so I'll let it slide
+		me:add_morale(morale_type("morale_deflower_good"), 20, 0, DAYS(3), HOURS(12))
+	else 
+	-- rape
 		add_msg(me:disp_name().."は貞操を奪われました！", H_COLOR.RED)
+		
+		me:add_morale(morale_type("morale_deflower_bad"), -20, 0, DAYS(3), HOURS(12))
+	end
+	
+	--process pain, mostly female deflowering specifics
+	deflower_pain(me, is_good)
+	
+	me:unset_mutation(trait_id("VIRGIN"))
+end
+
+function deflower_pain(me, is_good)
+	if (getGender(me) == true) then -- currently female only
+		--todo: implement male on male pain for obvious reasons? (lennyface) but then who is the taker? and do we separate anal/penile virginities? questions, questions...
+		return
 	end
 
-	me:unset_mutation(trait_id("VIRGIN"))
+	local deal_pain
+	if (is_good) then
+		deal_pain = 5
+		
+		if me:is_player() then
+			add_msg("ちょっとだけ痛かった。", H_COLOR.LIGHT_GREEN)
+		else
+			add_msg(me:disp_name().."は少し不快にうずくまった。", H_COLOR.LIGHT_GREEN)
+		end
+	else
+		deal_pain = 15
+		
+		if me:is_player() then
+			add_msg("痛い！！", H_COLOR.RED)
+		else
+			add_msg(me:disp_name().."は鋭い痛みからうめき声を上げました！", H_COLOR.RED)
+		end
+	end
 
+	me:mod_pain( deal_pain ) --apparently this can cause you to stop in the middle of it at will (with safe mode?)
 end
 
 --[[妊娠判定]]--
@@ -82,6 +118,10 @@ function iuse_yiff(item, active)
 	end
 
 	DEBUG.add_msg(someone:disp_name())
+	
+	--todo - same sex partners (female) will be required to have a dildo of some sort which will increase the fun amount by tiers (vibrator < strapon < double-headed dildo), dildo and strapons are non-battery items and can be stand-alone, but less satisfying without a partner, while vibrator is less suited for double use so it gets a penalty; note -  check for item: player:has_item
+	--strapon item will need a new iuse, perhaps even mod vibrator iuse to gender restrict them
+	--partners that both have dicks (e.g males or herms) will give you a choice as to who will be the dom and who's sub (the classic 受け-攻め type)
 
 	if (someone:is_monster()) then
 		if (someone:has_effect(efftype_id("pet"))) then
@@ -304,13 +344,14 @@ function do_sex(partner, device)
 	--行為のアクティビティ開始。
 	SEX.init(sex_fun_bonus, partner, pseudo_device, is_love_sex)
 	player:assign_activity(activity_id("ACT_SEX"), turn_cost * player:get_speed() + 1000, 0, 0, "")	--ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
-
+	
+	
 	game.add_msg("<color_pink>*しばらくおまちください*</color>")
 
 	--パートナーがいる場合のみ貞操を失う。
 	if not(partner == nil) then
-		lost_virgin(player, true)
-		lost_virgin(partner, true)
+		lost_virgin(player, true, partner)
+		lost_virgin(partner, is_love_sex, player) --if done by fear, obviously that's not willing
 	end
 end
 
@@ -449,6 +490,10 @@ function iuse_anthromorph(item, active)
 	local center = player:pos()
 	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
 	local selected_point = tripoint(selected_x, selected_y, center.z)
+	
+	if selected_point == nil then -- do not delete the item if it wasn't used
+		return
+	end
 
 	local monster = game.get_monster_at(selected_point)
 

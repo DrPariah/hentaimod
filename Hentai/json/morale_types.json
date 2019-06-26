@@ -3,5 +3,20 @@
 		"id": "morale_sex_good",
 		"type": "morale_type",
 		"text": "*気持ちいいこと*を堪能した"
+	},
+	{
+		"id": "morale_deflower_good",
+		"type": "morale_type",
+		"text": "貞操を卒業した"
+	},
+	{
+		"id": "morale_deflower_bad",
+		"type": "morale_type",
+		"text": "貞操を奪われました"
+	},
+	{
+		"id": "morale_orgasm",
+		"type": "morale_type",
+		"text": "達した"
 	}
 ]

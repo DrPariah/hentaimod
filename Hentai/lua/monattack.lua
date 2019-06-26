@@ -187,7 +187,7 @@ function can_wife(monster, target)
 	--ターゲットがぱんつはいてないかチェック
 	if (target:wearing_something_on("bp_leg_l") and target:wearing_something_on("bp_leg_r")) then
 		if (math.random(10) <= 2) then
-			game.add_msg("<color_yellow>"..monster:disp_name().."はあなたの股間を狙っている...</color>")
+			add_msg(monster:disp_name().."はあなたの股間を狙っている...", H_COLOR.YELLOW)
 		end
 		return false
 	end
@@ -221,8 +221,11 @@ function has_cum(me)
 
 	if (intensity >= limit) then
 		--"lust"を取り除き、少しだけwaitを掛ける。
-		game.add_msg("<color_green>"..me:disp_name().."は達した！</color>")
+		add_msg(me:disp_name().."は達した！", H_COLOR.GREEN)
 		me:remove_effect(efftype_id("lust"))
+		if not(me:is_monster()) then
+			me:add_morale(morale_type("morale_orgasm"), game.rng( 1, 3 ), 0, HOURS(1), MINUTES(10))
+		end
 		me:mod_moves(-50)
 
 		return true
@@ -235,7 +238,7 @@ end
 function get_ejacuate_item(me)
 	local liquid
 
-	if (me:is_player()) then
+	if ( me:is_player() or me:is_npc() ) then
 		--対象がプレイヤーなら人間の体液。
 		liquid = item("h_semen", 1)
 
@@ -344,7 +347,7 @@ function matk_seduce(monster)
 	local act_text = action_texts[math.random(#action_texts)]
 
 	--HENTAI的なテキストを表示。
-	game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."の"..bp_text..act_text.."</color>")
+	add_msg(monster:disp_name().."は"..target:disp_name().."の"..bp_text..act_text, H_COLOR.PINK)
 
 	--状態異常"lust"と"corrupt"をtargetに与える。
 	--target:add_effect(efftype_id("corrupt"), game.get_time_duration(100))
@@ -384,7 +387,7 @@ function matk_tkiss(monster)
 		return
 	end
 
-	game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."に投げキッスした！</color>")
+	add_msg(monster:disp_name().."は"..target:disp_name().."に投げキッスした！", H_COLOR.PINK)
 
 	--状態異常"lust"と"corrupt"をtargetに与える。
 	--target:add_effect(efftype_id("corrupt"), game.get_time_duration(50))
@@ -412,6 +415,11 @@ function matk_stripu(monster)
 	local target = get_attackable_chara(monster, max_range)
 
 	if (target == nil) then
+		return
+	end
+	
+	--set naked check to disable this attack if target is already naked
+	if (is_naked(target)) then
 		return
 	end
 
@@ -495,7 +503,7 @@ function matk_wifeu(monster)
 
 	--ヤる！
 	if (monster:has_effect(efftype_id("dominate"))) then
-		game.add_msg("<color_pink>"..monster:disp_name().."は腰を振り続けている...</color>")
+		add_msg(monster:disp_name().."は腰を振り続けている...", H_COLOR.PINK)
 
 	else
 		local intensity = target:get_effect_int(efftype_id("gotwifed"))
@@ -503,7 +511,7 @@ function matk_wifeu(monster)
 
 		if (intensity >= 3) then
 			--ターゲットが既にお取り込み中の場合は...自主トレを行う。
-			game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."を見つめながら自分の体をまさぐっている...</color>")
+			add_msg(monster:disp_name().."は"..target:disp_name().."を見つめながら自分の体をまさぐっている...", H_COLOR.PINK)
 
 			monster:add_effect(efftype_id("lust"), game.get_time_duration(6))
 			monster:mod_moves(-100)
@@ -512,13 +520,13 @@ function matk_wifeu(monster)
 
 		else
 			--スペースがあれば突っ込む。何をとは言わんが。
-			game.add_msg("<color_pink>"..monster:disp_name().."は"..target:disp_name().."を押さえつけると、ゆっくりと体を沈めていきました...</color>")
+			add_msg(monster:disp_name().."は"..target:disp_name().."を押さえつけると、ゆっくりと体を沈めていきました...", H_COLOR.PINK)
 
 			--モンスターに"dominate"を、対象に"gotwifed"を与える。
 			monster:add_effect(efftype_id("dominate"), game.get_time_duration(1), "num_bp", true)
 			target:add_effect(efftype_id("gotwifed"), game.get_time_duration(1), "num_bp", true)
 
-			lost_virgin(target, false)
+			lost_virgin(target, false, monster)
 		end
 	end
 
@@ -535,31 +543,24 @@ function matk_wifeu(monster)
 
 
 	--イく！
-	log.message("532")
 	if (has_cum(target)) then
 		local liquid = get_ejacuate_item(target)
 		map:add_item(target:pos(), liquid)
 	end
-	log.message("537")
 	if (has_cum(monster)) then
 		local liquid = get_ejacuate_item(monster)
 		map:add_item(monster:pos(), liquid)
 
-	log.message("542")
 		if (is_cubi(monster)) then
 			--1/5の確率で相手に"FIEND"タイプの変異を与える。どこに注がれたかはこの際考慮しない。血清注射でも変異するんだからどこの穴でも[自主規制]
 			--if (1 >= math.random(5)) then
-	log.message("546")
 			if (game.one_in(5)) then
 				DEBUG.add_msg("mutate!")
-	log.message("549")
 				add_msg("魔性の体液が"..target:disp_name().."の体を変異させる...", H_COLOR.YELLOW)
 				target:mutate_category("FIEND")
-	log.message("552")
 			end
 		end
 
-	log.message("553")
 		--妊娠チェック。やればできる。
 		DEBUG.add_msg("preg roll-->")
 		--TODO:共通化したい
@@ -588,20 +589,17 @@ function matk_wifeu(monster)
 			end
 		end
 
-	log.message("582")
 		--一時的に友好的に近づける。でないとrape loopに嵌ってしまう...
 		--TODO:それでも複数に囲まれると死ぬまで嬲られるのをどうにかしたい
 		monster.anger = monster.anger - 50
 		monster.friendly = monster.friendly + 50
 		monster.morale = monster.morale - 30
 
-	log.message("589")
 		--モンスターから"dominate"を外し、対象からも"gotwifed"のintensityを1つ下げる。
 		monster:remove_effect(efftype_id("dominate"))
 		target:add_effect(efftype_id("gotwifed"), game.get_time_duration(-1), "num_bp", true)
 	end
 
-	log.message("595")
 	--DEBUG.add_msg("wife you!")
 
 	target:mod_moves(-100)

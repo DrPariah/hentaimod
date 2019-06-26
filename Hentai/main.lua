@@ -240,7 +240,20 @@ function birth_process(mother)
 
 			game.popup(mother:get_name().."は子供を産み落としました！")
 			mother:remove_effect(efftype_id("pregnantcy"))
+			
+			--childbirth count, method from Kawaii maid mod
+			local pregcount = tonumber(mother:get_value("hentai_pregcount"))
+			
+			if pregcount == nil then
+				pregcount = 0
+			end
+			
+			pregcount = pregcount + 1
+			
+			mother:set_value("hentai_pregcount", tostring(pregcount))
+			--
 
+			--TODO: define child's genetics, set ethnicity and appearance depending on child's parents, etc
 			local child_id = map:place_npc(locate.x, locate.y, npc_template_id("darkdays_children"))
 			--game.create_monster(mtype_id("debug_mon"), locate_list[math.random(#locate_list)])
 			DEBUG.add_msg("child_id:"..child_id)

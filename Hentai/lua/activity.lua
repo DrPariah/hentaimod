@@ -15,9 +15,17 @@ SEX.init = function(fun_bonus, ptnr, dvc, love_sex)
 	--DEBUG.add_msg("ptnr:"..ptnr:disp_name())
 	--DEBUG.add_msg("dvc:"..dvc:display_name())
 
-	SEX.sex_fun_bonus = fun_bonus
-	SEX.sex_partner = ptnr
-	SEX.pseudo_device = dvc
+	SEX.sex_fun_bonus = math.round(fun_bonus, 0)
+	if not(ptnr == nil) then
+		SEX.sex_partner = ptnr
+	else
+		SEX.sex_partner = nil
+	end
+	if not(dvc == nil) then
+		SEX.pseudo_device = dvc
+	else
+		SEX.pseudo_device = nil
+	end
 	if not(love_sex == nil) then
 		SEX.is_love_sex = love_sex
 	else
@@ -39,8 +47,13 @@ SEX.act_sex_do_turn = function(act, p)
 
 		player:add_effect(efftype_id("movingdoing"), game.get_time_duration(SEX_BASE_TURN))
 		if not(SEX.sex_partner == nil) then
-			SEX.sex_partner(efftype_id("movingdoing"), game.get_time_duration(SEX_BASE_TURN))
+			SEX.sex_partner:add_effect(efftype_id("movingdoing"), game.get_time_duration(SEX_BASE_TURN))
+			
+			if SEX.is_love_sex then
+				SEX.sex_partner:add_morale(SEX_MORALE_TYPE, SEX.sex_fun_bonus, 0, game.get_time_duration(SEX_FUN_DURATION), game.get_time_duration(SEX_FUN_DECAY_START))
+			end
 		end
+
 	end
 end
 
@@ -135,6 +148,15 @@ SEX.act_sex_finish = function(act, p)
 			--使用した道具を取り除き、(使用済み)のアイテムをプレイヤーの所持品に追加する。
 			player:i_rem(device)
 			local container = item("used_condom", 1)
+			
+			if (SEX.sex_partner == nil) or sameSex(player, SEX.sex_partner, "FEMALE")  then --in case both are female or player is masturbating
+				game.popup("あなたは使用済みの避妊具を捨てました。")
+			else
+				--modded finish message
+				local finisher = ((player.male) and player or SEX.sex_partner)
+				
+				game.popup(finisher:disp_name().."は、避妊具に流れました。")
+			end
 
 			--(使用済み)のアイテムに液体を追加する。
 			container:fill_with(liquid_of_u)
@@ -173,6 +195,9 @@ SEX.check_preg = function(mother, father)
 	if not(father.male) then
 		return
 	end
+	
+	--中出し
+	game.popup(father:disp_name().."は、"..mother:disp_name().."の中に流れました。")
 
 	mother:set_value(CREAMPIE_SEED_TYPE, "HUMAN")
 

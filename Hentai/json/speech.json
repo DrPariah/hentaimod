@@ -132,5 +132,67 @@
 		"speaker" : "mon_cambion_female",
 		"sound" : "(狂気に満ちた笑い声)",
 		"volume" : 30
+	},
+	
+	{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "(狂気に満ちた笑い声)",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「死ね、クソ野郎！」",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「ヒャッハー！」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「殺しは初めてじゃないんだよ、ルーキー！」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「気をつけろ、まだそのへんに隠れてやがるぞ...」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「犯して、殺して、また犯してやるよぉ！」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「HELL YEAH!」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「血清(人間)を使ったんだ。」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「そういう態度取ってて、いつか背中からブッスリ刺されても知らないからね。」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「あ...貴方はまだ悪魔になってないわよね？そうでしょ！？」",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「貴様だけは絶対に許さん！」",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "「ただ嬲り殺すだけでは飽き足らぬ、地獄の底で永遠の責め苦を与えてやる！」",
+		"volume": 60
 	}
 ]

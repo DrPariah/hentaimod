@@ -158,6 +158,8 @@
 	{
 		"type": "effect_type",
 		"id": "pregnantcy",
+		"apply_memorial_log": "妊娠しました。",
+		"remove_memorial_log": "赤ちゃんを出産しました。", "//": "probably should be handled at lua in case abortion/stillbirth is added",
 		"name": [
 			"妊娠(3か月)",
 			"妊娠(4か月)",

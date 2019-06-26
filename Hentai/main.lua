@@ -109,6 +109,26 @@ function MOD.on_turn_passed()
 			SEX.act_sex_finish_premature()
 		end
 	end
+	--[[
+	--try to check if dominating monster is long dead so we remove the effect
+	local player_list = get_players()
+
+	for key, value in pairs(player_list) do
+		--play sound when raped by monster
+		if value:has_effect(efftype_id("gotwifed")) then
+			game.sfx_play_ambient_variant_sound( "plmove", getGender(value) and "fatigue_m_high" or "fatigue_f_high", game.sfx_get_heard_volume( value:pos() ) , 17, 100)
+			add_msg("Actor raped ->"..value:disp_name())
+		
+			local dommon = value:get_value("hentai_dommon")
+			if dommon == nil or dommon:is_dead() or dommon:get_attitude("A_NEUTRAL") then
+				add_msg("Actor raped ("..value:disp_name()..") but no monster!")
+				game.sfx_play_ambient_variant_sound( "plmove", getGender(value) and "fatigue_m_high" or "fatigue_f_high", game.sfx_get_heard_volume( value:pos() ) , 17, -1)
+				value:remove_effect(efftype_id("gotwifed"))
+				value:remove_value("hentai_dommon")
+			end
+		end
+	end
+	]]--
 end
 
 --[[ミッションをクリアした際のコールバック]]--

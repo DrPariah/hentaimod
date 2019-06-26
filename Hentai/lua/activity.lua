@@ -46,11 +46,14 @@ SEX.act_sex_do_turn = function(act, p)
 		player:add_morale(SEX_MORALE_TYPE, SEX.sex_fun_bonus, 0, game.get_time_duration(SEX_FUN_DURATION), game.get_time_duration(SEX_FUN_DECAY_START))
 
 		player:add_effect(efftype_id("movingdoing"), game.get_time_duration(SEX_BASE_TURN))
+		player:practice( skill_id( "sex" ), SEX.sex_fun_bonus )
+		
 		if not(SEX.sex_partner == nil) then
 			SEX.sex_partner:add_effect(efftype_id("movingdoing"), game.get_time_duration(SEX_BASE_TURN))
 			
 			if SEX.is_love_sex then
 				SEX.sex_partner:add_morale(SEX_MORALE_TYPE, SEX.sex_fun_bonus, 0, game.get_time_duration(SEX_FUN_DURATION), game.get_time_duration(SEX_FUN_DECAY_START))
+				SEX.sex_partner:practice( skill_id( "sex" ), SEX.sex_fun_bonus )
 			end
 		end
 

@@ -313,7 +313,9 @@ end
 function gain_corrupt(target, dur)
 
 	--対象のINT値の確率で抵抗判定。判定に失敗したら"corrupt"を与える。
-	if (math.random(20) > target.int_cur) then
+	--leave 5% chance 1/20 no matter what
+	if (  math.random(20) > math.min( 19, target.int_cur + (target:get_skill_level( skill_id( "sex" ) ) / 2) )  ) then
+		dur = math.max( 1, dur - (target:get_skill_level( skill_id( "sex" ) ) * 10) )
 		target:add_effect(efftype_id("corrupt"), game.get_time_duration(dur))
 		if target:is_player() then
 			game.add_msg(ActorName(target, "feel", "feels").." strangely warm from the inside!")
@@ -558,13 +560,15 @@ function matk_wifeu(monster)
 	
 	--added bunch of synonyms to keep it interesting
 	local hip_act_text = hip_action_texts[math.random(#hip_action_texts)]
+	
+	local intensity = 0
 
 	--ヤる！
 	if (monster:has_effect(efftype_id("dominate"))) then
 		game.add_msg("<color_pink>"..monster:disp_name().." keeps "..hip_act_text.." "..pro(monster, "his").." hips...</color>")
 
 	else
-		local intensity = target:get_effect_int(efftype_id("gotwifed"))
+		intensity = target:get_effect_int(efftype_id("gotwifed"))
 		DEBUG.add_msg("intensity: "..intensity)
 
 		if (intensity >= 3) then
@@ -582,6 +586,13 @@ function matk_wifeu(monster)
 
 			--モンスターに"dominate"を、対象に"gotwifed"を与える。
 			monster:add_effect(efftype_id("dominate"), game.get_time_duration(1), "num_bp", true)
+			--[[
+			local dommon = target:get_value("hentai_dommon")
+			if dommon == nil or dommon:is_dead() or dommon:get_attitude("A_NEUTRAL") then
+				target:set_value("hentai_dommon", dommon)
+			end
+			--]]
+			
 			target:add_effect(efftype_id("gotwifed"), game.get_time_duration(1), "num_bp", true)
 
 			lost_virgin(target, false, monster)
@@ -597,7 +608,7 @@ function matk_wifeu(monster)
 
 	--monsterの方は相手の器用の分だけプラス。
 	--こう何というか、先にイった方が負けみたいなバトルを繰り広げたいけどバランスをどうすればいいんだ
-	monster:add_effect(efftype_id("lust"), game.get_time_duration(8 + target.dex_cur))
+	monster:add_effect(efftype_id("lust"), game.get_time_duration(8 + target.dex_cur + target:get_skill_level( skill_id( "sex" ) )  ))
 
 
 	--イく！
@@ -662,6 +673,8 @@ function matk_wifeu(monster)
 
 	target:mod_moves(-100)
 	monster:mod_moves(-100)
+	
+	target:practice( skill_id( "sex" ), intensity + game.rng( 1, 3 ) )
 
 	return
 end

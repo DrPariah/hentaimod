@@ -85,8 +85,14 @@ function deflower_pain(me, is_good)
 			add_msg(me:disp_name().." whines and winces from sharp pain!", H_COLOR.RED)
 		end
 	end
+	deal_pain = math.max(0, deal_pain - me:get_skill_level( skill_id( "sex" ) ) )
 
 	me:mod_pain( deal_pain ) --apparently this can cause you to stop in the middle of it at will (with safe mode?)
+	
+	if deal_pain == 0 then
+		add_msg(ActorName(me, "'s").." profound knowledge allows "..pro(me, "him").." to minimize the pain completely!", H_COLOR.LIGHT_GREEN)
+	end
+	
 	--groan sfx
 	groan(me)
 end
@@ -142,6 +148,7 @@ function iuse_yiff(item, active)
 	if (someone:is_monster()) then
 		if (someone:has_effect(efftype_id("pet"))) then
 			if (game.query_yn("Do you want to enjoy yourself with "..someone:disp_name().."? (NOT FULLY IMPLEMENTED!)")) then
+				--local partner = game.get_monster_at(someone:pos())
 				--TODO:monsterが相手の場合の処理を考えてない
 				do_sex(nil, item)
 			else
@@ -348,10 +355,13 @@ function do_sex(partner, device)
 
 	--行為にかかるターン数を算出。プレイヤーの耐久力(筋力)が多いほどフィニッシュまでの時間が長い。
 	local turn_cost = SEX_BASE_TURN * player.str_cur
+	turn_cost = turn_cost - player:get_skill_level( skill_id( "sex" ) ) * 10
 
 	--最大ターン数を超えた場合は調整する。でないと成長modとかで筋肉教になった@さんは死ぬまでやってしまうので...
 	if (turn_cost > SEX_MAX_TURN) then
 		turn_cost = SEX_MAX_TURN
+	elseif (turn_cost < SEX_MIN_TURN) then
+		turn_cost = SEX_MIN_TURN
 	end
 
 	DEBUG.add_msg("turn_cost:"..turn_cost)
@@ -360,16 +370,21 @@ function do_sex(partner, device)
 
 	--単純にプレイヤーかパートナーの器用さで大きい方。単純すぎ？
 	local fun_base = player.dex_cur
+	fun_base = fun_base + player:get_skill_level( skill_id( "sex" ) )
 	if not(partner == nil) then
-		if (player.dex_cur < partner.dex_cur) then
-			fun_base = partner.dex_cur
-		end
+		fun_base = fun_base + partner.dex_cur
+		fun_base = fun_base + partner:get_skill_level( skill_id( "sex" ) )
+		turn_cost = turn_cost - partner:get_skill_level( skill_id( "sex" ) )
 	end
 
 	DEBUG.add_msg("fun_base:"..fun_base)
 
 	local sex_fun_bonus
-	sex_fun_bonus = fun_base / 2
+	if player:get_skill_level( skill_id( "sex" ) ) >= 4 then
+		sex_fun_bonus = fun_base
+	else
+		sex_fun_bonus = fun_base / 2
+	end
 
 	--行為のアクティビティ開始。
 	SEX.init(sex_fun_bonus, partner, pseudo_device, is_love_sex)
@@ -389,6 +404,87 @@ function do_sex(partner, device)
 		lost_virgin(partner, is_love_sex, player) --if done by fear, obviously that's not willing
 	end
 end
+
+--[[function do_sex(partner, device) --Hold pets in place as well during fun;
+
+	local pseudo_device
+	local actpartner = partner
+	local monpartner
+	
+	if partner ~= nil and partner:is_monster() then --monster partner is not processed fully yet, but we'll at least keep it in place for now
+		monpartner = partner
+		actpartner = nil
+	end
+
+	--pseudo_device = device	--NOTE:ここで受け取るdeviceはたぶんポインタ？なのでそのままグローバルにぶっこむとアクティビティ終了処理にて正しく読み取れない。
+								--     ので新しいitemに変換しておく
+	if not(device == nil) then
+		pseudo_device = item(device)
+	else
+		pseudo_device = nil
+	end
+
+	--行為にかかるターン数を算出。プレイヤーの耐久力(筋力)が多いほどフィニッシュまでの時間が長い。
+	local turn_cost = SEX_BASE_TURN * player.str_cur
+	turn_cost = turn_cost - player:get_skill_level( skill_id( "sex" ) ) * 10
+
+	--最大ターン数を超えた場合は調整する。でないと成長modとかで筋肉教になった@さんは死ぬまでやってしまうので...
+	if (turn_cost > SEX_MAX_TURN) then
+		turn_cost = SEX_MAX_TURN
+	elseif (turn_cost < SEX_MIN_TURN) then
+		turn_cost = SEX_MIN_TURN
+	end
+
+	DEBUG.add_msg("turn_cost:"..turn_cost)
+
+	--行為による意欲ボーナスを算出。
+
+	--単純にプレイヤーかパートナーの器用さで大きい方。単純すぎ？
+	local fun_base = player.dex_cur
+	fun_base = fun_base + player:get_skill_level( skill_id( "sex" ) )
+	if not(actpartner == nil) then
+		fun_base = fun_base + actpartner.dex_cur
+		fun_base = fun_base + actpartner:get_skill_level( skill_id( "sex" ) )
+		turn_cost = turn_cost - actpartner:get_skill_level( skill_id( "sex" ) )
+	end
+
+	DEBUG.add_msg("fun_base:"..fun_base)
+
+	local sex_fun_bonus
+	if player:get_skill_level( skill_id( "sex" ) ) >= 4 then
+		sex_fun_bonus = fun_base
+	else
+		sex_fun_bonus = fun_base / 2
+	end
+
+	--行為のアクティビティ開始。
+	SEX.init(sex_fun_bonus, actpartner, pseudo_device, is_love_sex)
+	local turnHold = turn_cost * player:get_speed() + 1000 --ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
+	player:assign_activity(activity_id("ACT_SEX"), turnHold, 0, 0, "")
+	game.sfx_play_activity_sound( "plmove", player.male and "fatigue_m_high" or "fatigue_f_high", game.sfx_get_heard_volume( player:pos() ) )
+	
+	--see what kind of partner we're dealing with
+	local actor
+	
+	if actpartner ~= nil then
+		actor = actpartner
+	elseif monpartner ~= nil then
+		actor = monpartner
+	end
+	
+	if actor ~= nil then
+		actor:mod_moves(-turnHold) --hold the partner in place in case they're not followers so they won't run away
+	end
+	
+	game.add_msg("<color_pink>*Wait a moment please...*</color>")
+
+	--パートナーがいる場合のみ貞操を失う。
+	if not(actpartner == nil) then
+		lost_virgin(player, true, actpartner)
+		lost_virgin(actpartner, is_love_sex, player) --if done by fear, obviously that's not willing
+	end
+end
+]]--
 
 --[[降魔のチョーカーのiuse処理]]--
 function iuse_pet_cubi(item, active)

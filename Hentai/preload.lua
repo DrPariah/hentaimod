@@ -343,10 +343,13 @@ function do_sex(partner, device)
 
 	--行為のアクティビティ開始。
 	SEX.init(sex_fun_bonus, partner, pseudo_device, is_love_sex)
-	player:assign_activity(activity_id("ACT_SEX"), turn_cost * player:get_speed() + 1000, 0, 0, "")	--ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
+	local turnHold = turn_cost * player:get_speed() + 1000 --ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
+	player:assign_activity(activity_id("ACT_SEX"), turnHold, 0, 0, "")
+	if not(partner == nil) then
+		partner:mod_moves(-turnHold) --hold the partner in place in case they're not followers so they won't run away
+	end
 	
-	
-	game.add_msg("<color_pink>*しばらくおまちください*</color>")
+	add_msg("*しばらくおまちください*", H_COLOR.PINK)
 
 	--パートナーがいる場合のみ貞操を失う。
 	if not(partner == nil) then

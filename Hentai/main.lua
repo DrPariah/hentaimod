@@ -100,6 +100,15 @@ function MOD.on_turn_passed()
 			SEX.act_sex_do_turn(player.activity, player)
 		end
 	end
+	
+	--in case the activity was ended prematurely
+	--isn't it a bit heavy checking this every turn?
+	if player:has_effect(efftype_id("movingdoing")) then
+		if not(player:has_activity(activity_id("ACT_SEX"))) then
+			DEBUG.add_msg("Fun effect is found but no activity! Premature fun end!")
+			SEX.act_sex_finish_premature()
+		end
+	end
 end
 
 --[[ミッションをクリアした際のコールバック]]--

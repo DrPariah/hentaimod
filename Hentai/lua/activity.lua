@@ -177,6 +177,27 @@ SEX.act_sex_finish = function(act, p)
 
 end
 
+--[[Modded: premature finish when the action was interrupted somehow, remove the effect, but no ejaculation/opinion changes/orgasms, etc]]--
+--TODO: perhaps add emotional frustration or something? but that could be annoying in case of emergency
+--the condom stays intact after this, is that alright? it would be annoying to waste it though
+SEX.act_sex_finish_premature = function()
+	game.add_msg("*気持ちいいこと*を途中で終了しました！")
+
+	--player:remove_effect(efftype_id("lust"))
+	player:remove_effect(efftype_id("movingdoing"))
+
+	DEBUG.add_msg("Remove effect")
+	
+	if not(SEX.sex_partner == nil) then
+		--DEBUG.add_msg("SEX.sex_partner:"..SEX.sex_partner:disp_name())
+		--SEX.sex_partner:remove_effect(efftype_id("lust"))
+		SEX.sex_partner:remove_effect(efftype_id("movingdoing"))
+		SEX.sex_partner:set_moves(0) --unstuck the partner
+	end
+	
+	DEBUG.add_msg("--end act_sex_finish_premature()--")
+end
+
 --[[対象の妊娠判定を行う。]]--
 SEX.check_preg = function(mother, father)
 	DEBUG.add_msg("--check_preg--")

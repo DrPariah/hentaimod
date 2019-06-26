@@ -243,6 +243,39 @@ function getInfo(obj)
 	return obj
 end
 
+function getGender(obj) -- return true if male, false if female
+	obj = getInfo(obj)
+	if (obj:is_monster()) then --special case for monsters because fuck you apparently, they don't have gender attributes
+		
+		local mtype = obj.type
+		DEBUG.add_msg("pro mtype:"..mtype:nname())
+
+		if (mtype:in_species(species_id("FEMALE"))) then
+			return false
+
+		elseif (mtype:in_species(species_id("MALE"))) then
+			return true
+			
+		elseif (mtype:in_species(species_id("HERM"))) then
+			return false --count herms/futas as females for now
+			
+		else
+			return true --other monsters are males by default
+			
+		end
+	else
+		return obj.male
+	end
+end
+
+function sameSex(first, second, sex)
+	if sex == "FEMALE" then
+		return ( getGender(first) == false and getGender(second) == false )
+	else
+		return ( getGender(first) == getGender(second) )
+	end
+end
+
 --classesに独自function実装できないかなーと弄ってうまくいかなかった残骸
 --MyPlayer = {}
 --MyPlayer.new = function(creature)

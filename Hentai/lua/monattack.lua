@@ -300,6 +300,9 @@ function gain_corrupt(target, dur)
 	--対象のINT値の確率で抵抗判定。判定に失敗したら"corrupt"を与える。
 	if (math.random(20) > target.int_cur) then
 		target:add_effect(efftype_id("corrupt"), game.get_time_duration(dur))
+		if target:is_player() then
+			game.add_msg("中から妖艶な暖かさを感じがする")
+		end
 	else
 		game.add_msg("しかし欲望に抗いました。")
 	end

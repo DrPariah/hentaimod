@@ -28,7 +28,7 @@
 		"vision_night": 10,
 		"harvest": "human",
 		"starting_ammo": { "reloaded_22_lr" : 50, "reloaded_22_fmj" : 50 },
-		"special_attacks": [ [ "PARROT", 75 ], [ "VULGAR_SPEECH", 25 ],
+		"special_attacks": [ [ "WIFE_U", 0 ], [ "STRIP_U", 5 ], [ "PARROT", 75 ], [ "VULGAR_SPEECH", 25 ],
 			{
 				"type": "gun",
 				"cooldown": 7,

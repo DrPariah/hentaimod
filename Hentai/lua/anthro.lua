@@ -102,7 +102,7 @@ ANTHRO.main = function(monster, selected_point)
 	map:add_item(player:pos(), scroll)
 	add_msg("あなたの足元に何かが転がってきた。", H_COLOR.GREEN)
 
-	return
+	return true
 
 end
 

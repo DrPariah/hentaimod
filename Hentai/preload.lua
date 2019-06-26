@@ -530,12 +530,14 @@ function iuse_anthromorph(item, active)
 		return
 	end
 
-	ANTHRO.main(monster, selected_point)
+	local result = ANTHRO.main(monster, selected_point)
 
-	if (player:has_item(item)) then
-		player:i_rem(item)
+	if result ~= nil then
+		if (player:has_item(item)) then
+			player:i_rem(item)
+		end
 	end
-
+	
 	player:mod_moves(-200)
 
 	return

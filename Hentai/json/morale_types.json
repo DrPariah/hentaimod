@@ -13,5 +13,10 @@
 		"id": "morale_deflower_bad",
 		"type": "morale_type",
 		"text": "Painful memories of losing Virginity by force"
+	},
+	{
+		"id": "morale_orgasm",
+		"type": "morale_type",
+		"text": "Reached climax"
 	}
 ]

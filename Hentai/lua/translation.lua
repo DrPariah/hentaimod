@@ -1,5 +1,67 @@
 --[[translation-related functions]]--
 
+--[[test/debug]]--
+function testPro()
+	local selected_point = pointAt()
+	
+	if (selected_point == nil) then
+		return
+	end
+	
+	local obj = g:critter_at(selected_point)
+	if (obj:is_monster()) then
+		obj = game.get_monster_at(selected_point)
+	end
+	
+	print(ActorName(obj, "'s"))
+	print(ActorName(obj, "break", "breaks"))
+	print(YouWord(obj, "your", "their"))
+	print(pro(obj, "he"))
+	print(pro(obj, "his"))
+	print(pro(obj, "him"))
+	print(pro(obj, "hers"))
+	print(pro(obj, "himself"))
+
+	add_msg(ActorName(obj, "'s"), H_COLOR.PINK)
+	add_msg(YouWord(obj, "your", "their"), H_COLOR.PINK)
+	add_msg(ActorName(obj, "break", "breaks"), H_COLOR.PINK)
+	add_msg(pro(obj, "he"), H_COLOR.PINK)
+	add_msg(pro(obj, "his"), H_COLOR.PINK)
+	add_msg(pro(obj, "him"), H_COLOR.PINK)
+	add_msg(pro(obj, "hers"), H_COLOR.PINK)
+	add_msg(pro(obj, "himself"), H_COLOR.PINK)
+end
+
+--[[
+function t()
+	center = player:pos()
+	for i=-1,1 do
+		for j=-1,1 do
+			target = tripoint(center.x + i, center.y + j, center.z)
+			m = game.get_monster_at(target)
+			if m ~= nil then
+				print(m:disp_name())
+				mtype = m.type
+				print(mtype.hp)
+				print(mtype:nname())
+				if (mtype:in_species(species_id("FEMALE"))) then
+					print("f")
+				else
+					print("m")
+				end
+
+				if (mtype:has_flag("MF_DOGFOOD")) then
+					print("doggo")
+				end
+				if (mtype:has_flag("MF_CATFOOD")) then
+					print("catto")
+				end
+			end
+		end
+	end
+end
+]]--
+
 -- pronoun system because english --
 function pro(obj, pronoun)
 	local objPlayer = obj:is_player()
@@ -49,6 +111,7 @@ function ActorName(obj, youWord, themWord)
 	if (themWord == nil) then --in case second args is skipped to not cause an exception
 		themWord = youWord
 	end
+	
 	local out = obj:disp_name() --set actor name
 	local word = YouWord(obj, youWord, themWord) --set action word for actor
 	
@@ -94,20 +157,25 @@ function ActorSay(topic, partner)
 	
 	--return add_msg(partner:disp_name()..": "..speech_texts[math.random(#speech_texts)])
 	--woohoo I can make the character actually say things wowie!
+	--log.message(partner:disp_name()..":say, topic:"..topic)
 	return partner:say(topic)
 end
 
 function getGender(obj) -- return true if male, false if female
+	obj = getInfo(obj)
 	if (obj:is_monster()) then --special case for monsters because fuck you apparently, they don't have gender attributes
+		
 		local mtype = obj.type
+		DEBUG.add_msg("pro mtype:"..mtype:nname())
+
 		if (mtype:in_species(species_id("FEMALE"))) then
-			return nil
+			return false
 
 		elseif (mtype:in_species(species_id("MALE"))) then
 			return true
 			
 		elseif (mtype:in_species(species_id("HERM"))) then
-			return nil --count herms/futas as females for now
+			return false --count herms/futas as females for now
 			
 		else
 			return true --other monsters are males by default
@@ -115,5 +183,13 @@ function getGender(obj) -- return true if male, false if female
 		end
 	else
 		return obj.male
+	end
+end
+
+function sameSex(first, second, sex)
+	if sex == "FEMALE" then
+		return ( getGender(first) == false and getGender(second) == false )
+	else
+		return ( getGender(first) == getGender(second) )
 	end
 end

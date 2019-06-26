@@ -156,5 +156,72 @@
 		"speaker" : "mon_cambion_female",
 		"sound" : "\"Shit, I can't stop pukin'.  I hope I ain't pregnant...\"",
 		"volume" : 5
+	},
+	
+	{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "(Insane laughter)",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"Die, asshole!\"",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"Hyahaaa!\"",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"This ain't my first time killin', ya rookie!\"",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"Careful, that son of a bitch is still hidin' nearby...\"",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"I wish we could stay together like this...\"",
+		"volume": 20
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"I love you...\"",
+		"volume": 20
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"I used human serum.\"",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"Don't blame me if one day you get backstabbed with that attitude.\"",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"Um... You're not a Demon yet, right? Right?!\"",
+		"volume": 40
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"My patience with you is wearing thin...\"",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"Death will not be your end, your soul will burn in hell forever!\"",
+		"volume": 60
+	},{
+		"type": "speech",
+		"speaker": "mon_mi_go",
+		"sound": "\"I made it fight with the zombies, now where the fuck did it go?\"",
+		"volume": 30
 	}
 ]

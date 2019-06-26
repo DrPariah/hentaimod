@@ -95,7 +95,7 @@
 	{
 		"id": "TALK_DB_SCHOOLGIRL_YOURTAIL",
 		"type": "talk_topic",
-		"dynamic_line": "Yes, I am a human!  And the tail...  Well, I was attacked...  B-But nothing else, I swear!  Although I couldn't protect my lips...  I'm still, um, pure in every other sense!  I'm still a virgin after all!",
+		"dynamic_line": "Yes, I am a human!  And the tail...  Well, I was attacked...  B-But nothing else, I swear!  Well, they stole my first kiss...  But other than that, I'm still, um, pure in every sense!  I'm still a virgin after all!",
 		"responses": [
 			{
 				"text": "Sorry, I didn't mean to...",

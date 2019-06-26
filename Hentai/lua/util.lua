@@ -132,6 +132,21 @@ function get_random_wear(chara, body_part)
 	end
 end
 
+--Check if target is naked, from dda lua traits
+function is_naked(chara)
+	for _,body_part in pairs(enums.body_part) do
+
+	   if (chara:wearing_something_on(body_part) == true) then
+
+		 return false
+
+	   end
+
+	end
+	
+	return true
+end
+
 --[[Characterが所持している(インベントリ内の)アイテムのリストを取得する。]]--
 function get_items(chara)
 	local item_list = {}
@@ -215,7 +230,18 @@ end
 
 
 
-
+function getInfo(obj)
+	if obj == nil then
+		log.message("obj is nil!")
+	end
+	
+	local obj = g:critter_at(obj:pos())
+	if (obj:is_monster()) then
+		obj = game.get_monster_at(obj:pos())
+	end
+	
+	return obj
+end
 
 --classesに独自function実装できないかなーと弄ってうまくいかなかった残骸
 --MyPlayer = {}

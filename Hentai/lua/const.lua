@@ -147,10 +147,12 @@ MON_ARCH_CUBI_LIST = {
 
 
 SEX_MORALE_TYPE		= morale_type("morale_sex_good")	--*気持ちいいこと*の意欲タイプ
-SEX_BASE_TURN		= 100		--行為1wait当たりに掛かる基準ターン数(1ターン = 約6秒)。100=10分。
-SEX_MAX_TURN		= 1800		--行為全体に掛かる最大ターン数。1800=3時間。
-SEX_FUN_DURATION	= 600		--行為による意欲がどの程度長続きするかのtime_duration。
-SEX_FUN_DECAY_START	= 150		--行為による意欲が冷め始めるまでのtime_duration。
+-- changed these to scale with the new time duration
+SEX_BASE_TURN		= 600		--行為1wait当たりに掛かる基準ターン数(1ターン = 約6秒)。100=10分。
+SEX_MIN_TURN		= 10		
+SEX_MAX_TURN		= 3600		--行為全体に掛かる最大ターン数。1800=3時間。
+SEX_FUN_DURATION	= 1200		--行為による意欲がどの程度長続きするかのtime_duration。
+SEX_FUN_DECAY_START	= 300		--行為による意欲が冷め始めるまでのtime_duration。
 
 D_GOM_BREAK_CHANCE	= 50		--あぶない方の避妊具が使用時に破損する確率(%)。
 

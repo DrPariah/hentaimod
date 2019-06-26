@@ -18,6 +18,19 @@ Translation of the Japanese mod for Cataclysm: Dark Days Ahead, along with coupl
 - Human mutagens allowing you to transform some mutants and pets into human!
 - Pets can be fully animal, have animal-like features or be fully human, depending on their individual settings!
 
+## Branches:
+- **Japanese** is publicly available japanese version, mostly for merging.
+- **Master** is for the stable D version.
+- **LUAEX** is for [luaex version][3]. It's the (mostly) latest experimental version with lua support.
+- **LUAEX_dev** is mostly broken and full of wip edits (in case you want to help or just curious).
+- **LUAEX_日本人** - 日本人向け。これを使ってください (LUAEX only)  
+
+Switch to the desired branch and download from there. LUAEX among other things also adds new features such as:
+- Memorial log entries
+- Sound effect
+- Forces transformed pet NPCs to spawn regardless of settings
+- Randomized appearance for transformed pets
+
 ## Installation:
 
 Drop the "hentai" folder into your mod folder. Do not rename the hentai folder, or it will break its scripts.  
@@ -46,6 +59,9 @@ According to the license, this mod can be freely modified and distributed.
 - This mod might be buggy. Translation probably contributed to that too. You can report translation problems, but the game-breaking bugs caused by original code can be out of my expertise.
 - This mod was made for CDDA 0.C-8204 version so that's that.
 - There's a lot of incomplete TODO's in this mod and it can use some code refactoring.
+#### I transformed my pet, but it disappeared!
+- Make sure to set ``Static NPC`` to ``on`` and their spawn to ``always``.
+- LUAEX version can spawn them regardless of settings.
 #### I visited the animal shelter, but I can't complete the request!
 - It's confusing, but make sure you're at the animal *shelter* and not the pound.
 #### How do I *have fun*?
@@ -101,3 +117,4 @@ According to the license, this mod can be freely modified and distributed.
 
 [1]: https://www.axfc.net/u/search.pl?search_str=hentai&id_start=&id_end=&extv=&size_min=&size_min_si=2&size_max=&size_max_si=2&dl_min=&dl_max=&date_start=&date_end=&num=&sort_type=uid&sort_m=DESC&md5=&sha1=
 [2]:https://discourse.cataclysmdda.org/t/fms-frequently-made-suggestions/9764
+[3]:https://github.com/lispcoc/Cataclysm-DDA-luaex/releases/

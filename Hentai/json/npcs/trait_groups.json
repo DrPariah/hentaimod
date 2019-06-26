@@ -31,7 +31,8 @@
 			{ "trait": "MASOCHIST", "prob": 10 },
 			{ "trait": "PRETTY", "prob": 50 },
 			{ "trait": "ILLITERATE", "prob": 50 },
-			{ "trait": "VIRGIN", "prob": 10 }
+			{ "trait": "VIRGIN", "prob": 10 },
+			{ "group": "Appearance_demographics" }
 		]
 	},
 	{
@@ -49,7 +50,8 @@
 			{
 				"distribution": [ { "trait": "SMALL_BREAST" }, { "trait": "BIG_BREAST" } ],
 				"prob": 33
-			}
+			},
+			{ "group": "Appearance_demographics" }
 		]
 	},
 	{
@@ -82,7 +84,8 @@
 			{
 				"//" : "超低確率で貞操持ち。けなげなのか不慣れなのか、どちらにせよ萌える",
 				"trait": "VIRGIN", "prob": 2
-			}
+			},
+			{ "group": "Appearance_demographics" }
 		]
 	},
 	{
@@ -114,7 +117,8 @@
 			{
 				"//" : "超低確率で貞操持ち。けなげなのか不慣れなのか、どちらにせよ萌える",
 				"trait": "VIRGIN", "prob": 2
-			}
+			},
+			{ "group": "Appearance_demographics" }
 		]
 	},
 

@@ -236,6 +236,10 @@ function birth_process(mother)
 			if (math.random(100) > 12) then
 				mother:mod_pain(25)
 				add_msg(mother:disp_name().."は苦しんでいます！", H_COLOR.RED)
+				
+				--groan sfx
+				groan(mother)
+				
 				return
 			end
 

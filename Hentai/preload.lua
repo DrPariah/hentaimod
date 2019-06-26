@@ -47,6 +47,13 @@ function lost_virgin(me, is_good, p)
 	--process pain, mostly female deflowering specifics
 	deflower_pain(me, is_good)
 	
+	if me:is_player() then -- add entry for the graveyard log
+		player:add_memorial_log( "貞操を"..p:disp_name().."に失った", "貞操を"..p:disp_name().."に失った" )
+	end
+	if p:is_player() then
+		player:add_memorial_log( me:disp_name().."の貞操を取った", me:disp_name().."の貞操を取った" )
+	end
+
 	me:unset_mutation(trait_id("VIRGIN"))
 end
 
@@ -76,6 +83,8 @@ function deflower_pain(me, is_good)
 	end
 
 	me:mod_pain( deal_pain ) --apparently this can cause you to stop in the middle of it at will (with safe mode?)
+	--groan sfx
+	groan(me)
 end
 
 --[[妊娠判定]]--
@@ -106,9 +115,11 @@ end
 function iuse_yiff(item, active)
 
 	--隣接するキャラクタを選択、取得する。
-	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
-	local selected_point = tripoint(selected_x, selected_y, center.z)
+	local selected_point = pointAt()
+	
+	if (selected_point == nil) then
+		return
+	end
 
 	local someone = g:critter_at(selected_point)
 
@@ -345,6 +356,7 @@ function do_sex(partner, device)
 	SEX.init(sex_fun_bonus, partner, pseudo_device, is_love_sex)
 	local turnHold = turn_cost * player:get_speed() + 1000 --ターン数*プレイヤーの速度にすることで時間ちょうどのmovecostを求められる
 	player:assign_activity(activity_id("ACT_SEX"), turnHold, 0, 0, "")
+	game.sfx_play_activity_sound( "plmove", player.male and "fatigue_m_high" or "fatigue_f_high", game.sfx_get_heard_volume( player:pos() ) )
 	if not(partner == nil) then
 		partner:mod_moves(-turnHold) --hold the partner in place in case they're not followers so they won't run away
 	end
@@ -361,9 +373,11 @@ end
 --[[降魔のチョーカーのiuse処理]]--
 function iuse_pet_cubi(item, active)
 	--隣接するキャラクタを選択、取得する。
-	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
-	local selected_point = tripoint(selected_x, selected_y, center.z)
+	local selected_point = pointAt()
+	
+	if (selected_point == nil) then
+		return
+	end
 
 	local monster = game.get_monster_at(selected_point)
 
@@ -424,7 +438,10 @@ function iuse_ts_elixir(item, active)
 	end
 
 	target:mod_pain(math.random(200))
-
+	
+	--groan sfx
+	groan(target)
+	
 	if (target.male) then
 		target.male = false
 		add_msg("下半身を襲った激痛に思わず手をやると、そこにあるはずのものがありませんでした！", H_COLOR.YELLOW)
@@ -448,9 +465,11 @@ function iuse_naming_npc(item, active)
 	DEBUG.add_msg("--NAMING--")
 
 	--隣接するキャラクタを選択、取得する。
-	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
-	local selected_point = tripoint(selected_x, selected_y, center.z)
+	local selected_point = pointAt()
+	
+	if (selected_point == nil) then
+		return
+	end
 
 	--local someone = g:npc_at(selected_point)
 	local someone = game.get_npc_at(selected_point)
@@ -490,11 +509,9 @@ function iuse_anthromorph(item, active)
 	DEBUG.add_msg("--ANTHRO--")
 
 	--隣接するキャラクタを選択、取得する。
-	local center = player:pos()
-	local selected_x, selected_y = game.choose_adjacent("誰に対して使用しますか？", center.x, center.y)
-	local selected_point = tripoint(selected_x, selected_y, center.z)
+	local selected_point = pointAt()
 	
-	if selected_point == nil then -- do not delete the item if it wasn't used
+	if (selected_point == nil) then
 		return
 	end
 

@@ -94,7 +94,7 @@ ANTHRO.main = function(monster, selected_point)
 	--NOTE:monsterの所持品にアイテムを追加することはできても取得することができないので、ペットに預けていたアイテムがすべて消えてしまう。
 	g:remove_zombie(monster)		--こんなFunction名だけどゾンビじゃなくても消せる。
 
-	local npc_id = map:place_npc(selected_point.x, selected_point.y, npc_template_id(npc_temp_id))
+	local npc_id = map:place_npc(selected_point.x, selected_point.y, npc_template_id(npc_temp_id), 1)
 	DEBUG.add_msg("npc_id:"..npc_id)
 
 	--TODO:本当はこの場でNPCの名前を変更したりしたいんだけど無理なので名前の巻物を与えてお茶をにごす
@@ -116,12 +116,12 @@ ANTHRO.get_anthro_pet_pattern = function(monster)
 
 
 	--"DOGFOOD"フラグを持つmonsterであれば犬系変化リスト。	この条件だと犬以外で"DOGFOOD"フラグを持つmonster（別modの野良メイドとか）でも対象になってしまう。...まあそれはそれで良し
-	if (mtype:has_flag("DOGFOOD")) then
+	if (mtype:has_flag("MF_DOGFOOD")) then
 		DEBUG.add_msg("-->ANTHRO_CANINE")
 		anthro_pet_pattern = ANTHRO.ANTHRO_PET_PATTERN.CANINE
 
 	--"CATFOOD"フラグを持つmonsterであれば猫系変化リスト。
-	elseif (mtype:has_flag("CATFOOD")) then
+	elseif (mtype:has_flag("MF_CATFOOD")) then
 		DEBUG.add_msg("-->ANTHRO_FELINE")
 		anthro_pet_pattern = ANTHRO.ANTHRO_PET_PATTERN.FELINE
 

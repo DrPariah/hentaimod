@@ -134,7 +134,7 @@ end
 
 --Check if target is naked, from dda lua traits
 function is_naked(chara)
-	for _,body_part in pairs(enums.body_part) do
+	for body_part = 0, enums.body_part.num_bp do
 
 	   if (chara:wearing_something_on(body_part) == true) then
 
@@ -228,7 +228,20 @@ function get_around_locs(center, min_radius, max_radius)
 	return locs
 end
 
+function pointAt()
+	local selected_point = game.choose_adjacent("誰に対して使用しますか？")
+	
+	if (selected_point == nil) then
+		game.add_msg("キャンセルしました。")
+		return
+	end
+	
+	return selected_point
+end
 
+function groan(obj)
+	return game.sfx_play_variant_sound( "deal_damage", getGender(obj) and "hurt_m" or "hurt_f", game.sfx_get_heard_volume( obj:pos() ) )
+end
 
 function getInfo(obj)
 	if obj == nil then

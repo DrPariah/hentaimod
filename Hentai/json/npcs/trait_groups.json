@@ -1,6 +1,30 @@
 [
 	{
 		"type": "trait_group",
+		"id": "NPC_starting_traits",
+		"subtype": "collection",
+		"traits": [
+		  { "trait": "VIRGIN", "prob": 10 },
+		  {
+				"distribution": [ { "trait": "SMALL_BREAST" }, { "trait": "BIG_BREAST" } ],
+				"prob": 33
+		  }
+		]
+	},
+	{
+		"type": "trait_group",
+		"id": "trait_mutant_npc_common",
+		"subtype": "collection",
+		"traits": [
+		  { "trait": "VIRGIN", "prob": 10 },
+		  {
+				"distribution": [ { "trait": "SMALL_BREAST" }, { "trait": "BIG_BREAST" } ],
+				"prob": 33
+		  }
+		]
+	},
+	{
+		"type": "trait_group",
 		"id": "trait_anthro_common_male",
 		"subtype": "collection",
 		"traits": [

@@ -52,7 +52,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_CANINE",
 		"name" : "ペット(犬)_テンプレート",
-		"job_description" : "...Whose fault do you think it is?",
+		"job_description" : "...Whose fault do you think this is?",
 		"common" : false,
 		"skills": [
 			{ "skill": "survival", "bonus": { "rng": [ 0, 3 ] } },
@@ -73,7 +73,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_FELINE",
 		"name" : "ペット(猫)_テンプレート",
-		"job_description" : "...Whose fault do you think it is?",
+		"job_description" : "...Whose fault do you think this is?",
 		"common" : false,
 		"skills": [
 			{ "skill": "survival", "bonus": { "rng": [ 0, 3 ] } },
@@ -94,7 +94,7 @@
 		"type" : "npc_class",
 		"id" : "NC_ANTHRO_URSINE",
 		"name" : "ペット(熊)_テンプレート",
-		"job_description" : "...Whose fault do you think it is?",
+		"job_description" : "...Whose fault do you think this is?",
 		"common" : false,
 		"skills": [
 			{ "skill": "survival", "bonus": { "rng": [ 0, 3 ] } },

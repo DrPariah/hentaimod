@@ -17,7 +17,7 @@
 					"fg": 1
 				},
 				{
-					"id": ["overlay_effect_dominate", "overlay_effect_movingdoing"],
+					"id": ["overlay_effect_dominate", "overlay_effect_movingdoing", "overlay_effect_gotwifed"],
 					"fg": 2
 				},
 				{

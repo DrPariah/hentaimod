@@ -26,9 +26,9 @@
 		"id": "corrupt",
 		"name" : [
 			"Blushing",
-			"Ecstatic",
+			"Excited",
 			"Passionate",
-			"Elated",
+			"Ecstatic",
 			"Euphoric",
 			"Depraved"
 		],
@@ -158,6 +158,8 @@
 	{
 		"type": "effect_type",
 		"id": "pregnantcy",
+		"apply_memorial_log": "Became pregnant.",
+		"remove_memorial_log": "Gave birth to a baby.", "//": "probably should be handled at lua in case abortion/stillbirth is added",
 		"name": [
 			"Pregnancy (3rd month)",
 			"Pregnancy (4th month)",

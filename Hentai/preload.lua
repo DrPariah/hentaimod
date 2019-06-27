@@ -48,10 +48,10 @@ function lost_virgin(me, is_good, p)
 	deflower_pain(me, is_good)
 	
 	if me:is_player() then -- add entry for the graveyard log
-		player:add_memorial_log( "貞操を"..p:disp_name().."に失った", "貞操を"..p:disp_name().."に失った" )
+		player:add_memorial_log( p:disp_name().."に貞操を奪われた", p:disp_name().."に貞操を奪われた" )
 	end
 	if p:is_player() then
-		player:add_memorial_log( me:disp_name().."の貞操を取った", me:disp_name().."の貞操を取った" )
+		player:add_memorial_log( me:disp_name().."の貞操を奪った", me:disp_name().."の貞操を奪った" )
 	end
 
 	me:unset_mutation(trait_id("VIRGIN"))

@@ -155,7 +155,7 @@ SEX.act_sex_finish = function(act, p)
 				--modded finish message
 				local finisher = ((player.male) and player or SEX.sex_partner)
 				
-				game.popup(finisher:disp_name().."は、避妊具に流れました。")
+				game.popup(finisher:disp_name().."は避妊具の中で果てました。")
 			end
 
 			--(使用済み)のアイテムに液体を追加する。
@@ -218,7 +218,7 @@ SEX.check_preg = function(mother, father)
 	end
 	
 	--中出し
-	game.popup(father:disp_name().."は、"..mother:disp_name().."の中に流れました。")
+	game.popup(father:disp_name().."は、"..mother:disp_name().."の中で果てました。")
 
 	mother:set_value(CREAMPIE_SEED_TYPE, "HUMAN")
 
